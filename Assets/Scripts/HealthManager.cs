@@ -70,8 +70,6 @@ public class HealthManager : MonoBehaviour{
     {
 		health += healthToAdd;
 
-<<<<<<< Updated upstream
-
         if (health > 100)
         {
 			health = 100;
@@ -86,10 +84,6 @@ public class HealthManager : MonoBehaviour{
         }
         healthImg.sprite = animationSprites[i];
     }
-    public void Death()
-	{
-
-=======
 	public void Death(){
 		//show death screen
 		if(PlayerPrefs.GetFloat("HighTime") <=0)
@@ -104,6 +98,5 @@ public class HealthManager : MonoBehaviour{
 		GetComponent<PlayerMovement>().enabled = false;
 		timer.StopTimer();
 		deathScreen.SetActive(true);
->>>>>>> Stashed changes
 	}
 }
