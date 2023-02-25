@@ -2359,6 +2359,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1697184190, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
+      propertyPath: damageAmount
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1408401231646033817, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
       propertyPath: timer
       value: 
