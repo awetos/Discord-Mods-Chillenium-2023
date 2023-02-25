@@ -11,7 +11,7 @@ public class HeartThrow : MonoBehaviour
 
 	void Update() {
 		//using update for this to avoid it running multiple time with every click
-		if (Input.GetMouseButtonDown(0)){
+		if (Input.GetMouseButtonDown(0) && Time.timeScale >0){
             GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
             myHeart.transform.SetParent(transform.parent.parent);//move it to root
 			myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
