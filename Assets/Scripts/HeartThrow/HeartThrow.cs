@@ -47,7 +47,7 @@ public class HeartThrow : MonoBehaviour
     void SetThrowHeart(bool b)
     {
         canThrowHeart = b;
-        Debug.Log("Hearts can be thrown");
+      //  Debug.Log("Hearts can be thrown");
     }
 
 	private void FixedUpdate(){
