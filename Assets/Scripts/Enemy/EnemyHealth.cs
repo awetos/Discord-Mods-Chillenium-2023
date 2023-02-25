@@ -25,7 +25,8 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            transform.gameObject.SetActive(false);
             OnEnemyDeath();
         }
     }

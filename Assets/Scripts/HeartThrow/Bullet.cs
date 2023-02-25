@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         //currentX = OriginalPosition.x;
         //currentZ = OriginalPosition.z;
 
-        StartCoroutine("HeartThrowCountdown");
+        StartCoroutine("BulletCountdown");
     }
 
     public void SetDirection(Vector3 direction)
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    IEnumerator HeartThrowCountdown()
+    IEnumerator BulletCountdown()
     {
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("I've hit an enemy!");
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(1000);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(30);
            
         }
     }
