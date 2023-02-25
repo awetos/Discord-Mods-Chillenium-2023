@@ -65,10 +65,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  health1: {fileID: 0}
-  health2: {fileID: 0}
-  animationSize: 16
-  lifeLength: 20
+  animationSize: 34
+  animationSprites:
+  - {fileID: -1718702923, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -377275235, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1431306317, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1163403388, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1910814169, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 200584289, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -687662912, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1539817934, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1114714526, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 925965249, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1933017364, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 664333394, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -68072531, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -791080334, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -936461992, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 25101920, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1404745624, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1771485763, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1229122664, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 110747210, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -216169893, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1930917437, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1723285745, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 210647504, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -74415588, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1694858323, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1859338562, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -352669436, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -82484590, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1188070308, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1424730856, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -883547606, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1944705342, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 2021729616, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  healthImg: {fileID: 0}
+  lifeLength: 34
   isPlayerOne: 1
 --- !u!54 &4516728466293869332
 Rigidbody:
@@ -235,6 +269,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6332305704608122390, guid: 447e7637e35119d47823e81394780837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6332305704608122390, guid: 447e7637e35119d47823e81394780837, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6332305704608122391, guid: 447e7637e35119d47823e81394780837, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

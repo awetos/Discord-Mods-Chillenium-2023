@@ -6,7 +6,13 @@ public class PlayerMovement : MonoBehaviour{
     public float speed;//player move speed
 	[SerializeField] Vector3 cameraOffset;//camera movement offset from player position
 	[SerializeField] float cameraSmoothness;//camera movement smoothness
+	[SerializeField] private CameraScript camScript;
 
+	private void Update() {
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			camScript.switchPlayer();
+		}
+	}
 	void FixedUpdate() {
 
 		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position, cameraSmoothness)+cameraOffset;//smoothly follow player

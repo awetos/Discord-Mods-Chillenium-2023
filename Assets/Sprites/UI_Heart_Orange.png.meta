@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,7 +103,721 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI_Heart_Orange_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3571b36f029c241938a38074662939
+      internalID: 2106167904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3878587835fc1488490f26e094ec96
+      internalID: 1080089213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305c7113a9750a34ca93557da25dd199
+      internalID: 704289307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f07bbb791c00b54aa41eba9b56d34be
+      internalID: 269796257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2798c2a550d407a4ebbc0f40cc08a90e
+      internalID: 1866530773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 167
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88960a4dc85915749ada1af06dc09a34
+      internalID: 1043333583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea093ea6b7a906d4b97ad129fda9945e
+      internalID: 1357111157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_7
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b41f75bf892dbe438c37f3667d56326
+      internalID: -170785923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_8
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12f093ebc2cf1c41839a1413e186dc8
+      internalID: -1986133295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_9
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063c20960f72f61459c412b21a92c19a
+      internalID: 316013216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_10
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821a44841b12acd45987425f73339141
+      internalID: 1083954823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_11
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 135
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db4678b6a2e15340a220f0427e41916
+      internalID: 80456062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_12
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 103
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6207ba748816943af70afd9c8328cb
+      internalID: 246903916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_13
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 103
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f2c53fe9dc55c41870aca237205df2
+      internalID: 1212833539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 103
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf1285e0a55755498e0561ad0996f5d
+      internalID: 1784432591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 103
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58238f84112ff2a49baca822870ff569
+      internalID: -1328858515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_16
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 103
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6991b44b9f4884896a4649ad3c1f20
+      internalID: 140013435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_17
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 103
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3a0b1848287ba4b864364b6be805f1
+      internalID: -1202129668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_18
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2044d6ec3ccc5e94face33f986be9cc3
+      internalID: -1675631798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_19
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0be95f7c524604795cef2aa6090d4f
+      internalID: 868424999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_20
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8c75835addb7f458293e3787435da4
+      internalID: -2125769072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_21
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0bdf21956a87f4d9e0691e62025837
+      internalID: 773827605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_22
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be3d93f9b278cc48bee23fce1255440
+      internalID: 1977172761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_23
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 71
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a82eacbaef6e18479bd68c70d3ee4fc
+      internalID: 60377924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_24
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5543ff63a6e84b4e9de1088272a9f48
+      internalID: -1367284060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_25
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c527810f711bd547add00cd9edc1ca8
+      internalID: 1831020341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_26
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6711f56cf25395439c23f10af404d1d
+      internalID: -457849365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_27
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c136162165ed8942bceee6623f6a3cc
+      internalID: 667558689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_28
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16775c7c5f1956c4dad8e575327c5deb
+      internalID: 1721940402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_29
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 39
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd1297be445c764081b5c646f830cf4
+      internalID: -619897015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_30
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 7
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60179670d958fd4ab0a0ac8e5b90454
+      internalID: -590581074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_31
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 7
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c122bf0dedafeb4d8785c21effeb0f0
+      internalID: 1499221431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_32
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 7
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555b2c0a5e9646d4c8f8d47f251183f6
+      internalID: 431988058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Heart_Orange_33
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 7
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3cc7aece0b9c64bafef5fea6bf393a
+      internalID: 852986856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +828,41 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Heart_Orange_0: 2106167904
+      UI_Heart_Orange_1: 1080089213
+      UI_Heart_Orange_10: 1083954823
+      UI_Heart_Orange_11: 80456062
+      UI_Heart_Orange_12: 246903916
+      UI_Heart_Orange_13: 1212833539
+      UI_Heart_Orange_14: 1784432591
+      UI_Heart_Orange_15: -1328858515
+      UI_Heart_Orange_16: 140013435
+      UI_Heart_Orange_17: -1202129668
+      UI_Heart_Orange_18: -1675631798
+      UI_Heart_Orange_19: 868424999
+      UI_Heart_Orange_2: 704289307
+      UI_Heart_Orange_20: -2125769072
+      UI_Heart_Orange_21: 773827605
+      UI_Heart_Orange_22: 1977172761
+      UI_Heart_Orange_23: 60377924
+      UI_Heart_Orange_24: -1367284060
+      UI_Heart_Orange_25: 1831020341
+      UI_Heart_Orange_26: -457849365
+      UI_Heart_Orange_27: 667558689
+      UI_Heart_Orange_28: 1721940402
+      UI_Heart_Orange_29: -619897015
+      UI_Heart_Orange_3: 269796257
+      UI_Heart_Orange_30: -590581074
+      UI_Heart_Orange_31: 1499221431
+      UI_Heart_Orange_32: 431988058
+      UI_Heart_Orange_33: 852986856
+      UI_Heart_Orange_4: 1866530773
+      UI_Heart_Orange_5: 1043333583
+      UI_Heart_Orange_6: 1357111157
+      UI_Heart_Orange_7: -170785923
+      UI_Heart_Orange_8: -1986133295
+      UI_Heart_Orange_9: 316013216
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
