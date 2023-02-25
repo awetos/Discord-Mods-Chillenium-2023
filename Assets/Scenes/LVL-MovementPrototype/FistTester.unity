@@ -783,6 +783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 535541314}
+  timeElapsed: 0
+  timeTxt: 
 --- !u!1 &597017412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,6 +2185,10 @@ PrefabInstance:
     - target: {fileID: 1697184187, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697184190, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
+      propertyPath: damageAmount
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1408401231646033817, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
       propertyPath: healthImg
