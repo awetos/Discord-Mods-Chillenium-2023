@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthManager : MonoBehaviour{
     public float health = 100;//player current health percent
@@ -11,8 +12,13 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private float lifeLength;//how many seconds does player have before they die
 	public bool isPlayerOne;//true if is attached to first player
 	int i=0;
+	[SerializeField]private GameObject deathScreen;
+	[SerializeField]private Timer timer;
+	[SerializeField]private TextMeshProUGUI leaderboardTxt;
+	
 
 	void Start() {
+		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
 		startAnim();
 	}
 
@@ -64,6 +70,7 @@ public class HealthManager : MonoBehaviour{
     {
 		health += healthToAdd;
 
+<<<<<<< Updated upstream
 
         if (health > 100)
         {
@@ -82,5 +89,21 @@ public class HealthManager : MonoBehaviour{
     public void Death()
 	{
 
+=======
+	public void Death(){
+		//show death screen
+		if(PlayerPrefs.GetFloat("HighTime") <=0)
+			PlayerPrefs.SetFloat("HighTime", 0);
+		if(PlayerPrefs.GetString("Time") == null)
+			PlayerPrefs.SetString("Time", "00:00:00");
+		if(timer.timeElapsed > PlayerPrefs.GetFloat("HighTime")){
+			PlayerPrefs.SetFloat("HighTime", timer.timeElapsed);
+			PlayerPrefs.SetString("Time", timer.timeTxt);
+		}
+		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
+		GetComponent<PlayerMovement>().enabled = false;
+		timer.StopTimer();
+		deathScreen.SetActive(true);
+>>>>>>> Stashed changes
 	}
 }

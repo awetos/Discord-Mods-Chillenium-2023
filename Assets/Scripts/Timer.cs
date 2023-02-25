@@ -6,14 +6,17 @@ public class Timer : MonoBehaviour{
     public TextMeshProUGUI timerText;//ui text for timer (uses text mesh pro for some reason)
     private float startTime;//sets current time as start time
     private bool timerActive;//is timer active
+	public float timeElapsed;
+	public string timeTxt;
 
-    void Start(){
-        timerActive = true;
+    void Awake(){
+		timeElapsed = 0;
+        StartTimer();
     }
 
     void Update(){
         if (timerActive){
-            float timeElapsed = Time.time - startTime;
+            timeElapsed = Time.time - startTime;
 			int hours = (int)(timeElapsed / 60 / 60);
             int minutes = (int)(timeElapsed / 60);
             int seconds = (int)(timeElapsed % 60);
@@ -22,7 +25,9 @@ public class Timer : MonoBehaviour{
 			string minutesString = minutes.ToString("00");
             string secondsString = seconds.ToString("00");
 
-            timerText.text = hoursString + ":" + minutesString + ":" + secondsString;
+			timeTxt = hoursString + ":" + minutesString + ":" + secondsString;
+
+            timerText.text = timeTxt;
         }
     }
 
