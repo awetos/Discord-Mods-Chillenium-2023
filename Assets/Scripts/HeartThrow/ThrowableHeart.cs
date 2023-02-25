@@ -31,7 +31,7 @@ public class ThrowableHeart : MonoBehaviour
 
         //transform.position = new Vector3(currentX,0, currentZ);
 		print(directionToTravel);
-		transform.Translate(new Vector3(directionToTravel.x, directionToTravel.y, directionToTravel.z)*speed);
+		transform.Translate(directionToTravel*speed);//move heart to forward
     }
 
     private void OnCollisionEnter(Collision collision)

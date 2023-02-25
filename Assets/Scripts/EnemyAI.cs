@@ -9,6 +9,5 @@ public class EnemyAI : MonoBehaviour{
 
 	void Update() {
 		GetComponent<NavMeshAgent>().destination = playerPosition.position;
-		//GetComponent<NavMeshAgent>().Move(GetComponent<NavMeshAgent>().destination);
 	}
 }

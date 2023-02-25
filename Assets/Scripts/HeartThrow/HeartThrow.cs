@@ -10,17 +10,16 @@ public class HeartThrow : MonoBehaviour
     public float deg;
 
 	void Update() {
+		//using update for this to avoid it running multiple time with every click
 		if (Input.GetMouseButtonDown(0)){
-            GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);
-            myHeart.transform.SetParent(transform.parent.parent);
-			myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);
-			//print(myHeart.transform.up);
-            myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));
+            GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
+            myHeart.transform.SetParent(transform.parent.parent);//move it to root
+			myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
+            myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
         }
 	}
 
-	private void FixedUpdate()
-    {
+	private void FixedUpdate(){
         Vector3 mousePos = Input.mousePosition;
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
