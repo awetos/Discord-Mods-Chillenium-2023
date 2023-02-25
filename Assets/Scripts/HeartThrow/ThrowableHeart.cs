@@ -37,7 +37,6 @@ public class ThrowableHeart : MonoBehaviour
         //currentZ += directionToTravel.y * speed;
 
         //transform.position = new Vector3(currentX,0, currentZ);
-		print(directionToTravel);
 		transform.Translate(directionToTravel*speed);//move heart to forward
     }
 
