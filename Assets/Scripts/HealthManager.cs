@@ -13,8 +13,7 @@ public class HealthManager : MonoBehaviour{
 	int i=0;
 
 	void Start() {
-		//keep running the function every x secnods depending on how long you want the health to last
-		InvokeRepeating("reduceHealth", lifeLength/animationSize, lifeLength/animationSize);
+		startAnim();
 	}
 
 	public void reduceHealth(){
@@ -30,8 +29,15 @@ public class HealthManager : MonoBehaviour{
 	void Update() {
 		//if player's health is below zero, stop repeating the command
 		if(health<=0){
-			CancelInvoke("reduceHealth");
+			cancelAnim();
 			//DEATH
 		}
+	}
+	public void startAnim(){
+		//keep running the function every x secnods depending on how long you want the health to last
+		InvokeRepeating("reduceHealth", lifeLength/animationSize, lifeLength/animationSize);
+	}
+	public void cancelAnim(){
+		CancelInvoke("reduceHealth");
 	}
 }
