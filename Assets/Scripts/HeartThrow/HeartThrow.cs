@@ -22,11 +22,15 @@ public class HeartThrow : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         
         {
-            GameObject myHeart = Instantiate(throwableHeartPrefab);
+            GameObject myHeart = Instantiate(throwableHeartPrefab,transform,true);
+            myHeart.transform.SetParent(transform.parent.parent);
             myHeart.GetComponent<ThrowableHeart>().SetDirection(direction);
-        }
-    }
 
+        }
+
+
+    }
+    public float deg;
     private void FixedUpdate()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -45,9 +49,9 @@ public class HeartThrow : MonoBehaviour
          direction = worldPos - transform.position;
 
 
-        float deg = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        deg -= 90;
-        transform.rotation = UnityEngine.Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, deg);
+        deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        //deg -= 90;
+        transform.rotation = UnityEngine.Quaternion.Euler(transform.rotation.eulerAngles.x,  0, -1* deg);
 
     }
 }

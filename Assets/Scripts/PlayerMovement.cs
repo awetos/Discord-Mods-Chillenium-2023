@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour{
 		float ver = Input.GetAxisRaw("Vertical");//get up down movement input
 
 		Vector3 mov = new Vector3(hor, 0, ver).normalized * speed;//set movement velocity and direction based on input
-		print(mov);
+		
 		GetComponent<Rigidbody>().velocity = mov;//move player
 	}
 }

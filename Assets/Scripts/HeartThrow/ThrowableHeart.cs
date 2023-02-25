@@ -29,7 +29,7 @@ public class ThrowableHeart : MonoBehaviour
         currentX += directionToTravel.x * speed;
         currentY += directionToTravel.y * speed;
 
-        transform.position = new Vector2(currentX, currentY);   
+        transform.position = new Vector3(currentX,0, currentY);   
     }
 
     private void OnCollisionEnter(Collision collision)
