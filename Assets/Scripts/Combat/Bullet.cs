@@ -51,8 +51,13 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("I've hit an enemy!");
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(30);
+            if (other.gameObject.GetComponent<EnemyHealth>()!= null)
+            {
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
+                GameObject.FindObjectOfType<NumbersCanvas>().CreateAttackText(other.transform.position, 100);
+            }
            
+
         }
     }
 }
