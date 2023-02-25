@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class EnemyAI : MonoBehaviour{
+	public float speed;
+	[SerializeField] Transform playerPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	void Update() {
+		GetComponent<NavMeshAgent>().destination = playerPosition.position;
+		//GetComponent<NavMeshAgent>().Move(GetComponent<NavMeshAgent>().destination);
+	}
 }
