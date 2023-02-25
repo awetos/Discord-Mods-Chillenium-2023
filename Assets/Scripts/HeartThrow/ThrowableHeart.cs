@@ -60,7 +60,7 @@ public class ThrowableHeart : MonoBehaviour
             }
             Debug.Log("Player entered the trigger");
         }
-        else if (other.CompareTag("Enemy"))
+        else if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
         {
             Debug.Log("I've hit an enemy!");
             OnEnableThrowingHeart(true);
@@ -68,6 +68,7 @@ public class ThrowableHeart : MonoBehaviour
             Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
             Destroy(this.gameObject);
         }
+
     }
 
 
