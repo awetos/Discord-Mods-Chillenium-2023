@@ -98,10 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00020a751a921c14cabbfad373fe6559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionToTravel: {x: 0, y: 0.5}
-  speed: 0.05
-  currentX: 0
-  currentY: 0
+  speed: 0.1
 --- !u!65 &2101998501025897350
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,37 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 public class HeartThrow : MonoBehaviour
 {
 
     public GameObject throwableHeartPrefab;
     Vector3 direction;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (Input.GetMouseButtonDown(0)) 
-        
-        {
-            GameObject myHeart = Instantiate(throwableHeartPrefab,transform,true);
-            myHeart.transform.SetParent(transform.parent.parent);
-            myHeart.GetComponent<ThrowableHeart>().SetDirection(direction);
-
-        }
-
-
-    }
     public float deg;
-    private void FixedUpdate()
+
+	void Update() {
+		if (Input.GetMouseButtonDown(0)){
+            GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);
+            myHeart.transform.SetParent(transform.parent.parent);
+			myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);
+			//print(myHeart.transform.up);
+            myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));
+        }
+	}
+
+	private void FixedUpdate()
     {
         Vector3 mousePos = Input.mousePosition;
 
@@ -50,8 +38,9 @@ public class HeartThrow : MonoBehaviour
 
 
         deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //deg -= 90;
-        transform.rotation = UnityEngine.Quaternion.Euler(transform.rotation.eulerAngles.x,  0, -1* deg);
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, deg, 0);
+
+		
 
     }
 }
