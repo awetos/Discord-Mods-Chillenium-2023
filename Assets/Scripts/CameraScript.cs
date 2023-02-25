@@ -15,8 +15,10 @@ public class CameraScript : MonoBehaviour{
 		if(isPlayerOne){
 			playerOne.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent<HealthManager>().enabled = false;
+
 			playerTwo.GetComponent<HealthManager>().startAnim();
 			playerOne.GetComponent<HealthManager>().cancelAnim();
+
 			playerOneArrow.SetActive(false);
 			playerTwo.GetComponent<PlayerMovement>().enabled = true;
 			playerTwo.GetComponent <HealthManager>().enabled = true;
@@ -26,8 +28,10 @@ public class CameraScript : MonoBehaviour{
 		else{
 			playerOne.GetComponent<PlayerMovement>().enabled = true;
 			playerTwo.GetComponent<HealthManager>().enabled = true;
+
 			playerOne.GetComponent<HealthManager>().startAnim();
 			playerTwo.GetComponent<HealthManager>().cancelAnim();
+
 			playerOneArrow.SetActive(true);
 			playerTwo.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent <HealthManager>().enabled = false;

@@ -18,7 +18,7 @@ public class HealthManager : MonoBehaviour{
 
 	public void reduceHealth(){
 		health -= 100/animationSize;//reduce health based on number of sprites on health bar
-		print((int)(lifeLength/animationSize));
+		//print((int)(lifeLength/animationSize));
 		//set ui for player health
 		healthImg.sprite = animationSprites[i];
 		i++;
@@ -30,6 +30,7 @@ public class HealthManager : MonoBehaviour{
 		//if player's health is below zero, stop repeating the command
 		if(health<=0){
 			cancelAnim();
+			Death();
 			//DEATH
 		}
 	}
@@ -39,5 +40,29 @@ public class HealthManager : MonoBehaviour{
 	}
 	public void cancelAnim(){
 		CancelInvoke("reduceHealth");
+	}
+
+	public void TakeDamage(int damage)
+	{
+		health -= damage;
+
+		if(health <= 0)
+		{
+			Death();
+		}
+
+		int damageInInt = Mathf.RoundToInt(damage* animationSize / 100);
+
+		i += damageInInt ;
+		if(i >= animationSprites.Length)
+		{
+			i = animationSprites.Length -1;
+		}
+        healthImg.sprite = animationSprites[i];
+    }
+
+	public void Death()
+	{
+
 	}
 }

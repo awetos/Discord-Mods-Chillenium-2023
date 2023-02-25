@@ -14,12 +14,41 @@ public class HeartThrow : MonoBehaviour
 	void Update() {
 		//using update for this to avoid it running multiple time with every click
 		if (Input.GetMouseButtonDown(0) && Time.timeScale >0){
-            GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
-            myHeart.transform.SetParent(transform.parent.parent);//move it to root
-			myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
-            myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
+            ThrowHeart();
         }
 	}
+
+    private void OnEnable()
+    {
+        ThrowableHeart.OnEnableThrowingHeart += SetThrowHeart;
+    }
+
+    private void OnDisable()
+    {
+        ThrowableHeart.OnEnableThrowingHeart -= SetThrowHeart;
+    }
+
+    bool canThrowHeart = true;
+
+    
+    private void ThrowHeart()
+    {
+        if (canThrowHeart)
+        {
+            canThrowHeart = false;
+            GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
+            myHeart.transform.SetParent(transform.parent.parent);//move it to root
+            myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
+            myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
+          
+        }
+    }
+
+    void SetThrowHeart(bool b)
+    {
+        canThrowHeart = b;
+        Debug.Log("Hearts can be thrown");
+    }
 
 	private void FixedUpdate(){
         Vector3 mousePos = Input.mousePosition;

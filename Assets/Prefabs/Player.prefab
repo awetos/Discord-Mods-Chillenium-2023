@@ -52,6 +52,7 @@ MonoBehaviour:
   speed: 5
   cameraOffset: {x: 0, y: 10, z: 0}
   cameraSmoothness: 0.2
+  camScript: {fileID: 0}
 --- !u!114 &8695266671626517921
 MonoBehaviour:
   m_ObjectHideFlags: 0

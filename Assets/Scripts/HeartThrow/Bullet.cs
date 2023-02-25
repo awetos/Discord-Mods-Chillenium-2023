@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowableHeart : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    public delegate void ThrowHeartSetter(bool canThrowHeart);
-    public static event ThrowHeartSetter OnEnableThrowingHeart;
+   
 
     // Start is called before the first frame update
     private Vector3 directionToTravel;
@@ -37,39 +36,23 @@ public class ThrowableHeart : MonoBehaviour
         //currentZ += directionToTravel.y * speed;
 
         //transform.position = new Vector3(currentX,0, currentZ);
-		print(directionToTravel);
-		transform.Translate(directionToTravel*speed);//move heart to forward
+        transform.Translate(directionToTravel * speed);//move heart to forward
     }
 
 
     IEnumerator HeartThrowCountdown()
     {
         yield return new WaitForSeconds(1.0f);
-        OnEnableThrowingHeart(true);
         Destroy(this.gameObject);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            // The other collider belongs to a player
-            if (other.gameObject.GetComponent<PlayerMovement>().enabled == false)
-            {
-                Debug.Log("Collided against other player");
-                Camera.main.GetComponent<CameraScript>().switchPlayer();
-            }
-            Debug.Log("Player entered the trigger");
-        }
-        else if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("I've hit an enemy!");
-            OnEnableThrowingHeart(true);
-
-            Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
-            Destroy(this.gameObject);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(1000);
+           
         }
     }
-
-
 }
