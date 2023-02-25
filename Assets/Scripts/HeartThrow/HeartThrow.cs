@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeartThrow : MonoBehaviour
-{
+	{
 
     public GameObject throwableHeartPrefab;
     Vector3 direction;
+	[SerializeField]Vector3 cursorOffset;
     public float deg;
+	[SerializeField]private GameObject cursor;
 
 	void Update() {
 		//using update for this to avoid it running multiple time with every click
@@ -21,6 +23,7 @@ public class HeartThrow : MonoBehaviour
 
 	private void FixedUpdate(){
         Vector3 mousePos = Input.mousePosition;
+
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
@@ -37,6 +40,9 @@ public class HeartThrow : MonoBehaviour
 
 
         deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+		
+		cursor.transform.position = worldPos+cursorOffset;
+		cursor.transform.rotation = Quaternion.Euler(90, 0, -deg);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, deg, 0);
 
 		
