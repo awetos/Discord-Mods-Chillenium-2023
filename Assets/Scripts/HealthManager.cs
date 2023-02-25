@@ -24,7 +24,7 @@ public class HealthManager : MonoBehaviour{
 		i++;
 		
 	}
-	
+
 	//space reduces player health for testing purposes
 	void Update() {
 		//if player's health is below zero, stop repeating the command
@@ -60,26 +60,8 @@ public class HealthManager : MonoBehaviour{
 		}
         healthImg.sprite = animationSprites[i];
     }
-    public void addHealth(int healthToAdd)
-    {
-		health += healthToAdd;
 
-
-        if (health > 100)
-        {
-			health = 100;
-        }
-
-
-        int healthToAddInInt = Mathf.RoundToInt(healthToAdd * animationSize / 100);
-		i -= healthToAddInInt;
-        if (i < 0)
-        {
-			i = 0;
-        }
-        healthImg.sprite = animationSprites[i];
-    }
-    public void Death()
+	public void Death()
 	{
 
 	}

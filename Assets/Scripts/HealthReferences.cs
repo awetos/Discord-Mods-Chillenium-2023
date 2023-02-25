@@ -21,16 +21,4 @@ public class HealthReferences : MonoBehaviour
             player2health.TakeDamage(damage);
         }
     }
-
-    public void AddHealth(int healingAmount)
-    {
-        if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
-        {
-            player2health.addHealth(healingAmount);
-        }
-        else
-        {
-            player1health.addHealth(healingAmount);
-        }
-    }
 }

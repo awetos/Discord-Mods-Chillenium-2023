@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour{
 	public bool isPlayerOne;
-	[SerializeField] public GameObject playerOne;
-	[SerializeField] public GameObject playerTwo; //set to public so scripts can read location
+	[SerializeField] private GameObject playerOne;
+	[SerializeField] private GameObject playerTwo;
 	[SerializeField] private GameObject playerOneGFX;
 	[SerializeField] private GameObject playerTwoGFX;
 	[SerializeField] private GameObject playerOneArrow;
 	[SerializeField] private GameObject playerTwoArrow;
 
 	public void switchPlayer() {
-		if(isPlayerOne){ //if you are player 1, switch and enable player 2
+		if(isPlayerOne){
 			playerOne.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent<HealthManager>().enabled = false;
 
@@ -23,13 +23,7 @@ public class CameraScript : MonoBehaviour{
 			playerTwo.GetComponent<PlayerMovement>().enabled = true;
 			playerTwo.GetComponent <HealthManager>().enabled = true;
 			playerTwoArrow.SetActive(true);
-
-			//combat
-			playerTwo.GetComponentInChildren<FistAttack>().enabled = true;
-            playerOne.GetComponentInChildren<BulletSpawner>().enabled = false;
-
-
-            isPlayerOne = false;
+			isPlayerOne = false;
 		}
 		else{
 			playerOne.GetComponent<PlayerMovement>().enabled = true;
@@ -42,10 +36,7 @@ public class CameraScript : MonoBehaviour{
 			playerTwo.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent <HealthManager>().enabled = false;
 			playerTwoArrow.SetActive(false);
-            //combat
-            playerTwo.GetComponentInChildren<FistAttack>().enabled = false;
-			playerOne.GetComponentInChildren<BulletSpawner>().enabled = true;
-            isPlayerOne = true;
+			isPlayerOne = true;
 		}
 	}
 }
