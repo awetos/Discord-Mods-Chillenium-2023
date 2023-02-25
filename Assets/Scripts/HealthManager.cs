@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class HealthManager : MonoBehaviour{
     public float health = 100;//player current health percent
@@ -12,12 +11,8 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private float lifeLength;//how many seconds does player have before they die
 	public bool isPlayerOne;//true if is attached to first player
 	int i=0;
-	[SerializeField]private GameObject deathScreen;
-	[SerializeField]private Timer timer;
-	[SerializeField]private TextMeshProUGUI leaderboardTxt;
 
 	void Start() {
-		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
 		startAnim();
 	}
 
@@ -29,7 +24,7 @@ public class HealthManager : MonoBehaviour{
 		i++;
 		
 	}
-
+	
 	//space reduces player health for testing purposes
 	void Update() {
 		//if player's health is below zero, stop repeating the command
@@ -65,20 +60,27 @@ public class HealthManager : MonoBehaviour{
 		}
         healthImg.sprite = animationSprites[i];
     }
+    public void addHealth(int healthToAdd)
+    {
+		health += healthToAdd;
 
-	public void Death(){
-		//show death screen
-		if(PlayerPrefs.GetFloat("HighTime") <=0)
-			PlayerPrefs.SetFloat("HighTime", 0);
-		if(PlayerPrefs.GetString("Time") == null)
-			PlayerPrefs.SetString("Time", "00:00:00");
-		if(timer.timeElapsed > PlayerPrefs.GetFloat("HighTime")){
-			PlayerPrefs.SetFloat("HighTime", timer.timeElapsed);
-			PlayerPrefs.SetString("Time", timer.timeTxt);
-		}
-		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
-		GetComponent<PlayerMovement>().enabled = false;
-		timer.StopTimer();
-		deathScreen.SetActive(true);
+
+        if (health > 100)
+        {
+			health = 100;
+        }
+
+
+        int healthToAddInInt = Mathf.RoundToInt(healthToAdd * animationSize / 100);
+		i -= healthToAddInInt;
+        if (i < 0)
+        {
+			i = 0;
+        }
+        healthImg.sprite = animationSprites[i];
+    }
+    public void Death()
+	{
+
 	}
 }

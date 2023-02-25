@@ -8,25 +8,39 @@ public class EnemyHealth : MonoBehaviour
     public static event EnemyDied OnEnemyDeath;
     public int health = 100;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //calls number canvas
+    public delegate void EnemyTakeDamage(Vector3 _location, int damageAmount);
+    public static event EnemyTakeDamage OnEnemyTakeDamage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject testtubePrefab;
 
+    
     public void TakeDamage(int damage)
     {
         health -= damage;
+        OnEnemyTakeDamage(this.transform.position, damage);
         if(health <= 0)
         {
-            Destroy(this.gameObject);
+            
+            //Destroy(this.gameObject);
+            transform.gameObject.SetActive(false);
+            DropCollectible();
             OnEnemyDeath();
         }
+    }
+    
+    void DropCollectible()
+    {
+        GameObject drop = Instantiate(testtubePrefab);
+       
+
+        float x = this.transform.position.x;
+        float y = 0.1f;
+        float z = this.transform.position.z;
+
+        Vector3 dropLocation = new Vector3(x, y, z);
+        drop.transform.position = dropLocation;
+
+
     }
 }
