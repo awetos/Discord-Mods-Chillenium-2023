@@ -7220,7 +7220,7 @@ MonoBehaviour:
   playerTwoGFX: {fileID: 6165088272745906120}
   playerOneArrow: {fileID: 1908017597}
   playerTwoArrow: {fileID: 1302530855}
-  playerOneBullet: {fileID: 0}
+  playerOneBullet: {fileID: 175119579}
   playerTwoFist: {fileID: 354324179}
 --- !u!114 &1310824947
 MonoBehaviour:
