@@ -132,10 +132,10 @@ TextureImporter:
       name: Enemy_Die_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 67
-        width: 11
-        height: 25
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: Enemy_Die_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 69
-        width: 12
-        height: 23
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: Enemy_Die_2
       rect:
         serializedVersion: 2
-        x: 75
-        y: 70
-        width: 13
-        height: 22
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: Enemy_Die_3
       rect:
         serializedVersion: 2
-        x: 107
-        y: 75
-        width: 13
-        height: 17
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: Enemy_Die_4
       rect:
         serializedVersion: 2
-        x: 11
-        y: 46
-        width: 13
-        height: 14
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: Enemy_Die_5
       rect:
         serializedVersion: 2
-        x: 42
-        y: 48
-        width: 13
-        height: 12
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: Enemy_Die_6
       rect:
         serializedVersion: 2
-        x: 77
-        y: 50
-        width: 8
-        height: 8
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: Enemy_Die_7
       rect:
         serializedVersion: 2
-        x: 109
-        y: 50
-        width: 8
-        height: 8
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: Enemy_Die_8
       rect:
         serializedVersion: 2
-        x: 14
-        y: 14
-        width: 5
-        height: 11
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: Enemy_Die_9
       rect:
         serializedVersion: 2
-        x: 44
-        y: 10
-        width: 5
-        height: 5
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,27 +334,6 @@ TextureImporter:
       bones: []
       spriteID: 115af6724a0f1d243a01bec0066a530f
       internalID: 299334318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_10
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 14
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2752e889d255ac745a11c8d42d3a41f3
-      internalID: -262182956
       vertices: []
       indices: 
       edges: []
@@ -372,7 +351,6 @@ TextureImporter:
     nameFileIdTable:
       Enemy_Die_0: -1750087386
       Enemy_Die_1: -1974252145
-      Enemy_Die_10: -262182956
       Enemy_Die_2: -962622852
       Enemy_Die_3: 1165996779
       Enemy_Die_4: -2035804943

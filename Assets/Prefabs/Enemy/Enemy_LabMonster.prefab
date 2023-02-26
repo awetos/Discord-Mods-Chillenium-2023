@@ -219,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 5265888066111185263}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.26, y: 10.710007, z: 37.400005}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 35426579562463642}
@@ -288,10 +288,7 @@ MonoBehaviour:
   testtubePrefab: {fileID: 8274664339201074248, guid: c5d9f6ecaede61741bcca586d6e30429, type: 3}
   normalController: {fileID: 7929024816196742595}
   deathController: {fileID: 4456006909428778055}
-  normalRenderer: {fileID: 1796429130974495725}
   normalAnimator: {fileID: 6974007901123325886}
-  deathRenderer: {fileID: 1899096896418582496}
-  deathAnimator: {fileID: 4207383403747334100}
 --- !u!195 &5986543724236369241
 NavMeshAgent:
   m_ObjectHideFlags: 0
