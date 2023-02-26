@@ -28,18 +28,21 @@ public class EnemyAttack : MonoBehaviour
     {
         if(collision.collider.tag == "Player")
         {
-            Debug.Log("dealing damage!");
+
             isAttacking = true;
             StartCoroutine("Attacking");
         }
     }
 
+    public Animator myAnimator;
     IEnumerator Attacking()
     {
         while (isAttacking == true)
         {
             Camera.main.GetComponent<HealthReferences>().TakeDamage(damageAmount);
             OnAttackPlayer(damageAmount);
+            myAnimator.Play("Enemy_Attack");
+            myAnimator.SetBool("IsAttacking",true);
             yield return new WaitForSeconds(attackSpeed);
         }
     }

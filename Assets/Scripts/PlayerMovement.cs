@@ -8,11 +8,6 @@ public class PlayerMovement : MonoBehaviour{
 	[SerializeField] float cameraSmoothness;//camera movement smoothness
 	[SerializeField] private CameraScript camScript;
 
-	private void Update() {
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			camScript.switchPlayer();
-		}
-	}
 	void FixedUpdate() {
 
 		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position, cameraSmoothness)+cameraOffset;//smoothly follow player

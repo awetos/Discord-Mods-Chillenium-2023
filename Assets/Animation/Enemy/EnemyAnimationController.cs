@@ -40,16 +40,7 @@ public class EnemyAnimationController : MonoBehaviour
     void Update()
     {
         AdjustRotation();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-                myAnimator.SetBool("IsAttacking", true);
-            
-        }
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            myAnimator.SetBool("IsAttacking", false);
-        }
        CheckNavAgentDirection();
 
 

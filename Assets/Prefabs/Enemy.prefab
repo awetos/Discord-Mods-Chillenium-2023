@@ -253,6 +253,7 @@ MonoBehaviour:
   isAttacking: 0
   attackSpeed: 0
   damageAmount: 12
+  myAnimator: {fileID: 3530862261136487799}
 --- !u!1 &4900877959029313426
 GameObject:
   m_ObjectHideFlags: 0
