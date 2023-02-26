@@ -153,8 +153,8 @@ Transform:
   m_GameObject: {fileID: 3794948644640951388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9062281132632419497}
   - {fileID: 3008658093241751571}
@@ -217,8 +217,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  enemyID: 0
   testtubePrefab: {fileID: 8274664339201074248, guid: c5d9f6ecaede61741bcca586d6e30429, type: 3}
-  myAnimator: {fileID: 3530862261136487799}
+  normalController: {fileID: 0}
+  deathController: {fileID: 0}
+  normalRenderer: {fileID: 0}
+  normalAnimator: {fileID: 0}
+  deathRenderer: {fileID: 0}
+  deathAnimator: {fileID: 0}
 --- !u!195 &3362523336891023466
 NavMeshAgent:
   m_ObjectHideFlags: 0
