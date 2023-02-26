@@ -22,8 +22,11 @@ public class HealthReferences : MonoBehaviour
         }
     }
 
+    public delegate void UpdateHealText(int healingAmount);
+    public static event UpdateHealText OnUpdateHealText;
     public void AddHealth(int healingAmount)
     {
+         OnUpdateHealText(healingAmount);
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
         {
             player2health.addHealth(healingAmount);

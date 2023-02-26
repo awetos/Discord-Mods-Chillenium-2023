@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public delegate void attackPlayer(int damage);
+    public static event attackPlayer OnAttackPlayer;
 
-   
 
   [SerializeField]  bool isAttacking;
     [SerializeField] float attackSpeed;
@@ -29,6 +30,7 @@ public class EnemyAttack : MonoBehaviour
         {
             Debug.Log("dealing damage!");
             isAttacking = true;
+            StartCoroutine("Attacking");
         }
     }
 
@@ -37,6 +39,7 @@ public class EnemyAttack : MonoBehaviour
         while (isAttacking == true)
         {
             Camera.main.GetComponent<HealthReferences>().TakeDamage(damageAmount);
+            OnAttackPlayer(damageAmount);
             yield return new WaitForSeconds(attackSpeed);
         }
     }
