@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     //Vector3 OriginalPosition;
     public float speed = 5f;
 	[SerializeField]private AudioSource ass;
+    [SerializeField] GameObject explosionPrefab;
 
     HealthManager originalPlayerHealth;
 
@@ -55,6 +56,11 @@ public class Bullet : MonoBehaviour
             if (other.gameObject.GetComponent<EnemyHealth>()!= null)
             {
 				ass.Play();
+
+                GameObject explosionptr = Instantiate(explosionPrefab);
+                explosionptr.transform.position = transform.position;
+
+
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
                 GameObject.FindObjectOfType<NumbersCanvas>().CreateAttackText(other.transform.position, 100);
             }

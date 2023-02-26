@@ -186,6 +186,10 @@ public class PlayerAnimator : MonoBehaviour
                     MyDinoAnimator.SetBool("idling", true);
                 }
             }
+            else
+            {
+                MyDinoAnimator.Play("Idle");
+            }
             
 
         }

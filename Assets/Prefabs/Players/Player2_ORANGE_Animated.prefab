@@ -121,6 +121,7 @@ MonoBehaviour:
   MyDinoAnimator: {fileID: 6039151757236122933}
   MyDinosHealth: {fileID: 2488287283760439974}
   spriteRenderer: {fileID: 863583965346679469}
+  isActivePlayer: 0
   currentDino: 1
   direction: {x: 0, y: 0, z: 0}
   deg: 0
