@@ -8,13 +8,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LVL-Menu.unity
     guid: c25d8aecf8751e3499b46cfe983d4396
-  - enabled: 0
-    path: Assets/Scenes/LVL-MovementPrototype.unity
-    guid: 25b77af4d022a7f4ab7b421e295cdffb
-  - enabled: 0
-    path: Assets/Scenes/LVL-MovementPrototype/EnemyFighter.unity
-    guid: 0f226637ed306b0409e9fed8baac0251
-  - enabled: 1
-    path: Assets/Scenes/LVL-MovementPrototype/FistTester.unity
-    guid: 6786d2d795cbca84c8387efc47bc7136
+    
   m_configObjects: {}
