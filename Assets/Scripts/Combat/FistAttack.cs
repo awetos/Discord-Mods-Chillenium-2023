@@ -45,7 +45,6 @@ public class FistAttack : MonoBehaviour
             
             if (hit.collider.tag == "Enemy")
             {
-                Debug.Log("Facing an enemy");
                 currentEnemy = hit.collider.gameObject;
             }
         }
@@ -75,7 +74,6 @@ public class FistAttack : MonoBehaviour
     }
     void ThrowAPunch()
     {
-        Debug.Log("punching");
         if(currentEnemy != null)
         {
             if (currentEnemy.GetComponent<EnemyHealth>())

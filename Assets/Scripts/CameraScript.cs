@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour{
 	public bool isPlayerOne;
-	[SerializeField] public GameObject playerOne;
-	[SerializeField] public GameObject playerTwo; //set to public so scripts can read location
+	public GameObject playerOne;
+	public GameObject playerTwo; //set to public so scripts can read location
 	[SerializeField] private GameObject playerOneGFX;
 	[SerializeField] private GameObject playerTwoGFX;
 	[SerializeField] private GameObject playerOneArrow;

@@ -55,19 +55,24 @@ public class ThrowableHeart : MonoBehaviour
             // The other collider belongs to a player
             if (other.gameObject.GetComponent<PlayerMovement>().enabled == false)
             {
-                Debug.Log("Collided against other player");
                 Camera.main.GetComponent<CameraScript>().switchPlayer();
             }
-            Debug.Log("Player entered the trigger");
         }
         else if (other.CompareTag("Enemy"))
         {
-            Debug.Log("I've hit an enemy!");
             OnEnableThrowingHeart(true);
 
             Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
             Destroy(this.gameObject);
         }
+		else if(other.CompareTag("obstacle")){
+			
+			CameraScript camScript = Camera.main.GetComponent<CameraScript>();
+			if(camScript.isPlayerOne)
+				transform.position = Vector3.Lerp(transform.position, camScript.playerOne.transform.position, Time.deltaTime);
+			else
+				transform.position = Vector3.Lerp(transform.position, camScript.playerTwo.transform.position, Time.deltaTime);
+		}
     }
 
 
