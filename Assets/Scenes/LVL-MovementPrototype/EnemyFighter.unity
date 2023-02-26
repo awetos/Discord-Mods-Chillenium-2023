@@ -6931,11 +6931,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 22.36
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8663,6 +8663,10 @@ PrefabInstance:
     - target: {fileID: 1626276938244593000, guid: 9b9d1339d60addd4fbcc470f8d22f456, type: 3}
       propertyPath: normalAnimator
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362523336891023466, guid: 9b9d1339d60addd4fbcc470f8d22f456, type: 3}
+      propertyPath: m_Speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3794948644640951388, guid: 9b9d1339d60addd4fbcc470f8d22f456, type: 3}
       propertyPath: m_Name
