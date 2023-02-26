@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector3 directionToTravel;
     //Vector3 OriginalPosition;
     public float speed = 5f;
+	[SerializeField]private AudioSource ass;
 
     HealthManager originalPlayerHealth;
 
@@ -53,6 +54,7 @@ public class Bullet : MonoBehaviour
             Debug.Log("I've hit an enemy!");
             if (other.gameObject.GetComponent<EnemyHealth>()!= null)
             {
+				ass.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
                 GameObject.FindObjectOfType<NumbersCanvas>().CreateAttackText(other.transform.position, 100);
             }

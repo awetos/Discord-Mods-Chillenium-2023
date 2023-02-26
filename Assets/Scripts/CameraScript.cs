@@ -10,45 +10,46 @@ public class CameraScript : MonoBehaviour{
 	[SerializeField] private GameObject playerTwoGFX;
 	[SerializeField] private GameObject playerOneArrow;
 	[SerializeField] private GameObject playerTwoArrow;
+	[SerializeField] private GameObject playerOneBullet;
+	[SerializeField] private GameObject playerTwoFist;
 
 	public void switchPlayer() {
-		if(isPlayerOne){ //if you are player 1, switch and enable player 2
-			playerOne.GetComponent<PlayerMovement>().enabled = false;
-			playerTwo.GetComponent<HealthManager>().enabled = false;
-
-			playerTwo.GetComponent<HealthManager>().startAnim();
-			playerOne.GetComponent<HealthManager>().cancelAnim();
-
+		if(isPlayerOne){
+			//switch from player one
+			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;//player can't move
+			playerOne.GetComponent<PlayerMovement>().enabled = false;//disable character controller
+			playerOne.GetComponent<HealthManager>().cancelAnim();//disable health going down?
+			playerOneBullet.SetActive(false);
 			playerOneArrow.SetActive(false);
+
+			playerTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+			playerTwo.GetComponent<HealthManager>().enabled = false;
+			playerTwo.GetComponent<HealthManager>().startAnim();
+			playerTwo.GetComponent<PlayerMovement>().speed = 5;
 			playerTwo.GetComponent<PlayerMovement>().enabled = true;
 			playerTwo.GetComponent <HealthManager>().enabled = true;
+			playerTwoFist.SetActive(true);
 			playerTwoArrow.SetActive(true);
-			playerTwo.GetComponent<BoxCollider>().enabled = true;
-			playerOne.GetComponent<BoxCollider>().enabled = false;
-
-			//combat
-			playerTwo.GetComponentInChildren<FistAttack>().enabled = true;
-            playerOne.GetComponentInChildren<BulletSpawner>().enabled = false;
-
 
             isPlayerOne = false;
 		}
 		else{
+			//switch from player two
+			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 			playerOne.GetComponent<PlayerMovement>().enabled = true;
-			playerTwo.GetComponent<HealthManager>().enabled = true;
-
 			playerOne.GetComponent<HealthManager>().startAnim();
-			playerTwo.GetComponent<HealthManager>().cancelAnim();
-
+			playerOneBullet.SetActive(true);
 			playerOneArrow.SetActive(true);
+
+			playerTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+			playerTwo.GetComponent<HealthManager>().enabled = true;
+			playerTwo.GetComponent<HealthManager>().cancelAnim();
+			playerTwo.GetComponent<PlayerMovement>().speed = 0;
 			playerTwo.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent <HealthManager>().enabled = false;
+			playerTwoFist.SetActive (false);
 			playerTwoArrow.SetActive(false);
-			playerTwo.GetComponent<BoxCollider>().enabled = true;
-			playerOne.GetComponent<BoxCollider>().enabled = false;
-            //combat
-            playerTwo.GetComponentInChildren<FistAttack>().enabled = false;
-			playerOne.GetComponentInChildren<BulletSpawner>().enabled = true;
+
             isPlayerOne = true;
 		}
 	}

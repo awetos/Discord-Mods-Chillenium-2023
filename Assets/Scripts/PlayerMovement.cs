@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour{
 	[SerializeField] Vector3 cameraOffset;//camera movement offset from player position
 	[SerializeField] float cameraSmoothness;//camera movement smoothness
 	[SerializeField] private CameraScript camScript;
+	public bool canMove;
 
 	void FixedUpdate() {
 
@@ -17,6 +18,6 @@ public class PlayerMovement : MonoBehaviour{
 
 		Vector3 mov = new Vector3(hor, 0, ver).normalized * speed;//set movement velocity and direction based on input
 		
-		GetComponent<Rigidbody>().velocity = mov;//move player
+		GetComponent<Rigidbody>().velocity = mov;
 	}
 }

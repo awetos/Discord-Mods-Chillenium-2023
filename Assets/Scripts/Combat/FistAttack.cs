@@ -70,15 +70,21 @@ public class FistAttack : MonoBehaviour
     public int damageAmount;
     private void OnTriggerExit(Collider other)
     {
-        
+		if(other.tag == "Enemy")
+        {
+        currentEnemy = null;
+		}
     }
     void ThrowAPunch()
     {
         if(currentEnemy != null)
         {
+
             if (currentEnemy.GetComponent<EnemyHealth>())
             {
+				GetComponent<AudioSource>().Play();
                 currentEnemy.GetComponent<EnemyHealth>().TakeDamage(damageAmount);
+				currentEnemy = null;
             }
            
         }

@@ -65,14 +65,6 @@ public class ThrowableHeart : MonoBehaviour
             Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
             Destroy(this.gameObject);
         }
-		else if(other.CompareTag("obstacle")){
-			
-			CameraScript camScript = Camera.main.GetComponent<CameraScript>();
-			if(camScript.isPlayerOne)
-				transform.position = Vector3.Lerp(transform.position, camScript.playerOne.transform.position, Time.deltaTime);
-			else
-				transform.position = Vector3.Lerp(transform.position, camScript.playerTwo.transform.position, Time.deltaTime);
-		}
     }
 
 

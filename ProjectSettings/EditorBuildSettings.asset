@@ -5,8 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LVL-Menu.unity
     guid: c25d8aecf8751e3499b46cfe983d4396
-    
+  - enabled: 1
+    path: Assets/Scenes/LVL-MovementPrototype/EnemyFighter.unity
+    guid: 0f226637ed306b0409e9fed8baac0251
   m_configObjects: {}
