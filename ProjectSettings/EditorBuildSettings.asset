@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LVL-Menu.unity
     guid: c25d8aecf8751e3499b46cfe983d4396
   - enabled: 1
-    path: Assets/Scenes/LVL-MovementPrototype/Player_Animation_Tester.unity
-    guid: 3dd448fc3f95f494daeab2e0837a9c05
+    path: Assets/Scenes/LVL-MovementPrototype/Newest_Projectiles_Work.unity
+    guid: 8e623c32bd756974dbed01bf2db118e4
   m_configObjects: {}
