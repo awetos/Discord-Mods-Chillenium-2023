@@ -6,6 +6,10 @@ public class TestTube : MonoBehaviour
 {
     public int healthToAdd;
 
+    private void Start()
+    {
+        StartCoroutine("FadeAfterSeconds");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +20,13 @@ public class TestTube : MonoBehaviour
             AddHealth();
             StartCoroutine("StartDisappearing");
         }
+    }
+
+    float fadeOutTime = 2f;
+    IEnumerator FadeAfterSeconds()
+    {
+        yield return new WaitForSeconds(fadeOutTime);
+        Disappear();
     }
 
     IEnumerator StartDisappearing()
