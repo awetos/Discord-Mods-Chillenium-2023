@@ -17,7 +17,8 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject normalController;
     public GameObject deathController;
-
+    public Animator normalAnimator;
+    /*
     private void Start()
     {
         WakeUpAnimators();
@@ -69,7 +70,7 @@ public class EnemyHealth : MonoBehaviour
         deathAnimator.enabled = false;
         deathController.SetActive(false);
     }
-
+    */
     public void TakeDamage(int damage)
     {
         health -= damage;
