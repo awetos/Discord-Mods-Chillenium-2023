@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
 {
+    
     Animator myAnimator;
     public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
 
+    private void OnEnable()
+    {
+        
+    }
 
     float myRotation_X;
     float myRotation_y;
@@ -19,7 +24,6 @@ public class EnemyAnimationController : MonoBehaviour
         isAlive = true;
         myAnimator = GetComponent<Animator>();
 
-        myAnimator.Play("Enemy_Walk_Down");
         if(myEnemy == null)
         {
             myEnemy = transform.parent.gameObject;
@@ -48,8 +52,12 @@ public class EnemyAnimationController : MonoBehaviour
 
     void CheckNavAgentDirection()
     {
+        if(myAnimator.GetBool("IsDead")== true)
+        {
+
+        }
         //ignore if it is attacking
-        if(isAttacking == false && isAlive)
+        else if(isAttacking == false && isAlive)
         {
             // Get the NavMeshAgent component attached to the object
            
