@@ -101,30 +101,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -137,14 +113,14 @@ TextureImporter:
         width: 70
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 777048a56900339488f01b0378f57b2a
-      internalID: 1635169466
+      spriteID: 0ef0dc7ae749dfb48be082c117e5b57c
+      internalID: -1834657705
       vertices: []
       indices: 
       edges: []
@@ -158,14 +134,14 @@ TextureImporter:
         width: 72
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aec1a0a70855c54fa9cef8101045628
-      internalID: 563883372
+      spriteID: 626cb778eda6c36439fc5e23cdbe3e91
+      internalID: -422460197
       vertices: []
       indices: 
       edges: []
@@ -179,14 +155,14 @@ TextureImporter:
         width: 72
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99bfe122d96d48d4b9e76e29218d17ed
-      internalID: -819779691
+      spriteID: 0026eace0fb505f41812374ed8758323
+      internalID: 671368688
       vertices: []
       indices: 
       edges: []
@@ -200,20 +176,20 @@ TextureImporter:
         width: 72
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2c56ab64257f164283b8a79e6d7d52c
-      internalID: 1926368683
+      spriteID: bc1129cf8021f894ebc3f578af650675
+      internalID: 625424539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Button_Exit_7
+      name: UI_Button_Exit_4
       rect:
         serializedVersion: 2
         x: 104
@@ -221,14 +197,14 @@ TextureImporter:
         width: 79
         height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81b491fe365380b4e8b8165070aa9240
-      internalID: -1245554726
+      spriteID: ce58e32ddd156a642885e52c6380e03b
+      internalID: -1409745579
       vertices: []
       indices: 
       edges: []
@@ -244,14 +220,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_Button_Exit_0: 1635169466
-      UI_Button_Exit_1: 563883372
-      UI_Button_Exit_2: -819779691
-      UI_Button_Exit_3: 1926368683
-      UI_Button_Exit_4: -917413420
-      UI_Button_Exit_5: -21593520
-      UI_Button_Exit_6: 1574414415
-      UI_Button_Exit_7: -1245554726
+      UI_Button_Exit_0: -1834657705
+      UI_Button_Exit_1: -422460197
+      UI_Button_Exit_2: 671368688
+      UI_Button_Exit_3: 625424539
+      UI_Button_Exit_4: -1409745579
+      UI_Button_Exit_5: 1979446987
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -2,21 +2,28 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuButtonsThing : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-{
-    private Image buttonImage;
-    private Color originalColor;
+public class MenuButtonsThing : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
+    public Sprite firstImg;
+	public Sprite lastImg;
+	bool ishovering = false;
 
-    private void Awake(){
-        buttonImage = GetComponent<Image>();
-        originalColor = buttonImage.color;
-    }
+	void Update(){
+		if(Input.GetMouseButtonDown(0) && ishovering){
+			GetComponent<Animator>().enabled = false;
+			GetComponent<Image>().sprite = lastImg;
+		}
+		if(Input.GetMouseButtonUp(0)){
+			GetComponent<Image>().sprite = firstImg;
+		}
+	}
 
     public void OnPointerEnter(PointerEventData eventData){
-        //buttonImage.color = Color.gray; // Change color to indicate hover
+        GetComponent<Animator>().SetBool("isHovering", true);
+		ishovering = true;
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        //buttonImage.color = originalColor; // Change back to original color
+        GetComponent<Animator>().SetBool("isHovering", false);
+		ishovering = false;
     }
 }
