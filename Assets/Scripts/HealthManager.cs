@@ -16,7 +16,9 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private GameObject deathScreen;
 	[SerializeField]private Timer timer;
 	[SerializeField]private TextMeshProUGUI leaderboardTxt;
-	[SerializeField]private AudioClip gameover;
+	[SerializeField]private AudioSource gameover;
+	[SerializeField]private GameObject aimer;
+	[SerializeField]private GameObject fister;
 
 	public bool isDead;
 
@@ -110,7 +112,8 @@ public class HealthManager : MonoBehaviour{
         leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
         GetComponent<PlayerMovement>().enabled = false;
         timer.StopTimer();
-
+		aimer.SetActive(false);
+		fister.SetActive(false);
         StartCoroutine("ShowDeathScreenAfterTime");
 	}
 
@@ -118,10 +121,12 @@ public class HealthManager : MonoBehaviour{
 	IEnumerator ShowDeathScreenAfterTime()
 	{
 		yield return new WaitForSeconds(deathDelay);
-
+		Camera.main.GetComponent<AudioSource>().Stop();
+		if(!gameover.isPlaying){
+			gameover.Play();
+			print(gameover.clip+" "+gameover.isPlaying);
+		}
         deathScreen.SetActive(true);
-        Camera.main.GetComponent<AudioSource>().clip = gameover;
-        Camera.main.GetComponent<AudioSource>().Play();
         GetComponent<HealthManager>().enabled = false;
     }
 }
