@@ -98,5 +98,6 @@ public class HealthManager : MonoBehaviour{
 		GetComponent<PlayerMovement>().enabled = false;
 		timer.StopTimer();
 		deathScreen.SetActive(true);
+		GetComponent<HealthManager>().enabled = false;
 	}
 }

@@ -23,6 +23,8 @@ public class CameraScript : MonoBehaviour{
 			playerTwo.GetComponent<PlayerMovement>().enabled = true;
 			playerTwo.GetComponent <HealthManager>().enabled = true;
 			playerTwoArrow.SetActive(true);
+			playerTwo.GetComponent<BoxCollider>().enabled = true;
+			playerOne.GetComponent<BoxCollider>().enabled = false;
 
 			//combat
 			playerTwo.GetComponentInChildren<FistAttack>().enabled = true;
@@ -42,6 +44,8 @@ public class CameraScript : MonoBehaviour{
 			playerTwo.GetComponent<PlayerMovement>().enabled = false;
 			playerTwo.GetComponent <HealthManager>().enabled = false;
 			playerTwoArrow.SetActive(false);
+			playerTwo.GetComponent<BoxCollider>().enabled = true;
+			playerOne.GetComponent<BoxCollider>().enabled = false;
             //combat
             playerTwo.GetComponentInChildren<FistAttack>().enabled = false;
 			playerOne.GetComponentInChildren<BulletSpawner>().enabled = true;

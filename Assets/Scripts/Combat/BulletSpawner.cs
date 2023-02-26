@@ -12,7 +12,7 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {
         //using update for this to avoid it running multiple time with every click
-        if (Input.GetKeyDown(KeyCode.X) && Time.timeScale > 0)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0)
         {
             Shoot();
         }

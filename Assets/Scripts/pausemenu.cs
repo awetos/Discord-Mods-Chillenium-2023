@@ -27,4 +27,8 @@ public class pausemenu : MonoBehaviour{
     }
 	public void mm(){SceneManager.LoadScene(0);}
 	public void QuitGame(){Application.Quit();}
+	public void Retry(){
+		SceneManager.UnloadSceneAsync(1);
+		SceneManager.LoadScene(1);
+	}
 }
