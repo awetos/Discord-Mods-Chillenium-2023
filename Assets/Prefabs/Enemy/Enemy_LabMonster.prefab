@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttacking: 0
   attackSpeed: 0
-  damageAmount: 12
+  damageAmount: 5
   myAnimator: {fileID: 6974007901123325886}
 --- !u!1 &7929024816196742595
 GameObject:

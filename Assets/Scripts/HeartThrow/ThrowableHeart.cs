@@ -10,7 +10,7 @@ public class ThrowableHeart : MonoBehaviour
     // Start is called before the first frame update
     private Vector3 directionToTravel;
     //Vector3 OriginalPosition;
-    public float speed = 1f;
+    public float speed;
 
     HealthManager originalPlayerHealth;
 
