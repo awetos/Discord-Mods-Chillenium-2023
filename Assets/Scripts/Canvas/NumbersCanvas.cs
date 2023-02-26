@@ -106,7 +106,7 @@ public class NumbersCanvas : MonoBehaviour
     {
         GameObject go = Instantiate(CoinTextPrefab, this.transform);
         go.GetComponent<CoinsText>().SetLocation(Get2DPosition(_location.position));
-        string coins = "+ " + coinsdropped.ToString() + " coins";
+        string coins = "+ " + coinsdropped.ToString() + " health";
         go.GetComponent<CoinsText>().SetText(coins);
     }
     
