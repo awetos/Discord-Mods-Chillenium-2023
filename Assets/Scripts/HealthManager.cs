@@ -19,6 +19,7 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private AudioSource gameover;
 	[SerializeField]private GameObject aimer;
 	[SerializeField]private GameObject fister;
+	private bool playedOnce = false;
 
 	public bool isDead;
 
@@ -122,9 +123,10 @@ public class HealthManager : MonoBehaviour{
 	{
 		yield return new WaitForSeconds(deathDelay);
 		Camera.main.GetComponent<AudioSource>().Stop();
-		if(!gameover.isPlaying){
+		if(!playedOnce){
 			gameover.Play();
 			print(gameover.clip+" "+gameover.isPlaying);
+			playedOnce = true;
 		}
         deathScreen.SetActive(true);
         GetComponent<HealthManager>().enabled = false;

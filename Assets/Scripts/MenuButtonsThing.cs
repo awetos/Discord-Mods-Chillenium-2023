@@ -17,7 +17,8 @@ public class MenuButtonsThing : MonoBehaviour, IPointerEnterHandler, IPointerExi
 			GetComponent<AudioSource>().Play();
 		}
 		if(Input.GetMouseButtonUp(0)){
-			GetComponent<Image>().sprite = firstImg;
+			if(GetComponent<Image>().sprite == lastImg)
+				GetComponent<Image>().sprite = firstImg;
 		}
 	}
 
