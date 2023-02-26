@@ -25,7 +25,9 @@ public class BulletSpawner : MonoBehaviour
     {
         if (canShoot)
         {
-            //canShoot = false;
+            canShoot = false;
+
+            StartCoroutine("BulletCoolDown");
             GameObject myBullet = Instantiate(bulletPrefab, transform, false);//spawn heart
             myBullet.transform.SetParent(transform.parent.parent);//move it to root
             myBullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
@@ -33,7 +35,11 @@ public class BulletSpawner : MonoBehaviour
 
         }
     }
-
+    IEnumerator BulletCoolDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canShoot = true;
+    }
     void SetThrowHeart(bool b)
     {
         canShoot = b;
