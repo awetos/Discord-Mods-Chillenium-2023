@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8259024162160372127}
   - component: {fileID: 863583965346679469}
+  - component: {fileID: 6039151757236122933}
+  - component: {fileID: 3763851781188135721}
   m_Layer: 0
   m_Name: SpriteLayer
   m_TagString: Untagged
@@ -25,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663731476898164036}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: -0.19, y: 0.1, z: 0.42}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7245520433949807663}
@@ -84,6 +86,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6039151757236122933
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663731476898164036}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9f8dfc96f1b3d34d93dcf4ed786dcd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3763851781188135721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663731476898164036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b777aea882b79d94880fec58c7c93f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyDinoAnimator: {fileID: 6039151757236122933}
+  MyDinosHealth: {fileID: 2488287283760439974}
+  spriteRenderer: {fileID: 863583965346679469}
+  currentDino: 1
+  direction: {x: 0, y: 0, z: 0}
+  deg: 0
 --- !u!1 &3531817633831541894
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +376,7 @@ MonoBehaviour:
   timer: {fileID: 0}
   leaderboardTxt: {fileID: 0}
   gameover: {fileID: 8300000, guid: 2b521a63d12963747b1720d39e6c2a7b, type: 3}
+  isDead: 0
 --- !u!54 &7245520433949807635
 Rigidbody:
   m_ObjectHideFlags: 0
