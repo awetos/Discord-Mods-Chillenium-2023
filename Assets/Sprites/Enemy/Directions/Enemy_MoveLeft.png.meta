@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 251b15e3688b8ab49b9b07b8a23067f6
+guid: 4bb63ecf5268fe04e92575bdcf5efe75
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,12 +129,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Die_0
+      name: Enemy_MoveLeft_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 67
-        width: 11
+        x: 9
+        y: 35
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55525d790c2e8564faad90e37b724ae8
+      internalID: -1792825603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_MoveLeft_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 35
+        width: 13
         height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6ebbcc645ceac743aeda79fa81a027a
-      internalID: -1750087386
+      spriteID: 0010b0347d7e9c048810be59cdefb67e
+      internalID: -549992229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Die_1
+      name: Enemy_MoveLeft_2
       rect:
         serializedVersion: 2
-        x: 43
-        y: 69
+        x: 9
+        y: 3
         width: 12
-        height: 23
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fc7f53b2119ac2458179a2c6d2a8f1c
-      internalID: -1974252145
+      spriteID: f27c50e24d6775a4191e2fc076a442bf
+      internalID: 523102069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Die_2
+      name: Enemy_MoveLeft_3
       rect:
         serializedVersion: 2
-        x: 75
-        y: 70
-        width: 13
-        height: 22
+        x: 41
+        y: 3
+        width: 12
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,176 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b61ba83f910b14f8c6940b7003a987
-      internalID: -962622852
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_3
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 75
-        width: 13
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f37eb95c0438b247959245ae270199a
-      internalID: 1165996779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_4
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 46
-        width: 13
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 925320304d17feb4588b47cc950b5b5f
-      internalID: -2035804943
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_5
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 48
-        width: 13
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 12dfafdcdd1262b4bb9c98cb6288472b
-      internalID: -1013959767
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_6
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 50
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c72fce66c3e3b3641bf1168f1eb2bc5e
-      internalID: -471671700
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_7
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 50
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4e7adcc0096e07438adc9fe417fadaa
-      internalID: 1704396362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_8
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 14
-        width: 5
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 805719318df1591429e53dafeacaaaaa
-      internalID: -1881704620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_9
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 10
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 115af6724a0f1d243a01bec0066a530f
-      internalID: 299334318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Die_10
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 14
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2752e889d255ac745a11c8d42d3a41f3
-      internalID: -262182956
+      spriteID: c525a486909e686448cafc8e6f90832a
+      internalID: -669973161
       vertices: []
       indices: 
       edges: []
@@ -370,17 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_Die_0: -1750087386
-      Enemy_Die_1: -1974252145
-      Enemy_Die_10: -262182956
-      Enemy_Die_2: -962622852
-      Enemy_Die_3: 1165996779
-      Enemy_Die_4: -2035804943
-      Enemy_Die_5: -1013959767
-      Enemy_Die_6: -471671700
-      Enemy_Die_7: 1704396362
-      Enemy_Die_8: -1881704620
-      Enemy_Die_9: 299334318
+      Enemy_MoveLeft_0: -1792825603
+      Enemy_MoveLeft_1: -549992229
+      Enemy_MoveLeft_2: 523102069
+      Enemy_MoveLeft_3: -669973161
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
