@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
 {
+    
     Animator myAnimator;
     public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
 
+    private void OnEnable()
+    {
+        
+    }
 
     float myRotation_X;
     float myRotation_y;

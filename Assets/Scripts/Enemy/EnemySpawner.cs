@@ -31,14 +31,13 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyHealth.OnEnemyDeath -= SpawnNewEnemy;
     }
-    void SpawnNewEnemy()
+    void SpawnNewEnemy(int enemyDiedID)
     {
        for(int i = 0; i < EnemyCount; i++)
         {
             EnemyCache[i].SetActive(true);
             GetSpawnLocation();
             EnemyCache[i].transform.position = new Vector3(NextX, EnemyCache[i].transform.position.y, NextY);
-
 
         }
     }

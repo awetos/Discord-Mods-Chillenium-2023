@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   testtubePrefab: {fileID: 8274664339201074248, guid: c5d9f6ecaede61741bcca586d6e30429, type: 3}
+  myAnimator: {fileID: 3530862261136487799}
 --- !u!195 &3362523336891023466
 NavMeshAgent:
   m_ObjectHideFlags: 0

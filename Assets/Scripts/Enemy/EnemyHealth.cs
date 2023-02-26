@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public delegate void EnemyDied();
+    public delegate void EnemyDied(int enemyID);
     public static event EnemyDied OnEnemyDeath;
     public int health = 100;
 
+    public int enemyID;
     //calls number canvas
     public delegate void EnemyTakeDamage(Vector3 _location, int damageAmount);
     public static event EnemyTakeDamage OnEnemyTakeDamage;
 
     public GameObject testtubePrefab;
 
-    
+    public Animator myAnimator;
     public void TakeDamage(int damage)
     {
         health -= damage;
         OnEnemyTakeDamage(this.transform.position, damage);
         if(health <= 0)
         {
-            
+
             //Destroy(this.gameObject);
-            transform.gameObject.SetActive(false);
+            StartCoroutine("DelayedSetActive");
+            
+            myAnimator.Play("Enemy_Die");
             DropCollectible();
-            OnEnemyDeath();
+            OnEnemyDeath(enemyID);
         }
+    }
+
+    IEnumerator DelayedSetActive()
+    {
+        yield return new WaitForSeconds(0.5f);
+        transform.gameObject.SetActive(false);
     }
     
     void DropCollectible()
