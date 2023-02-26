@@ -242,9 +242,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705541579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 320092464}
+        m_TargetAssemblyTypeName: pausemenu, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -539,9 +539,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705541579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 320092464}
+        m_TargetAssemblyTypeName: pausemenu, Assembly-CSharp
+        m_MethodName: mm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6319,9 +6319,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705541579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 320092464}
+        m_TargetAssemblyTypeName: pausemenu, Assembly-CSharp
+        m_MethodName: mm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8202,9 +8202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1705541579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 320092464}
+        m_TargetAssemblyTypeName: pausemenu, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8291,6 +8291,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 535541316}
+    - target: {fileID: 1408401231646033817, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b521a63d12963747b1720d39e6c2a7b, type: 3}
     - target: {fileID: 1408401231646033817, guid: 2fa6f17460f93794eb3959f7203a54f5, type: 3}
       propertyPath: healthImg
       value: 
@@ -8747,6 +8751,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 535541316}
+    - target: {fileID: 33583046462891876, guid: 6f8b615451f190047a8e7a4a5db88291, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b521a63d12963747b1720d39e6c2a7b, type: 3}
     - target: {fileID: 33583046462891876, guid: 6f8b615451f190047a8e7a4a5db88291, type: 3}
       propertyPath: healthImg
       value: 

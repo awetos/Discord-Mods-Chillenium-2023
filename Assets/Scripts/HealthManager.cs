@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private GameObject deathScreen;
 	[SerializeField]private Timer timer;
 	[SerializeField]private TextMeshProUGUI leaderboardTxt;
+	[SerializeField]private AudioClip gameover;
 
 	void Start() {
 		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
@@ -98,6 +99,8 @@ public class HealthManager : MonoBehaviour{
 		GetComponent<PlayerMovement>().enabled = false;
 		timer.StopTimer();
 		deathScreen.SetActive(true);
+		Camera.main.GetComponent<AudioSource>().clip = gameover;
+		Camera.main.GetComponent<AudioSource>().Play();
 		GetComponent<HealthManager>().enabled = false;
 	}
 }
