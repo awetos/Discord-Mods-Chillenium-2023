@@ -132,10 +132,10 @@ TextureImporter:
       name: bluedinoattack_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 20
-        width: 75
-        height: 60
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: bluedinoattack_1
       rect:
         serializedVersion: 2
-        x: 105
-        y: 20
-        width: 82
-        height: 58
+        x: 96
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: bluedinoattack_2
       rect:
         serializedVersion: 2
-        x: 201
-        y: 20
-        width: 68
-        height: 58
+        x: 192
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: bluedinoattack_3
       rect:
         serializedVersion: 2
-        x: 297
-        y: 20
-        width: 68
-        height: 58
+        x: 288
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: bluedinoattack_4
       rect:
         serializedVersion: 2
-        x: 370
-        y: 71
-        width: 10
-        height: 7
+        x: 384
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: bluedinoattack_5
       rect:
         serializedVersion: 2
-        x: 393
-        y: 20
-        width: 68
-        height: 58
+        x: 480
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,132 +250,6 @@ TextureImporter:
       bones: []
       spriteID: ddf794bd25c915c46b32325a67c6b16e
       internalID: 2071411443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_6
-      rect:
-        serializedVersion: 2
-        x: 473
-        y: 76
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b938ff8fdc9d2a48a33845341451a9c
-      internalID: 1542119474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_7
-      rect:
-        serializedVersion: 2
-        x: 489
-        y: 20
-        width: 82
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c66e3e15c7b509b4badc0907add5d5d5
-      internalID: -1751017995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_8
-      rect:
-        serializedVersion: 2
-        x: 372
-        y: 57
-        width: 9
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f70fb5d4f4ca2749930cb72deb22bc1
-      internalID: 159807915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_9
-      rect:
-        serializedVersion: 2
-        x: 473
-        y: 55
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0fec2c277633c843a0f7ddd672afec7
-      internalID: 254864480
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_10
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 37
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba6d4f341d87b70418c74007ee92c915
-      internalID: 1046500949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bluedinoattack_11
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 29
-        width: 12
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c14966d0ae4075a4483c19cb44318428
-      internalID: 1142102150
       vertices: []
       indices: 
       edges: []
@@ -393,16 +267,10 @@ TextureImporter:
     nameFileIdTable:
       bluedinoattack_0: 1191680827
       bluedinoattack_1: 1442259846
-      bluedinoattack_10: 1046500949
-      bluedinoattack_11: 1142102150
       bluedinoattack_2: -314959517
       bluedinoattack_3: -1840182481
       bluedinoattack_4: 1222780623
       bluedinoattack_5: 2071411443
-      bluedinoattack_6: 1542119474
-      bluedinoattack_7: -1751017995
-      bluedinoattack_8: 159807915
-      bluedinoattack_9: 254864480
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

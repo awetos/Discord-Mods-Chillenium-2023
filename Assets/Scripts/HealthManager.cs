@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class HealthManager : MonoBehaviour{
     public float health = 100;//player current health percent
@@ -17,10 +18,13 @@ public class HealthManager : MonoBehaviour{
 	[SerializeField]private TextMeshProUGUI leaderboardTxt;
 	[SerializeField]private AudioClip gameover;
 
+	public bool isDead;
+
 	void Start() {
 		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
 		startAnim();
-	}
+        isDead = false;
+    }
 
 	public void reduceHealth(){
 		health -= 100/animationSize;//reduce health based on number of sprites on health bar
@@ -36,9 +40,13 @@ public class HealthManager : MonoBehaviour{
 		//if player's health is below zero, stop repeating the command
 		if(health<=0){
 			cancelAnim();
+			isDead = true;
 			Death();
 			//DEATH
 		}
+
+
+		
 	}
 	public void startAnim(){
 		//keep running the function every x secnods depending on how long you want the health to last
@@ -86,21 +94,34 @@ public class HealthManager : MonoBehaviour{
         healthImg.sprite = animationSprites[i];
     }
     public void Death(){
-		//show death screen
-		if(PlayerPrefs.GetFloat("HighTime") <=0)
-			PlayerPrefs.SetFloat("HighTime", 0);
-		if(PlayerPrefs.GetString("Time") == null)
-			PlayerPrefs.SetString("Time", "00:00:00");
-		if(timer.timeElapsed > PlayerPrefs.GetFloat("HighTime")){
-			PlayerPrefs.SetFloat("HighTime", timer.timeElapsed);
-			PlayerPrefs.SetString("Time", timer.timeTxt);
-		}
-		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
-		GetComponent<PlayerMovement>().enabled = false;
-		timer.StopTimer();
-		deathScreen.SetActive(true);
-		Camera.main.GetComponent<AudioSource>().clip = gameover;
-		Camera.main.GetComponent<AudioSource>().Play();
-		GetComponent<HealthManager>().enabled = false;
+
+		isDead = true;
+
+        //show death screen
+        if (PlayerPrefs.GetFloat("HighTime") <= 0)
+            PlayerPrefs.SetFloat("HighTime", 0);
+        if (PlayerPrefs.GetString("Time") == null)
+            PlayerPrefs.SetString("Time", "00:00:00");
+        if (timer.timeElapsed > PlayerPrefs.GetFloat("HighTime"))
+        {
+            PlayerPrefs.SetFloat("HighTime", timer.timeElapsed);
+            PlayerPrefs.SetString("Time", timer.timeTxt);
+        }
+        leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
+        GetComponent<PlayerMovement>().enabled = false;
+        timer.StopTimer();
+
+        StartCoroutine("ShowDeathScreenAfterTime");
 	}
+
+	float deathDelay = 2.5f;
+	IEnumerator ShowDeathScreenAfterTime()
+	{
+		yield return new WaitForSeconds(deathDelay);
+
+        deathScreen.SetActive(true);
+        Camera.main.GetComponent<AudioSource>().clip = gameover;
+        Camera.main.GetComponent<AudioSource>().Play();
+        GetComponent<HealthManager>().enabled = false;
+    }
 }

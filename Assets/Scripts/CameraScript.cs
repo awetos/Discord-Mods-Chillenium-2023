@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour{
+
+	public delegate void SwitchPlayer(bool isPlayerOne);
+	public static event SwitchPlayer OnPlayerSwitched;
+
+
 	public bool isPlayerOne;
 	public GameObject playerOne;
 	public GameObject playerTwo; //set to public so scripts can read location
@@ -52,5 +57,7 @@ public class CameraScript : MonoBehaviour{
 
             isPlayerOne = true;
 		}
+
+		OnPlayerSwitched(isPlayerOne);
 	}
 }
