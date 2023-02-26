@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     private Vector3 directionToTravel;
     //Vector3 OriginalPosition;
-    public float speed = 5f;
+    public float speed;
 	[SerializeField]private AudioSource ass;
 
     HealthManager originalPlayerHealth;

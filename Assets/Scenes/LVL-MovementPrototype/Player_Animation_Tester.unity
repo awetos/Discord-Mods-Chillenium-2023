@@ -8787,7 +8787,7 @@ MonoBehaviour:
   playerTwoGFX: {fileID: 6165088272745906120}
   playerOneArrow: {fileID: 1908017597}
   playerTwoArrow: {fileID: 1302530855}
-  playerOneBullet: {fileID: 5076157053139242164}
+  playerOneBullet: {fileID: 0}
   playerTwoFist: {fileID: 354324179}
 --- !u!114 &1310824947
 MonoBehaviour:
@@ -11253,7 +11253,7 @@ PrefabInstance:
     - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
       propertyPath: aimer
       value: 
-      objectReference: {fileID: 5076157053139242164}
+      objectReference: {fileID: 0}
     - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
       propertyPath: timer
       value: 
@@ -11351,11 +11351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acff81ff56af19b4d93008ea5e7a6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5076157053139242164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 706008222325496171, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
-  m_PrefabInstance: {fileID: 6764016581284703213}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6165088272745906120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7245520434497711517, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
@@ -11379,10 +11374,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
-      propertyPath: aimer
-      value: 
-      objectReference: {fileID: 5076157053139242164}
-    - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 535541316}
@@ -11402,10 +11393,6 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 879743571}
-    - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
-      propertyPath: isPlayerOne
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
       propertyPath: leaderboardTxt
       value: 

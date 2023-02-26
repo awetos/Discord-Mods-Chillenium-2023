@@ -198,6 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstImg: {fileID: -1834657705, guid: 9fd86d52e9a5f274c9d3b4217abc77c0, type: 3}
   lastImg: {fileID: -1409745579, guid: 9fd86d52e9a5f274c9d3b4217abc77c0, type: 3}
+  hoverSnd: {fileID: 0}
+  clickSnd: {fileID: 0}
 --- !u!114 &8567385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstImg: {fileID: 321435782, guid: 05861e5b2ff5fcf45a9ae296d8a5ad8f, type: 3}
   lastImg: {fileID: -1777824449, guid: 05861e5b2ff5fcf45a9ae296d8a5ad8f, type: 3}
+  hoverSnd: {fileID: 0}
+  clickSnd: {fileID: 0}
 --- !u!114 &173953500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +588,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173953496}
   m_CullTransparentMesh: 1
+--- !u!1 &175119579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6582007026317962710, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
+  m_PrefabInstance: {fileID: 6764016581284703213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &212145240
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +690,7 @@ GameObject:
   - component: {fileID: 320092461}
   - component: {fileID: 320092460}
   - component: {fileID: 320092464}
+  - component: {fileID: 320092465}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -790,6 +800,102 @@ MonoBehaviour:
   pauseMenu: {fileID: 1705541579}
   Player1GO: {fileID: 1263541597}
   Player2GO: {fileID: 6165088273259185785}
+--- !u!82 &320092465
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320092459}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2b521a63d12963747b1720d39e6c2a7b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &325446008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6327,6 +6433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstImg: {fileID: 321435782, guid: 05861e5b2ff5fcf45a9ae296d8a5ad8f, type: 3}
   lastImg: {fileID: -1777824449, guid: 05861e5b2ff5fcf45a9ae296d8a5ad8f, type: 3}
+  hoverSnd: {fileID: 0}
+  clickSnd: {fileID: 0}
 --- !u!114 &714648890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7112,7 +7220,7 @@ MonoBehaviour:
   playerTwoGFX: {fileID: 6165088272745906120}
   playerOneArrow: {fileID: 1908017597}
   playerTwoArrow: {fileID: 1302530855}
-  playerOneBullet: {fileID: 5076157053139242164}
+  playerOneBullet: {fileID: 0}
   playerTwoFist: {fileID: 354324179}
 --- !u!114 &1310824947
 MonoBehaviour:
@@ -8173,6 +8281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstImg: {fileID: -1834657705, guid: 9fd86d52e9a5f274c9d3b4217abc77c0, type: 3}
   lastImg: {fileID: -1409745579, guid: 9fd86d52e9a5f274c9d3b4217abc77c0, type: 3}
+  hoverSnd: {fileID: 0}
+  clickSnd: {fileID: 0}
 --- !u!114 &1865064180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8367,9 +8477,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
+      propertyPath: aimer
+      value: 
+      objectReference: {fileID: 175119579}
+    - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 535541316}
+    - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
+      propertyPath: fister
+      value: 
+      objectReference: {fileID: 354324179}
+    - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 320092465}
     - target: {fileID: 2488287283760439974, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
       propertyPath: healthImg
       value: 
@@ -8455,11 +8577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acff81ff56af19b4d93008ea5e7a6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5076157053139242164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 706008222325496171, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
-  m_PrefabInstance: {fileID: 6764016581284703213}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6165088272745906120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7245520434497711517, guid: 009bbbc0ea6f3ad4daef2fc8a164ad99, type: 3}
@@ -8483,9 +8600,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
+      propertyPath: aimer
+      value: 
+      objectReference: {fileID: 175119579}
+    - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 535541316}
+    - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
+      propertyPath: fister
+      value: 
+      objectReference: {fileID: 354324179}
+    - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 320092465}
     - target: {fileID: 2007465609159475258, guid: f26637f6c41e4674ca6380e54ae53d4d, type: 3}
       propertyPath: healthImg
       value: 
