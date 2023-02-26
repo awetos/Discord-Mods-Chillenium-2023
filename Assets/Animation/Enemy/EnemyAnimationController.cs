@@ -5,8 +5,14 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     Animator myAnimator;
+    public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
+
+
+    float myRotation_X;
+    float myRotation_y;
+    float myRotation_z;
     void Start()
     {
         isAttacking = false;
@@ -14,14 +20,26 @@ public class EnemyAnimationController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
 
         myAnimator.Play("Enemy_Walk_Down");
+        if(myEnemy == null)
+        {
+            myEnemy = transform.parent.gameObject;
+        }
+        myRotation_X = transform.eulerAngles.x;
+        myRotation_y = transform.eulerAngles.y;
+        myRotation_z = transform.eulerAngles.z;
 
     }
-
+    void AdjustRotation()
+    {
+        myRotation_X = myEnemy.transform.rotation.x - 90f;
+        transform.eulerAngles = new Vector3(90, 0, 0);
+    }
     bool isAttacking;
     bool isAlive;
     // Update is called once per frame
     void Update()
     {
+        AdjustRotation();
         if (Input.GetKeyDown(KeyCode.Space))
         {
                 myAnimator.SetBool("IsAttacking", true);
