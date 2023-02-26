@@ -21,7 +21,6 @@ public class EnemySpawner : MonoBehaviour
     public int spawnRange;
     //this int controls how close enemies can spawn to the player
 
-    int EnemyCount = 1;
     private void OnEnable()
     {
         EnemyHealth.OnEnemyDeath += SpawnNewEnemy;
@@ -31,32 +30,83 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyHealth.OnEnemyDeath -= SpawnNewEnemy;
     }
+
+
+    public int NextWaveCountdown = 3;
+    public int currentKillsInWave = 0;
+    public int totalEnemiesThisRound = 1;
+    public int activeEnemiesInScene = 0;
     void SpawnNewEnemy(int enemyDiedID)
     {
-        Debug.Log("Enemy died"+ enemyDiedID);
+        Debug.Log("Enemy died" + enemyDiedID);
+
+        currentKillsInWave++;
 
 
         int NextEnemy = enemyDiedID + 2;
-        if(NextEnemy >= EnemyCache.Count)
+        if (NextEnemy >= EnemyCache.Count)
         {
             NextEnemy = 0;
         }
-      
+
         GetSpawnLocation();
         EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
         EnemyCache[NextEnemy].SetActive(true);
-        /*
-       for(int i = 0; i < EnemyCount; i++)
+
+        activeEnemiesInScene++;
+
+
+        if (currentKillsInWave > NextWaveCountdown)
         {
-            if(i != enemyDiedID)
+
+            Debug.Log("spawning multiple enemies");
+            currentKillsInWave = 0;
+            totalEnemiesThisRound++;
+        }
+
+
+        if (totalEnemiesThisRound > 1)
+        {
+            Debug.Log("spawning multiple enemies");
+            for (int i = 0; i < totalEnemiesThisRound; i++)
             {
+                NextEnemy = GrabRandomInactiveToSpawn();
+                if (NextEnemy == -1 )
+                {
+                    continue;
+                }
+                else if (activeEnemiesInScene >= totalEnemiesThisRound)
+                {
+                    break;
+                }
+                else
+                {
+                    GetSpawnLocation();
+                    Debug.Log("setting to active:" + NextEnemy);
+                    EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
+                    EnemyCache[NextEnemy].SetActive(true);
+                    activeEnemiesInScene++;
+                }
 
             }
-            EnemyCache[i].SetActive(true);
-            GetSpawnLocation();
-            EnemyCache[i].transform.position = new Vector3(NextX, EnemyCache[i].transform.position.y, NextY);
+        }
+    }
 
-        }*/
+    int TOTAL_SPAWN_ATTEMPTS = 3;
+    int GrabRandomInactiveToSpawn()
+    {
+        int r = Random.Range(0, EnemyCache.Count);
+        int tries = 0;
+        while (EnemyCache[r].activeInHierarchy == true)
+        {
+            r = Random.Range(0, EnemyCache.Count);
+            tries++;
+            if (tries > TOTAL_SPAWN_ATTEMPTS)
+            {
+                return -1;
+            }
+        }
+        return r;
     }
     void Start()
     {
