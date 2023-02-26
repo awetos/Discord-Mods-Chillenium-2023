@@ -152,9 +152,11 @@ public class PlayerAnimator : MonoBehaviour
             MyDinoAnimator.Play("Death");
 
         }
-        else if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0) && isActivePlayer)
         {
-           //attacking, do not run the rest.
+            MyDinoAnimator.StopPlayback();
+            MyDinoAnimator.Play("Attack");
+            //attacking, do not run the rest.
         }
         else
         {
