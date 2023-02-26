@@ -33,13 +33,30 @@ public class EnemySpawner : MonoBehaviour
     }
     void SpawnNewEnemy(int enemyDiedID)
     {
+        Debug.Log("Enemy died"+ enemyDiedID);
+
+
+        int NextEnemy = enemyDiedID + 2;
+        if(NextEnemy >= EnemyCache.Count)
+        {
+            NextEnemy = 0;
+        }
+      
+        GetSpawnLocation();
+        EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
+        EnemyCache[NextEnemy].SetActive(true);
+        /*
        for(int i = 0; i < EnemyCount; i++)
         {
+            if(i != enemyDiedID)
+            {
+
+            }
             EnemyCache[i].SetActive(true);
             GetSpawnLocation();
             EnemyCache[i].transform.position = new Vector3(NextX, EnemyCache[i].transform.position.y, NextY);
 
-        }
+        }*/
     }
     void Start()
     {

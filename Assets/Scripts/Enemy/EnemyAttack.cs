@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
     public delegate void attackPlayer(int damage);
     public static event attackPlayer OnAttackPlayer;
-
+    
+    
 
   [SerializeField]  bool isAttacking;
     [SerializeField] float attackSpeed;
@@ -22,6 +24,11 @@ public class EnemyAttack : MonoBehaviour
         if(damageAmount == 0)
         {
             damageAmount = 10;
+        }
+
+        if(myAnimator == false)
+        {
+            myAnimator = GetComponentInChildren<Animator>();
         }
     }
     private void OnCollisionEnter(Collision collision)
