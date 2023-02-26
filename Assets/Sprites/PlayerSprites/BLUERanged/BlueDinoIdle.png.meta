@@ -135,7 +135,7 @@ TextureImporter:
         x: 7
         y: 22
         width: 75
-        height: 59
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,6 +145,153 @@ TextureImporter:
       bones: []
       spriteID: d6b980ff951a8cd47a40c7282b19d820
       internalID: -1644774023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_1
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 22
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e82b1422a78f742aba1b3c809535df
+      internalID: 542544018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 22
+        width: 75
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df9349dc7ca2ae441835fb280259123f
+      internalID: -2017219205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 22
+        width: 75
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bacb625944b0c4a950aa2ae6507ce1
+      internalID: 1465568472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 22
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 621a70f95d8096e47be3a7563e0c0bd4
+      internalID: -531155253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_5
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 22
+        width: 75
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb73b8bd2c2e7234eb79122c12606e35
+      internalID: -1286831226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_6
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 22
+        width: 75
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbff503118a511042a4ffcee33925859
+      internalID: 1525615713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueDinoIdle_7
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 22
+        width: 75
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987c6a1cadfe5d4498cecab7dd95886c
+      internalID: 2062002239
       vertices: []
       indices: 
       edges: []
@@ -161,6 +308,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BlueDinoIdle_0: -1644774023
+      BlueDinoIdle_1: 542544018
+      BlueDinoIdle_2: -2017219205
+      BlueDinoIdle_3: 1465568472
+      BlueDinoIdle_4: -531155253
+      BlueDinoIdle_5: -1286831226
+      BlueDinoIdle_6: 1525615713
+      BlueDinoIdle_7: 2062002239
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
