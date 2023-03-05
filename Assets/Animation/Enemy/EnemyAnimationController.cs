@@ -15,13 +15,32 @@ public class EnemyAnimationController : MonoBehaviour
         
     }
 
+    public void SetIsDead(bool newIsDead)
+    {
+        isDead = newIsDead;
+        myAnimator.SetBool("isDead", newIsDead);
+    }
+
+    public void Attack()
+    {
+        myAnimator.SetBool("isAttacking", true);
+        StartCoroutine("ResetAttack");
+    }
+
+
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitForEndOfFrame();
+        myAnimator.SetBool("isAttacking", false);
+    }
+
     float myRotation_X;
     float myRotation_y;
     float myRotation_z;
     void Start()
     {
         isAttacking = false;
-        isAlive = true;
+        isDead = false;
         myAnimator = GetComponent<Animator>();
 
         if(myEnemy == null)
@@ -39,25 +58,22 @@ public class EnemyAnimationController : MonoBehaviour
         transform.eulerAngles = new Vector3(90, 0, 0);
     }
     bool isAttacking;
-    bool isAlive;
+    bool isDead;
     // Update is called once per frame
     void Update()
     {
         AdjustRotation();
-
        CheckNavAgentDirection();
-
-
     }
 
     void CheckNavAgentDirection()
     {
         if(myAnimator.GetBool("IsDead")== true)
         {
-
+            myAnimator.Play("Enemy_Die");
         }
         //ignore if it is attacking
-        else if(isAttacking == false && isAlive)
+        else if(isAttacking == false && isDead)
         {
             // Get the NavMeshAgent component attached to the object
            

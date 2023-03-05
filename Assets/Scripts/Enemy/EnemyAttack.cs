@@ -14,6 +14,11 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] public int damageAmount;
 
+    public EnemyAnimationController myAnimationController;
+    public void SetDamageAmount(int newAmount)
+    {
+        damageAmount = newAmount;
+    }
     private void Start()
     {
         isAttacking = false;
@@ -26,30 +31,27 @@ public class EnemyAttack : MonoBehaviour
             damageAmount = 10;
         }
 
-        if(myAnimator == false)
+        if(myAnimationController == null)
         {
-            myAnimator = GetComponentInChildren<Animator>();
+            myAnimationController = GetComponentInChildren<EnemyAnimationController>();
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.tag == "Player")
         {
-
             isAttacking = true;
             StartCoroutine("Attacking");
         }
     }
 
-    public Animator myAnimator;
     IEnumerator Attacking()
     {
         while (isAttacking == true)
         {
             Camera.main.GetComponent<HealthReferences>().TakeDamage(damageAmount);
             OnAttackPlayer(damageAmount);
-            myAnimator.Play("Enemy_Attack");
-            myAnimator.SetBool("IsAttacking",true);
+            myAnimationController.Attack();
             yield return new WaitForSeconds(attackSpeed);
         }
     }
