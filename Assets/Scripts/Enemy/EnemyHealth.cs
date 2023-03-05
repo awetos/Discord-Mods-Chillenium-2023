@@ -51,6 +51,10 @@ public class EnemyHealth : MonoBehaviour
 
             DropCollectible();
 
+            holdStillWhileDying = true;
+
+            StartCoroutine("ResetHoldBool");
+
             StartCoroutine("DelayedResetEnemy");
         }
     }
@@ -68,15 +72,22 @@ public class EnemyHealth : MonoBehaviour
         health = 100;
     }
 
+    public bool holdStillWhileDying;
+    IEnumerator ResetHoldBool()
+    {
+        yield return new WaitForSeconds(1.25f);
+        holdStillWhileDying = false;
+    }
+
     IEnumerator DelayedResetEnemy()
     {
         //let the death animation play.
-        while(myController.GetIsPlayingDeathAnimation() == true)
+        while(holdStillWhileDying == true)
         {
             transform.position = deathLocation;
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForEndOfFrame();
         OnEnemyDeath(enemyID);
         ResetEnemy();
     }
