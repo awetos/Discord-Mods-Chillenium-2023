@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
@@ -28,6 +29,10 @@ public class EnemyAnimationController : MonoBehaviour
         StartCoroutine("ResetAttack");
     }
 
+    public bool GetIsPlayingDeathAnimation()
+    {
+        return myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Die");
+    }
     IEnumerator ResetAfterDeath()
     {
         yield return new WaitForEndOfFrame();
@@ -79,11 +84,6 @@ public class EnemyAnimationController : MonoBehaviour
         up, down, left, right
     }
 
-    [SerializeField]
-    MoveDirection currentDirection;
-    [SerializeField]
-    MoveDirection nextDirection;
-
     void CheckNavAgentDirection()
     {
         if(myAnimator.GetBool("IsDead")== true)
@@ -109,49 +109,20 @@ public class EnemyAnimationController : MonoBehaviour
             else 
             {
                 myAnimator.SetBool("prioritizeUpDown", false);
-                myAnimator.SetFloat("Horizontal", cross.y);
+                if (cross.y > 0)
+                {
+                    myAnimator.SetBool("facingRight", true);
+                    //facing right
+                }
+                else
+                {
+                    myAnimator.SetBool("facingRight", false);
+                    //facing left.
+                }
+               
+               // myAnimator.SetFloat("Horizontal", cross.y);
             }
-            /*
-            if (cross.x > 0.3 || cross.x < -0.3)
-            {
-                myAnimator.SetFloat("Vertical", cross.x);
-            }
-            else if (cross.y > 0)
-            {
-                // The agent is moving to the right
-                myAnimator.SetFloat("Horizontal", cross.y);
-                nextDirection = MoveDirection.right;
-            }
-            else if (cross.y < 0)
-            {
-                // The agent is moving to the left
-                nextDirection = MoveDirection.left;
-
-            }
-            else
-            {
-                //continue
-            }
-            */
         }
-    }
-
-    void SetDirection(MoveDirection next)
-    {
-        if(next == currentDirection)
-        {
-            //do nothing, you are already moving in that direction
-        }
-        else
-        {
-
-        }
-
-    }
-
-    void ClearDirectionBools()
-    {
-
     }
 
 

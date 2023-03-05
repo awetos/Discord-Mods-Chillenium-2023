@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public int health = 100;
 
     public int enemyID;
+
+
     //calls number canvas
     public delegate void EnemyTakeDamage(Vector3 _location, int damageAmount);
     public static event EnemyTakeDamage OnEnemyTakeDamage;
@@ -19,8 +22,11 @@ public class EnemyHealth : MonoBehaviour
     public EnemyAttack attackscript;
     public EnemyAnimationController myController;
 
+    public NavMeshAgent myEnemyAgent;
+
     private void Start()
     {
+       
     }
 
     public void TakeDamage(int damage)
@@ -36,24 +42,43 @@ public class EnemyHealth : MonoBehaviour
             }
             else
             {
-                attackscript.SetDamageAmount(0);
-                transform.position = new Vector3(10,10,10);
-                ResetEnemy();
+                DisableEnemy();
+                deathLocation = transform.position;
                // StartCoroutine("DelayedSetActive");
             }
 
 
 
-            myController.SetIsDead(true);
-
             DropCollectible();
-            OnEnemyDeath(enemyID);
+
+            StartCoroutine("DelayedResetEnemy");
         }
     }
 
+    Vector3 deathLocation;
+    void DisableEnemy()
+    {
+        attackscript.SetDamageAmount(0);
+        myController.SetIsDead(true); //it will reset on its own
+        
+    }
     void ResetEnemy()
     {
+        attackscript.ResetDamage();
         health = 100;
+    }
+
+    IEnumerator DelayedResetEnemy()
+    {
+        //let the death animation play.
+        while(myController.GetIsPlayingDeathAnimation() == true)
+        {
+            transform.position = deathLocation;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(3f);
+        OnEnemyDeath(enemyID);
+        ResetEnemy();
     }
     IEnumerator DelayedSetActive()
     {
