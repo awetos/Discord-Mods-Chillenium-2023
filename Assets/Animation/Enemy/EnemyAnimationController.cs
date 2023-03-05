@@ -19,6 +19,7 @@ public class EnemyAnimationController : MonoBehaviour
     {
         isDead = newIsDead;
         myAnimator.SetBool("isDead", newIsDead);
+        StartCoroutine("ResetAfterDeath");
     }
 
     public void Attack()
@@ -27,7 +28,12 @@ public class EnemyAnimationController : MonoBehaviour
         StartCoroutine("ResetAttack");
     }
 
-
+    IEnumerator ResetAfterDeath()
+    {
+        yield return new WaitForEndOfFrame();
+        myAnimator.SetBool("isDead", false);
+        isDead = false;
+    }
     IEnumerator ResetAttack()
     {
         yield return new WaitForEndOfFrame();
@@ -66,6 +72,18 @@ public class EnemyAnimationController : MonoBehaviour
        CheckNavAgentDirection();
     }
 
+    public Vector3 cross;
+
+    public enum MoveDirection
+    {
+        up, down, left, right
+    }
+
+    [SerializeField]
+    MoveDirection currentDirection;
+    [SerializeField]
+    MoveDirection nextDirection;
+
     void CheckNavAgentDirection()
     {
         if(myAnimator.GetBool("IsDead")== true)
@@ -73,37 +91,67 @@ public class EnemyAnimationController : MonoBehaviour
             myAnimator.Play("Enemy_Die");
         }
         //ignore if it is attacking
-        else if(isAttacking == false && isDead)
+        else if(isAttacking == false && isDead == false)
         {
             // Get the NavMeshAgent component attached to the object
            
-
-            // Get the velocity vector of the agent
             Vector3 velocity = agent.velocity;
 
-            // Get the forward vector of the agent
             Vector3 forward = transform.forward;
 
-            // Calculate the cross product of the velocity and forward vectors
-            Vector3 cross = Vector3.Cross(velocity, forward);
+            cross = Vector3.Cross(velocity, forward);
 
-            // Check if the y component of the cross product is positive or negative
-            if (cross.y > 0)
+            if (cross.x > 0.3 || cross.x < -0.3)
+            {
+                myAnimator.SetBool("prioritizeUpDown", true);
+                myAnimator.SetFloat("Vertical", cross.x);
+            }
+            else 
+            {
+                myAnimator.SetBool("prioritizeUpDown", false);
+                myAnimator.SetFloat("Horizontal", cross.y);
+            }
+            /*
+            if (cross.x > 0.3 || cross.x < -0.3)
+            {
+                myAnimator.SetFloat("Vertical", cross.x);
+            }
+            else if (cross.y > 0)
             {
                 // The agent is moving to the right
-                myAnimator.Play("Enemy_R_Walk");
+                myAnimator.SetFloat("Horizontal", cross.y);
+                nextDirection = MoveDirection.right;
             }
             else if (cross.y < 0)
             {
                 // The agent is moving to the left
-                myAnimator.Play("Enemy_L_Walk");
+                nextDirection = MoveDirection.left;
 
             }
             else
             {
-                // The agent is not moving left or right
+                //continue
             }
+            */
         }
+    }
+
+    void SetDirection(MoveDirection next)
+    {
+        if(next == currentDirection)
+        {
+            //do nothing, you are already moving in that direction
+        }
+        else
+        {
+
+        }
+
+    }
+
+    void ClearDirectionBools()
+    {
+
     }
 
 

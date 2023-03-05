@@ -9299,6 +9299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemy: {fileID: 5430175053329158149}
   agent: {fileID: 5862442031521602611}
+  cross: {x: 0, y: 0, z: 0}
+  currentDirection: 0
+  nextDirection: 0
 --- !u!195 &5862442031521602611
 NavMeshAgent:
   m_ObjectHideFlags: 0
