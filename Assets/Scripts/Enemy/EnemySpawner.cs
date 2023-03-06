@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static EnemyHealth;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -40,18 +41,22 @@ public class EnemySpawner : MonoBehaviour
     public int currentEnemyCacheCount = 0;
     void SpawnNewEnemy(int enemyDiedID)
     {
-        Debug.Log("Enemy died" + enemyDiedID);
+        Debug.Log("Enemy died: " + enemyDiedID);
 
-        GetSpawnLocation();
-        EnemyCache[enemyDiedID].transform.position = new Vector3(NextX, EnemyCache[enemyDiedID].transform.position.y, NextY);
 
-        StartCoroutine(SpawnEnemyWithCooldown(5f, EnemyCache[enemyDiedID]));
+
+        StartCoroutine(SpawnEnemyWithCooldown(1f, EnemyCache[enemyDiedID]));
+
+
+        //EnemyCache[enemyDiedID].transform.position = new Vector3(NextX, EnemyCache[enemyDiedID].transform.position.y, NextY);
+
+
         currentKillsInWave++;
 
         if (currentKillsInWave > NextWaveCountdown)
         {
-            currentKillsInWave = -7;
-            CreateNewEnemy(1);
+            currentKillsInWave = 0;
+            CreateNewEnemy(EnemyCache.Count);
            
         }
        
@@ -67,10 +72,38 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    //after they die, they wait a bit before respawning.
     IEnumerator SpawnEnemyWithCooldown(float secondsCooldown, GameObject enemyPtr)
     {
         yield return new WaitForSeconds(secondsCooldown);
+        
         Debug.Log("Spawning an enemy after cooldown.");
+
+
+        GetSpawnLocation();
+        string s = "Next spawn location: " + NextX + ", " + NextY;
+        Debug.Log(s);
+
+        enemyPtr.transform.position = new Vector3(NextX, enemyPtr.transform.position.y, NextY);
+
+        if(Physics.CheckBox(enemyPtr.transform.position,new Vector3(0.5f, 0.5f, 0.5f)))
+        {
+            Debug.Log("This location is touching something. I don't know what, but something.");
+            Collider[] hitColliders = Physics.OverlapSphere(enemyPtr.transform.position, 0.5f);
+            string obstructions = "";
+            foreach (var hitCollider in hitColliders)
+            {
+                obstructions += " " + hitCollider.gameObject.tag;
+                if (hitCollider.gameObject.CompareTag("NoSpawnZone"))
+                {
+                    Debug.Log("I've spawned inside the no spawn zone...");
+                }
+            }
+
+
+            Debug.Log(obstructions);
+        }
+
         enemyPtr.GetComponent<EnemyHealth>().ResetEnemy();
     }
 
@@ -120,37 +153,24 @@ public class EnemySpawner : MonoBehaviour
         MinY = SpawnLocation.position.z - spawnRange;
         MaxY = SpawnLocation.position.z + spawnRange;
 
+        SetNoSpawnZone();
+
         GetRandomX();
         GetRandomY();
 
 
     }
-    bool CanSpawnHere() // unused. crashes.
+
+    Vector2 NoSpawnZoneMin;
+
+    Vector2 NoSpawnZoneMax;
+    void SetNoSpawnZone() 
     {
-        float forbidden_min_x = SpawnLocation.position.x - rangeOfPlayerZone;
-        float forbidden_max_x = SpawnLocation.position.x + rangeOfPlayerZone;
-        float forbidden_min_y = SpawnLocation.position.z - rangeOfPlayerZone;
-        float forbidden_max_y = SpawnLocation.position.z + rangeOfPlayerZone;
+        NoSpawnZoneMin.x = SpawnLocation.position.x - rangeOfPlayerZone;
+        NoSpawnZoneMax.x = SpawnLocation.position.x + rangeOfPlayerZone;
+        NoSpawnZoneMin.y = SpawnLocation.position.z - rangeOfPlayerZone;
+        NoSpawnZoneMax.y = SpawnLocation.position.z + rangeOfPlayerZone;
 
-        if (NextX > forbidden_min_x && NextX < forbidden_max_x )
-        {
-            return false;
-        }
-
-        if (NextY > forbidden_min_y && NextY < forbidden_max_y)
-        {
-            return false;
-        }
-
-        return true;
     }
    
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("spawning enemy at: " + GetRandomX() + "," + GetRandomY());
-        }
-    }
 }
