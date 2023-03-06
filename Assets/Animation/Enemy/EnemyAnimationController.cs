@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     
-    Animator myAnimator;
+    public Animator myAnimator;
     public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update

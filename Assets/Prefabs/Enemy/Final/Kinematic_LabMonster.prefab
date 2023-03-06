@@ -98,7 +98,10 @@ MonoBehaviour:
   enemyID: 0
   testtubePrefab: {fileID: 8274664339201074248, guid: c5d9f6ecaede61741bcca586d6e30429, type: 3}
   attackscript: {fileID: 6774092798029498640}
+  myCollider: {fileID: 3502999637249636013}
   myController: {fileID: 1722263482278050115}
+  myEnemyAgent: {fileID: 720319070886232340}
+  lockMovement: 0
 --- !u!195 &720319070886232340
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -109,7 +112,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -136,7 +139,7 @@ MonoBehaviour:
   myAgent: {fileID: 720319070886232340}
   isAttacking: 0
   attackSpeed: 0
-  damageAmount: 5
+  DEFAULT_DAMAGE: 0
   myAnimationController: {fileID: 1722263482278050115}
 --- !u!1 &3810856329112125838
 GameObject:
@@ -256,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faeffd74c586b6438aef7c1258d0008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAnimator: {fileID: 4189412599409394675}
   myEnemy: {fileID: 1440974754929986850}
   agent: {fileID: 720319070886232340}
   cross: {x: 0, y: 0, z: 0}

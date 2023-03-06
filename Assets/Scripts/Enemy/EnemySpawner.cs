@@ -9,8 +9,6 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> EnemyCache;
     public GameObject EnemyPrefab;
 
-    int RandomX;
-    int RandomY;
 
     public float MinX;
     public float MinY;
@@ -18,102 +16,164 @@ public class EnemySpawner : MonoBehaviour
     public float MaxY;
     // Start is called before the first frame update
 
-    public int rangeOfPlayerZone;
     public int spawnRange;
     //this int controls how close enemies can spawn to the player
 
     private void OnEnable()
     {
-        EnemyHealth.OnEnemyDeath += SpawnNewEnemy;
+        EnemyHealth.OnEnemyDeath += AlertEnemySpawnerOfDeath;
     }
 
     private void OnDisable()
     {
-        EnemyHealth.OnEnemyDeath -= SpawnNewEnemy;
+        EnemyHealth.OnEnemyDeath -= AlertEnemySpawnerOfDeath;
     }
     [Header("Spawn Wave Settings")]
 
     public int NextWaveCountdown = 1;
     public int currentKillsInWave = 0;
     public int totalEnemiesThisRound = 1;
-    public int activeEnemiesInScene = 0;
 
-    public int currentEnemyCacheCount = 0;
-    void SpawnNewEnemy(int enemyDiedID)
+
+    public int TOTAL_SPAWN_ATTEMPTS;
+
+
+    void Start()
+    {
+        if(TOTAL_SPAWN_ATTEMPTS == 0)
+        {
+            TOTAL_SPAWN_ATTEMPTS = 12;
+        }
+    }
+
+
+    void AlertEnemySpawnerOfDeath(int enemyDiedID)
     {
         Debug.Log("Enemy died: " + enemyDiedID);
 
-
-
-        StartCoroutine(SpawnEnemyWithCooldown(1f, EnemyCache[enemyDiedID]));
-
-
-        //EnemyCache[enemyDiedID].transform.position = new Vector3(NextX, EnemyCache[enemyDiedID].transform.position.y, NextY);
-
+        StartCoroutine(SpawnEnemyWithCooldown(1f, enemyDiedID));
 
         currentKillsInWave++;
 
         if (currentKillsInWave > NextWaveCountdown)
         {
             currentKillsInWave = 0;
-            CreateNewEnemy(EnemyCache.Count);
-           
+            CreateNewEnemy(totalEnemiesThisRound);
+            totalEnemiesThisRound++;
+
+
         }
        
     }
 
     void CreateNewEnemy(int enemyID)
     {
-        GameObject NewEnemy = Instantiate(EnemyPrefab, transform);
-        NewEnemy.GetComponent<EnemyHealth>().enemyID = enemyID;
-        EnemyCache.Add(NewEnemy);
+        //instead of creating a new enemey, enable the one in the hierarchy.
+        // that way it already has the transform locations of the players.
 
-        SpawnNewEnemy(enemyID);
+
+        //GameObject NewEnemy = Instantiate(EnemyPrefab, transform);
+        //NewEnemy.GetComponent<EnemyHealth>().enemyID = enemyID;
+       // EnemyCache.Add(NewEnemy);
+
+        if(enemyID >= EnemyCache.Count)
+        {
+            //do nothing
+        }
+        else
+        {
+            EnemyCache[enemyID].SetActive(true);
+            SpawnNewEnemy(enemyID);
+        }
+
+       
 
     }
 
+    void SpawnNewEnemy(int enemyID)
+    {
+
+       
+
+        string s = "attempting spawns:";
+        Debug.Log(s);
+
+        Vector3 nextPosition = AttemptSpawns();
+
+
+
+        EnemyCache[enemyID].transform.position = nextPosition;
+
+        EnemyCache[enemyID].GetComponent<EnemyHealth>().ResetEnemy();
+    }
+
     //after they die, they wait a bit before respawning.
-    IEnumerator SpawnEnemyWithCooldown(float secondsCooldown, GameObject enemyPtr)
+    IEnumerator SpawnEnemyWithCooldown(float secondsCooldown, int enemyID)
     {
         yield return new WaitForSeconds(secondsCooldown);
         
         Debug.Log("Spawning an enemy after cooldown.");
+        SpawnNewEnemy(enemyID);
+    }
 
-
-        GetSpawnLocation();
-        string s = "Next spawn location: " + NextX + ", " + NextY;
-        Debug.Log(s);
-
-        enemyPtr.transform.position = new Vector3(NextX, enemyPtr.transform.position.y, NextY);
-
-        if(Physics.CheckBox(enemyPtr.transform.position,new Vector3(0.5f, 0.5f, 0.5f)))
+    bool WithinSpawnZone(Vector3 position)
+    {
+        bool insidePlayerNoSpawnZone = false;
+        Collider[] hitColliders = Physics.OverlapSphere(position, 0.5f);
+        foreach (var hitCollider in hitColliders)
         {
-            Debug.Log("This location is touching something. I don't know what, but something.");
-            Collider[] hitColliders = Physics.OverlapSphere(enemyPtr.transform.position, 0.5f);
-            string obstructions = "";
-            foreach (var hitCollider in hitColliders)
+
+            if (hitCollider.gameObject.CompareTag("NoSpawnZone"))
             {
-                obstructions += " " + hitCollider.gameObject.tag;
-                if (hitCollider.gameObject.CompareTag("NoSpawnZone"))
-                {
-                    Debug.Log("I've spawned inside the no spawn zone...");
-                }
+                insidePlayerNoSpawnZone = true;
             }
-
-
-            Debug.Log(obstructions);
         }
 
-        enemyPtr.GetComponent<EnemyHealth>().ResetEnemy();
+
+        return insidePlayerNoSpawnZone;
     }
 
-
-        int TOTAL_SPAWN_ATTEMPTS = 12;
-    void Start()
+    Vector3 AttemptSpawns()
     {
-        
+       Vector2 nextLocation =  GetSpawnLocation();
+       Vector3 nextLocation3D = new Vector3(nextLocation.x, 0, nextLocation.y);
+
+        Vector3 validPosition = nextLocation3D;
+        if (WithinSpawnZone(nextLocation3D))
+        {
+            for(int i = 0; i < TOTAL_SPAWN_ATTEMPTS; i++)
+            {
+             
+                 nextLocation = GetSpawnLocation();
+                 nextLocation3D = new Vector3(nextLocation.x, 0, nextLocation.y);
+
+                if (WithinSpawnZone(nextLocation3D) == false)
+                {
+                    Debug.Log("spawn successful" + (i+1) + " location: " + nextLocation3D);
+                    validPosition = nextLocation3D;
+                    return validPosition;
+                    
+                }
+
+               
+            }
+            //you went through total spawn attempts.
+            //just place it at the corner of the map.
+            Debug.Log("no valid spawnable space after " + TOTAL_SPAWN_ATTEMPTS + " attempts");
+            validPosition = new Vector3(MinX, 0, MinY);
+
+        }
+        else
+        {
+            Debug.Log("spawn successful on first try, "+  " location: " + nextLocation3D);
+
+            validPosition = nextLocation3D;
+        }
+
+        return validPosition;
     }
 
+   
     [SerializeField]
     float NextX;
     [SerializeField]
@@ -136,7 +196,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform Player1Location;
     public Transform Player2Location;
 
-    void GetSpawnLocation()
+    Vector2 GetSpawnLocation()
     {
 
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
@@ -153,24 +213,9 @@ public class EnemySpawner : MonoBehaviour
         MinY = SpawnLocation.position.z - spawnRange;
         MaxY = SpawnLocation.position.z + spawnRange;
 
-        SetNoSpawnZone();
+        Vector2 nextLocation = new Vector2(GetRandomX(),GetRandomY());
 
-        GetRandomX();
-        GetRandomY();
-
-
-    }
-
-    Vector2 NoSpawnZoneMin;
-
-    Vector2 NoSpawnZoneMax;
-    void SetNoSpawnZone() 
-    {
-        NoSpawnZoneMin.x = SpawnLocation.position.x - rangeOfPlayerZone;
-        NoSpawnZoneMax.x = SpawnLocation.position.x + rangeOfPlayerZone;
-        NoSpawnZoneMin.y = SpawnLocation.position.z - rangeOfPlayerZone;
-        NoSpawnZoneMax.y = SpawnLocation.position.z + rangeOfPlayerZone;
-
+        return nextLocation;
     }
    
 }
