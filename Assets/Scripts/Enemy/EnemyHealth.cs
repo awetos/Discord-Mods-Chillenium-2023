@@ -20,12 +20,17 @@ public class EnemyHealth : MonoBehaviour
 
 
     public EnemyAttack attackscript;
+    public Collider myCollider;
     public EnemyAnimationController myController;
 
     public NavMeshAgent myEnemyAgent;
 
     private void Start()
     {
+        if(myCollider == null)
+        {
+            myCollider = GetComponent<Collider>();
+        }
        
     }
 
@@ -51,45 +56,51 @@ public class EnemyHealth : MonoBehaviour
 
             DropCollectible();
 
-            holdStillWhileDying = true;
+            lockMovement = true;
 
-            StartCoroutine("ResetHoldBool");
+            //StartCoroutine("ResetHoldBool");
 
-            StartCoroutine("DelayedResetEnemy");
+            OnEnemyDeath(enemyID);
+
+            StartCoroutine("DoNotMove");
         }
     }
 
     Vector3 deathLocation;
     void DisableEnemy()
     {
-        attackscript.SetDamageAmount(0);
-        myController.SetIsDead(true); //it will reset on its own
+        myCollider.enabled = false;
+
+            myController.Die(); 
         
     }
-    void ResetEnemy()
+
+    //called by enemy spawner.
+    public void ResetEnemy()
     {
-        attackscript.ResetDamage();
+        myCollider.enabled = true;
+        myController.ResetEnemyAfterDeath(true);
+        lockMovement = false;
         health = 100;
     }
 
-    public bool holdStillWhileDying;
+    public bool lockMovement;
     IEnumerator ResetHoldBool()
     {
         yield return new WaitForSeconds(1.25f);
-        holdStillWhileDying = false;
+        lockMovement = false;
     }
 
-    IEnumerator DelayedResetEnemy()
+    IEnumerator DoNotMove()
     {
         //let the death animation play.
-        while(holdStillWhileDying == true)
+        while(lockMovement == true)
         {
             transform.position = deathLocation;
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForEndOfFrame();
-        OnEnemyDeath(enemyID);
-        ResetEnemy();
+        //ResetEnemy();
     }
     IEnumerator DelayedSetActive()
     {

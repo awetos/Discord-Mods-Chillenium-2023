@@ -16,13 +16,19 @@ public class EnemyAnimationController : MonoBehaviour
         
     }
 
-    public void SetIsDead(bool newIsDead)
+    public void Die()
     {
-        isDead = newIsDead;
-        myAnimator.SetBool("isDead", newIsDead);
-        StartCoroutine("ResetAfterDeath");
+        isDead = true;
+        myAnimator.SetBool("isDead", true);
+        myAnimator.SetBool("resetEnemy", false);
+        StartCoroutine("PlayDeathAnimationInFull");
     }
 
+
+    public void ResetEnemyAfterDeath(bool enemyResetState) //will be determined by enemy spawner.
+    {
+        myAnimator.SetBool("resetEnemy", enemyResetState); //now the sprite will appear again.
+    }
     public void Attack()
     {
         myAnimator.SetBool("isAttacking", true);
@@ -33,11 +39,17 @@ public class EnemyAnimationController : MonoBehaviour
     {
         return myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Die");
     }
-    IEnumerator ResetAfterDeath()
+    IEnumerator PlayDeathAnimationInFull()
     {
         yield return new WaitForEndOfFrame();
+        
+        while(GetIsPlayingDeathAnimation() == true)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         myAnimator.SetBool("isDead", false);
-        isDead = false;
+
+       // isDead = false;
     }
     IEnumerator ResetAttack()
     {
@@ -79,16 +91,10 @@ public class EnemyAnimationController : MonoBehaviour
 
     public Vector3 cross;
 
-    public enum MoveDirection
-    {
-        up, down, left, right
-    }
-
     void CheckNavAgentDirection()
     {
-        if(myAnimator.GetBool("IsDead")== true)
+        if(myAnimator.GetBool("isDead")== true)
         {
-            myAnimator.Play("Enemy_Die");
         }
         //ignore if it is attacking
         else if(isAttacking == false && isDead == false)
@@ -120,7 +126,6 @@ public class EnemyAnimationController : MonoBehaviour
                     //facing left.
                 }
                
-               // myAnimator.SetFloat("Horizontal", cross.y);
             }
         }
     }
