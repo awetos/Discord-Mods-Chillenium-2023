@@ -8916,7 +8916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyCache:
   - {fileID: 5430175053329158149}
-  EnemyPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 1440974754929986850, guid: a0144a61ec90dff4d9acb2d6d55d9f90, type: 3}
   MinX: 0
   MinY: 0
   MaxX: 0
@@ -8927,6 +8927,7 @@ MonoBehaviour:
   currentKillsInWave: 0
   totalEnemiesThisRound: 1
   activeEnemiesInScene: 0
+  currentEnemyCacheCount: 0
   NextX: 0
   NextY: 0
   Player1Location: {fileID: 1263541598}
@@ -9089,6 +9090,10 @@ PrefabInstance:
     - target: {fileID: 1440974754929986850, guid: a0144a61ec90dff4d9acb2d6d55d9f90, type: 3}
       propertyPath: m_Name
       value: Kinematic_LabMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3502999637249636013, guid: a0144a61ec90dff4d9acb2d6d55d9f90, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6513366300697795134, guid: a0144a61ec90dff4d9acb2d6d55d9f90, type: 3}
       propertyPath: player1Position

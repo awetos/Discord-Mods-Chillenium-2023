@@ -30,22 +30,41 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyHealth.OnEnemyDeath -= SpawnNewEnemy;
     }
+    [Header("Spawn Wave Settings")]
 
-
-    public int NextWaveCountdown = 3;
+    public int NextWaveCountdown = 1;
     public int currentKillsInWave = 0;
     public int totalEnemiesThisRound = 1;
     public int activeEnemiesInScene = 0;
 
+    public int currentEnemyCacheCount = 0;
     void SpawnNewEnemy(int enemyDiedID)
     {
         Debug.Log("Enemy died" + enemyDiedID);
 
         GetSpawnLocation();
-        EnemyCache[0].transform.position = new Vector3(NextX, EnemyCache[0].transform.position.y, NextY);
+        EnemyCache[enemyDiedID].transform.position = new Vector3(NextX, EnemyCache[enemyDiedID].transform.position.y, NextY);
 
-        StartCoroutine(SpawnEnemyWithCooldown(5f, EnemyCache[0]));
+        StartCoroutine(SpawnEnemyWithCooldown(5f, EnemyCache[enemyDiedID]));
+        currentKillsInWave++;
+
+        if (currentKillsInWave > NextWaveCountdown)
+        {
+            currentKillsInWave = -7;
+            CreateNewEnemy(1);
+           
+        }
        
+    }
+
+    void CreateNewEnemy(int enemyID)
+    {
+        GameObject NewEnemy = Instantiate(EnemyPrefab, transform);
+        NewEnemy.GetComponent<EnemyHealth>().enemyID = enemyID;
+        EnemyCache.Add(NewEnemy);
+
+        SpawnNewEnemy(enemyID);
+
     }
 
     IEnumerator SpawnEnemyWithCooldown(float secondsCooldown, GameObject enemyPtr)
@@ -55,81 +74,8 @@ public class EnemySpawner : MonoBehaviour
         enemyPtr.GetComponent<EnemyHealth>().ResetEnemy();
     }
 
-        /*
-        void SpawnNewEnemy(int enemyDiedID)
-        {
-            Debug.Log("Enemy died" + enemyDiedID);
-
-            currentKillsInWave++;
-
-
-            int NextEnemy = enemyDiedID + 2;
-            if (NextEnemy >= EnemyCache.Count)
-            {
-                NextEnemy = 0;
-            }
-
-            GetSpawnLocation();
-            EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
-            EnemyCache[NextEnemy].SetActive(true);
-
-            activeEnemiesInScene++;
-
-
-            if (currentKillsInWave > NextWaveCountdown)
-            {
-
-                Debug.Log("spawning multiple enemies");
-                currentKillsInWave = 0;
-                totalEnemiesThisRound++;
-            }
-
-
-            if (totalEnemiesThisRound > 1)
-            {
-                Debug.Log("spawning multiple enemies");
-                for (int i = 0; i < totalEnemiesThisRound; i++)
-                {
-                    NextEnemy = GrabRandomInactiveToSpawn();
-                    if (NextEnemy == -1 )
-                    {
-                        continue;
-                    }
-                    else if (activeEnemiesInScene >= totalEnemiesThisRound)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        GetSpawnLocation();
-                        Debug.Log("setting to active:" + NextEnemy);
-                        EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
-                        EnemyCache[NextEnemy].SetActive(true);
-                        activeEnemiesInScene++;
-                    }
-
-                }
-            }
-        }
-
-        */
 
         int TOTAL_SPAWN_ATTEMPTS = 12;
-    int GrabRandomInactiveToSpawn()
-    {
-        int r = Random.Range(0, EnemyCache.Count);
-        int tries = 0;
-        while (EnemyCache[r].activeInHierarchy == true)
-        {
-            r = Random.Range(0, EnemyCache.Count);
-            tries++;
-            if (tries > TOTAL_SPAWN_ATTEMPTS)
-            {
-                return -1;
-            }
-        }
-        return r;
-    }
     void Start()
     {
         

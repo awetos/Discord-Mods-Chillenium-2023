@@ -371,7 +371,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: ResetEnemy
+  - m_Name: resetEnemy
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -734,7 +734,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isDead
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: ResetEnemy
+    m_ConditionEvent: resetEnemy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7786800484488714210}
@@ -745,7 +745,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0.25373152
   m_ExitTime: 1.0029849
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
