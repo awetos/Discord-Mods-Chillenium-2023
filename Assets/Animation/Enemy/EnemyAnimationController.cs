@@ -21,6 +21,7 @@ public class EnemyAnimationController : MonoBehaviour
         isDead = true;
         myAnimator.SetBool("isDead", true);
         myAnimator.SetBool("resetEnemy", false);
+        myAnimator.Play("Enemy_Die");
         StartCoroutine("PlayDeathAnimationInFull");
     }
 
@@ -41,7 +42,6 @@ public class EnemyAnimationController : MonoBehaviour
     }
     IEnumerator PlayDeathAnimationInFull()
     {
-        yield return new WaitForEndOfFrame();
         
         while(GetIsPlayingDeathAnimation() == true)
         {

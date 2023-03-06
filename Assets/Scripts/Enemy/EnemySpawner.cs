@@ -10,13 +10,12 @@ public class EnemySpawner : MonoBehaviour
     public GameObject EnemyPrefab;
 
 
-    public float MinX;
-    public float MinY;
-    public float MaxX;
-    public float MaxY;
+     float MinX;
+     float MinY;
+     float MaxX;
+     float MaxY;
     // Start is called before the first frame update
 
-    public int spawnRange;
     //this int controls how close enemies can spawn to the player
 
     private void OnEnable()
@@ -36,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     public int TOTAL_SPAWN_ATTEMPTS;
+    public int spawnRange;
 
 
     void Start()
@@ -174,9 +174,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
    
-    [SerializeField]
     float NextX;
-    [SerializeField]
     float NextY;
 
     float GetRandomX()
@@ -191,6 +189,9 @@ public class EnemySpawner : MonoBehaviour
         NextY = Random.Range(MinY, MaxY);
         return NextY;
     }
+
+    [Header("Player Locations")]
+
 
     Transform SpawnLocation;
     public Transform Player1Location;
