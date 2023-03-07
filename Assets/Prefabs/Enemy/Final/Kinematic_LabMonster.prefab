@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAnimator: {fileID: 4189412599409394675}
+  mySprite: {fileID: 4757311294146146208}
   myEnemy: {fileID: 1440974754929986850}
   agent: {fileID: 720319070886232340}
   cross: {x: 0, y: 0, z: 0}

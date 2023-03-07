@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Debug.Log("Enemy died: " + enemyDiedID);
 
-        StartCoroutine(SpawnEnemyWithCooldown(1f, enemyDiedID));
+        StartCoroutine(SpawnEnemyWithCooldown(2f, enemyDiedID));
 
         currentKillsInWave++;
 
@@ -72,10 +72,6 @@ public class EnemySpawner : MonoBehaviour
         // that way it already has the transform locations of the players.
 
 
-        //GameObject NewEnemy = Instantiate(EnemyPrefab, transform);
-        //NewEnemy.GetComponent<EnemyHealth>().enemyID = enemyID;
-       // EnemyCache.Add(NewEnemy);
-
         if(enemyID >= EnemyCache.Count)
         {
             //do nothing
@@ -94,12 +90,7 @@ public class EnemySpawner : MonoBehaviour
     {
 
        
-
-        string s = "attempting spawns:";
-        Debug.Log(s);
-
         Vector3 nextPosition = AttemptSpawns();
-
 
 
         EnemyCache[enemyID].transform.position = nextPosition;

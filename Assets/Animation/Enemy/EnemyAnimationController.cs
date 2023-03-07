@@ -7,6 +7,7 @@ public class EnemyAnimationController : MonoBehaviour
 {
     
     public Animator myAnimator;
+    public SpriteRenderer mySprite;
     public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class EnemyAnimationController : MonoBehaviour
     public void ResetEnemyAfterDeath(bool enemyResetState) //will be determined by enemy spawner.
     {
         myAnimator.SetBool("resetEnemy", enemyResetState); //now the sprite will appear again.
+      
     }
     public void Attack()
     {
@@ -49,7 +51,8 @@ public class EnemyAnimationController : MonoBehaviour
         }
         myAnimator.SetBool("isDead", false);
 
-       // isDead = false;
+
+        // isDead = false;
     }
     IEnumerator ResetAttack()
     {
