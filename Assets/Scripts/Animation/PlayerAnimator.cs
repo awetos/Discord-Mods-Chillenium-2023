@@ -109,10 +109,7 @@ public class PlayerAnimator : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && isActivePlayer)
         {
 			MyDinoAnimator.SetBool("Attack", true);
-			//MyDinoAnimator.StopPlayback();
-			//MyDinoAnimator.Play("Attack");
 			StartCoroutine(AttackDelay());
-            //attacking, do not run the rest.
         }
         if (MyDinosHealth.isDead == true)
         {
@@ -124,17 +121,14 @@ public class PlayerAnimator : MonoBehaviour
         }
         else
         {
+           
+
             if (isActivePlayer == false)
             {
                 MyDinoAnimator.SetBool("idling", true);
             }
             else
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    //MyDinoAnimator.StopPlayback();
-                    MyDinoAnimator.SetBool("Attack", true);
-                }
                 GetMouseLocation();
                 if (isFacingLeft == true)
                 {
@@ -145,61 +139,61 @@ public class PlayerAnimator : MonoBehaviour
                     spriteRenderer.flipX = false;
                 }
             }
+
+            SetMovement();
         }
        
        
     }
 	IEnumerator AttackDelay(){
-		yield return new WaitForSeconds(0.5f);
+        while(MyDinoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        yield return new WaitForEndOfFrame();
 		MyDinoAnimator.SetBool("Attack", false);
 
 	}
     void FixedUpdate()
     {
-        if (MyDinosHealth.isDead == true)
-        {
-            Debug.Log("dino has died");
-            MyDinoAnimator.SetBool("isDead", true);
-            //MyDinoAnimator.StopPlayback();
-            //MyDinoAnimator.Play("Death");
+      
 
-        }
-        else
+    }
+
+    void SetMovement()
+    {
+        if (isActivePlayer)
         {
-            if (isActivePlayer)
+            float hor = Input.GetAxisRaw("Horizontal");//get left right movement input
+            float ver = Input.GetAxisRaw("Vertical");//get up down movement input
+
+            if (hor != 0 || ver != 0)//has  input
             {
-                float hor = Input.GetAxisRaw("Horizontal");//get left right movement input
-                float ver = Input.GetAxisRaw("Vertical");//get up down movement input
+                MyDinoAnimator.SetBool("idling", false);
 
-                if (hor != 0 || ver != 0)//has horizontal input
+                if (ver != 0)
                 {
-                    MyDinoAnimator.SetBool("idling", false);
-                    //MyDinoAnimator.Play("Run_Right");
-                }
-                /*else if (ver != 0)
-                {
-                    MyDinoAnimator.SetBool("idling", false);
-                    if (ver < 0)
+
+                    MyDinoAnimator.SetBool("prioritizeVertical", true);
+                    if (ver > 0)
                     {
-                        MyDinoAnimator.Play("Run_Forward");
+                        MyDinoAnimator.SetBool("goingUp", false);
                     }
                     else
                     {
-                        MyDinoAnimator.Play("Run_Back");
+                        MyDinoAnimator.SetBool("goingUp", true);
                     }
-                }*/
+                }
                 else
                 {
-                    MyDinoAnimator.SetBool("idling", true);
+                    MyDinoAnimator.SetBool("prioritizeVertical", false);
+                    MyDinoAnimator.SetBool("goingUp", false);
                 }
             }
-            
 
+            else
+            {
+                MyDinoAnimator.SetBool("idling", true);
+                MyDinoAnimator.SetBool("goingUp", false);
+            }
         }
-
-        
-
-
     }
 
     public Vector3 direction;
