@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -9,68 +10,30 @@ public class EnemyHealth : MonoBehaviour
     public int health = 100;
 
     public int enemyID;
+
+
     //calls number canvas
     public delegate void EnemyTakeDamage(Vector3 _location, int damageAmount);
     public static event EnemyTakeDamage OnEnemyTakeDamage;
 
     public GameObject testtubePrefab;
 
-    public GameObject normalController;
-    public GameObject deathController;
-    public Animator normalAnimator;
-    /*
+
+    public EnemyAttack attackscript;
+    public Collider myCollider;
+    public EnemyAnimationController myController;
+
+    public NavMeshAgent myEnemyAgent;
+
     private void Start()
     {
-        WakeUpAnimators();
+        if(myCollider == null)
+        {
+            myCollider = GetComponent<Collider>();
+        }
+       
     }
 
-    void WakeUpAnimators()
-    {
-        TurnOnNormalAnimator();
-        TurnOffDeathAnimator();
-    }
-
-    void OnDeathAnimators()
-    {
-        TurnOffNormalAnimator();
-        TurnOnDeathAnimator();
-    }
-
-    public SpriteRenderer normalRenderer;
-    public Animator normalAnimator;
-
-    public SpriteRenderer deathRenderer;
-    public Animator deathAnimator;
-    void TurnOnNormalAnimator()
-    {
-
-        normalRenderer.enabled = true;
-        normalAnimator.enabled = true;
-        normalController.SetActive(true);
-    }
-
-    void TurnOffNormalAnimator()
-    {
-
-        normalRenderer.enabled = false;
-        normalAnimator.enabled = false;
-        normalController.SetActive(false);
-    }
-
-    void TurnOnDeathAnimator()
-    {
-        deathRenderer.enabled = true;
-        deathAnimator.enabled = true;
-        deathController.SetActive(true);
-    }
-
-    void TurnOffDeathAnimator()
-    {
-        deathRenderer.enabled = false;
-        deathAnimator.enabled = false;
-        deathController.SetActive(false);
-    }
-    */
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -78,25 +41,67 @@ public class EnemyHealth : MonoBehaviour
         if(health <= 0)
         {
 
-            //Destroy(this.gameObject);
             if(this.gameObject.activeInHierarchy == false)
             {
 
             }
             else
             {
-                StartCoroutine("DelayedSetActive");
+                DisableEnemy();
+                deathLocation = transform.position;
+               // StartCoroutine("DelayedSetActive");
             }
-           
 
 
-            normalAnimator.SetBool("IsDead", true);
 
             DropCollectible();
+
+            lockMovement = true;
+
+            //StartCoroutine("ResetHoldBool");
+
             OnEnemyDeath(enemyID);
+
+            StartCoroutine("DoNotMove");
         }
     }
 
+    Vector3 deathLocation;
+    void DisableEnemy()
+    {
+        myCollider.enabled = false;
+
+            myController.Die(); 
+        
+    }
+
+    //called by enemy spawner.
+    public void ResetEnemy()
+    {
+        myCollider.enabled = true;
+        myController.ResetEnemyAfterDeath(true);
+        lockMovement = false;
+        health = 100;
+    }
+
+    public bool lockMovement;
+    IEnumerator ResetHoldBool()
+    {
+        yield return new WaitForSeconds(1.25f);
+        lockMovement = false;
+    }
+
+    IEnumerator DoNotMove()
+    {
+        //let the death animation play.
+        while(lockMovement == true)
+        {
+            transform.position = deathLocation;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForEndOfFrame();
+        //ResetEnemy();
+    }
     IEnumerator DelayedSetActive()
     {
         yield return new WaitForSeconds(0.5f);

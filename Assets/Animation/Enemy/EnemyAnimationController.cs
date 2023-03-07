@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
 {
     
-    Animator myAnimator;
+    public Animator myAnimator;
+    public SpriteRenderer mySprite;
     public GameObject myEnemy;
     public UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
@@ -15,13 +17,56 @@ public class EnemyAnimationController : MonoBehaviour
         
     }
 
+    public void Die()
+    {
+        isDead = true;
+        myAnimator.SetBool("isDead", true);
+        myAnimator.SetBool("resetEnemy", false);
+        myAnimator.Play("Enemy_Die");
+        StartCoroutine("PlayDeathAnimationInFull");
+    }
+
+
+    public void ResetEnemyAfterDeath(bool enemyResetState) //will be determined by enemy spawner.
+    {
+        myAnimator.SetBool("resetEnemy", enemyResetState); //now the sprite will appear again.
+      
+    }
+    public void Attack()
+    {
+        myAnimator.SetBool("isAttacking", true);
+        StartCoroutine("ResetAttack");
+    }
+
+    public bool GetIsPlayingDeathAnimation()
+    {
+        return myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Die");
+    }
+    IEnumerator PlayDeathAnimationInFull()
+    {
+        
+        while(GetIsPlayingDeathAnimation() == true)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        myAnimator.SetBool("isDead", false);
+
+
+        // isDead = false;
+    }
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitForEndOfFrame();
+        myAnimator.SetBool("isAttacking", false);
+    }
+
     float myRotation_X;
     float myRotation_y;
     float myRotation_z;
     void Start()
     {
         isAttacking = false;
-        isAlive = true;
+        isDead = false;
         myAnimator = GetComponent<Animator>();
 
         if(myEnemy == null)
@@ -39,53 +84,51 @@ public class EnemyAnimationController : MonoBehaviour
         transform.eulerAngles = new Vector3(90, 0, 0);
     }
     bool isAttacking;
-    bool isAlive;
+    bool isDead;
     // Update is called once per frame
     void Update()
     {
         AdjustRotation();
-
        CheckNavAgentDirection();
-
-
     }
+
+    public Vector3 cross;
 
     void CheckNavAgentDirection()
     {
-        if(myAnimator.GetBool("IsDead")== true)
+        if(myAnimator.GetBool("isDead")== true)
         {
-
         }
         //ignore if it is attacking
-        else if(isAttacking == false && isAlive)
+        else if(isAttacking == false && isDead == false)
         {
             // Get the NavMeshAgent component attached to the object
            
-
-            // Get the velocity vector of the agent
             Vector3 velocity = agent.velocity;
 
-            // Get the forward vector of the agent
             Vector3 forward = transform.forward;
 
-            // Calculate the cross product of the velocity and forward vectors
-            Vector3 cross = Vector3.Cross(velocity, forward);
+            cross = Vector3.Cross(velocity, forward);
 
-            // Check if the y component of the cross product is positive or negative
-            if (cross.y > 0)
+            if (cross.x > 0.3 || cross.x < -0.3)
             {
-                // The agent is moving to the right
-                myAnimator.Play("Enemy_R_Walk");
+                myAnimator.SetBool("prioritizeUpDown", true);
+                myAnimator.SetFloat("Vertical", cross.x);
             }
-            else if (cross.y < 0)
+            else 
             {
-                // The agent is moving to the left
-                myAnimator.Play("Enemy_L_Walk");
-
-            }
-            else
-            {
-                // The agent is not moving left or right
+                myAnimator.SetBool("prioritizeUpDown", false);
+                if (cross.y > 0)
+                {
+                    myAnimator.SetBool("facingRight", true);
+                    //facing right
+                }
+                else
+                {
+                    myAnimator.SetBool("facingRight", false);
+                    //facing left.
+                }
+               
             }
         }
     }

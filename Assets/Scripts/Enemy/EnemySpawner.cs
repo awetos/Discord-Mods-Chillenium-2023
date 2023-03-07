@@ -2,120 +2,170 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static EnemyHealth;
 
 public class EnemySpawner : MonoBehaviour
 {
     public List<GameObject> EnemyCache;
     public GameObject EnemyPrefab;
 
-    int RandomX;
-    int RandomY;
 
-    public float MinX;
-    public float MinY;
-    public float MaxX;
-    public float MaxY;
+     float MinX;
+     float MinY;
+     float MaxX;
+     float MaxY;
     // Start is called before the first frame update
 
-    public int rangeOfPlayerZone;
-    public int spawnRange;
     //this int controls how close enemies can spawn to the player
 
     private void OnEnable()
     {
-        EnemyHealth.OnEnemyDeath += SpawnNewEnemy;
+        EnemyHealth.OnEnemyDeath += AlertEnemySpawnerOfDeath;
     }
 
     private void OnDisable()
     {
-        EnemyHealth.OnEnemyDeath -= SpawnNewEnemy;
+        EnemyHealth.OnEnemyDeath -= AlertEnemySpawnerOfDeath;
+    }
+    [Header("Spawn Wave Settings")]
+
+    public int NextWaveCountdown = 1;
+    public int currentKillsInWave = 0;
+    public int totalEnemiesThisRound = 1;
+
+
+    public int TOTAL_SPAWN_ATTEMPTS;
+    public int spawnRange;
+
+
+    void Start()
+    {
+        if(TOTAL_SPAWN_ATTEMPTS == 0)
+        {
+            TOTAL_SPAWN_ATTEMPTS = 12;
+        }
     }
 
 
-    public int NextWaveCountdown = 3;
-    public int currentKillsInWave = 0;
-    public int totalEnemiesThisRound = 1;
-    public int activeEnemiesInScene = 0;
-    void SpawnNewEnemy(int enemyDiedID)
+    void AlertEnemySpawnerOfDeath(int enemyDiedID)
     {
-        Debug.Log("Enemy died" + enemyDiedID);
+        Debug.Log("Enemy died: " + enemyDiedID);
+
+        StartCoroutine(SpawnEnemyWithCooldown(2f, enemyDiedID));
 
         currentKillsInWave++;
 
-
-        int NextEnemy = enemyDiedID + 2;
-        if (NextEnemy >= EnemyCache.Count)
-        {
-            NextEnemy = 0;
-        }
-
-        GetSpawnLocation();
-        EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
-        EnemyCache[NextEnemy].SetActive(true);
-
-        activeEnemiesInScene++;
-
-
         if (currentKillsInWave > NextWaveCountdown)
         {
-
-            Debug.Log("spawning multiple enemies");
             currentKillsInWave = 0;
+            CreateNewEnemy(totalEnemiesThisRound);
             totalEnemiesThisRound++;
+
+
         }
-
-
-        if (totalEnemiesThisRound > 1)
-        {
-            Debug.Log("spawning multiple enemies");
-            for (int i = 0; i < totalEnemiesThisRound; i++)
-            {
-                NextEnemy = GrabRandomInactiveToSpawn();
-                if (NextEnemy == -1 )
-                {
-                    continue;
-                }
-                else if (activeEnemiesInScene >= totalEnemiesThisRound)
-                {
-                    break;
-                }
-                else
-                {
-                    GetSpawnLocation();
-                    Debug.Log("setting to active:" + NextEnemy);
-                    EnemyCache[NextEnemy].transform.position = new Vector3(NextX, EnemyCache[NextEnemy].transform.position.y, NextY);
-                    EnemyCache[NextEnemy].SetActive(true);
-                    activeEnemiesInScene++;
-                }
-
-            }
-        }
+       
     }
 
-    int TOTAL_SPAWN_ATTEMPTS = 3;
-    int GrabRandomInactiveToSpawn()
+    void CreateNewEnemy(int enemyID)
     {
-        int r = Random.Range(0, EnemyCache.Count);
-        int tries = 0;
-        while (EnemyCache[r].activeInHierarchy == true)
+        //instead of creating a new enemey, enable the one in the hierarchy.
+        // that way it already has the transform locations of the players.
+
+
+        if(enemyID >= EnemyCache.Count)
         {
-            r = Random.Range(0, EnemyCache.Count);
-            tries++;
-            if (tries > TOTAL_SPAWN_ATTEMPTS)
-            {
-                return -1;
-            }
+            //do nothing
         }
-        return r;
+        else
+        {
+            EnemyCache[enemyID].SetActive(true);
+            SpawnNewEnemy(enemyID);
+        }
+
+       
+
     }
-    void Start()
+
+    void SpawnNewEnemy(int enemyID)
     {
+
+       
+        Vector3 nextPosition = AttemptSpawns();
+
+
+        EnemyCache[enemyID].transform.position = nextPosition;
+
+        EnemyCache[enemyID].GetComponent<EnemyHealth>().ResetEnemy();
+    }
+
+    //after they die, they wait a bit before respawning.
+    IEnumerator SpawnEnemyWithCooldown(float secondsCooldown, int enemyID)
+    {
+        yield return new WaitForSeconds(secondsCooldown);
         
+        Debug.Log("Spawning an enemy after cooldown.");
+        SpawnNewEnemy(enemyID);
     }
 
-    [SerializeField]
+    bool WithinSpawnZone(Vector3 position)
+    {
+        bool insidePlayerNoSpawnZone = false;
+        Collider[] hitColliders = Physics.OverlapSphere(position, 0.5f);
+        foreach (var hitCollider in hitColliders)
+        {
+
+            if (hitCollider.gameObject.CompareTag("NoSpawnZone"))
+            {
+                insidePlayerNoSpawnZone = true;
+            }
+        }
+
+
+        return insidePlayerNoSpawnZone;
+    }
+
+    Vector3 AttemptSpawns()
+    {
+       Vector2 nextLocation =  GetSpawnLocation();
+       Vector3 nextLocation3D = new Vector3(nextLocation.x, 0, nextLocation.y);
+
+        Vector3 validPosition = nextLocation3D;
+        if (WithinSpawnZone(nextLocation3D))
+        {
+            for(int i = 0; i < TOTAL_SPAWN_ATTEMPTS; i++)
+            {
+             
+                 nextLocation = GetSpawnLocation();
+                 nextLocation3D = new Vector3(nextLocation.x, 0, nextLocation.y);
+
+                if (WithinSpawnZone(nextLocation3D) == false)
+                {
+                    Debug.Log("spawn successful" + (i+1) + " location: " + nextLocation3D);
+                    validPosition = nextLocation3D;
+                    return validPosition;
+                    
+                }
+
+               
+            }
+            //you went through total spawn attempts.
+            //just place it at the corner of the map.
+            Debug.Log("no valid spawnable space after " + TOTAL_SPAWN_ATTEMPTS + " attempts");
+            validPosition = new Vector3(MinX, 0, MinY);
+
+        }
+        else
+        {
+            Debug.Log("spawn successful on first try, "+  " location: " + nextLocation3D);
+
+            validPosition = nextLocation3D;
+        }
+
+        return validPosition;
+    }
+
+   
     float NextX;
-    [SerializeField]
     float NextY;
 
     float GetRandomX()
@@ -131,11 +181,14 @@ public class EnemySpawner : MonoBehaviour
         return NextY;
     }
 
+    [Header("Player Locations")]
+
+
     Transform SpawnLocation;
     public Transform Player1Location;
     public Transform Player2Location;
 
-    void GetSpawnLocation()
+    Vector2 GetSpawnLocation()
     {
 
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
@@ -152,37 +205,9 @@ public class EnemySpawner : MonoBehaviour
         MinY = SpawnLocation.position.z - spawnRange;
         MaxY = SpawnLocation.position.z + spawnRange;
 
-        GetRandomX();
-        GetRandomY();
+        Vector2 nextLocation = new Vector2(GetRandomX(),GetRandomY());
 
-
-    }
-    bool CanSpawnHere() // unused. crashes.
-    {
-        float forbidden_min_x = SpawnLocation.position.x - rangeOfPlayerZone;
-        float forbidden_max_x = SpawnLocation.position.x + rangeOfPlayerZone;
-        float forbidden_min_y = SpawnLocation.position.z - rangeOfPlayerZone;
-        float forbidden_max_y = SpawnLocation.position.z + rangeOfPlayerZone;
-
-        if (NextX > forbidden_min_x && NextX < forbidden_max_x )
-        {
-            return false;
-        }
-
-        if (NextY > forbidden_min_y && NextY < forbidden_max_y)
-        {
-            return false;
-        }
-
-        return true;
+        return nextLocation;
     }
    
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("spawning enemy at: " + GetRandomX() + "," + GetRandomY());
-        }
-    }
 }
