@@ -109,6 +109,7 @@ public class PlayerAnimator : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && isActivePlayer)
         {
 			MyDinoAnimator.SetBool("Attack", true);
+            Debug.Log("attacking");
 			StartCoroutine(AttackDelay());
         }
         if (MyDinosHealth.isDead == true)
@@ -146,7 +147,8 @@ public class PlayerAnimator : MonoBehaviour
        
     }
 	IEnumerator AttackDelay(){
-        while(MyDinoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        yield return new WaitForEndOfFrame();
+        while (MyDinoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         yield return new WaitForEndOfFrame();
 		MyDinoAnimator.SetBool("Attack", false);
 
