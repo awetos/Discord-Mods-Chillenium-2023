@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour{
 
-	public delegate void SwitchPlayer(bool isPlayerOne);
+	public delegate void SwitchPlayer(int playerID);
 	public static event SwitchPlayer OnPlayerSwitched;
 
 
@@ -21,18 +21,17 @@ public class CameraScript : MonoBehaviour{
 	public void switchPlayer() {
 		if(isPlayerOne){
 			//switch from player one
+			//activate player two
+			//player one starts health decay.
 			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;//player can't move
 			playerOne.GetComponent<PlayerMovement>().enabled = false;//disable character controller
-			playerOne.GetComponent<HealthManager>().cancelAnim();//disable health going down?
+			playerOne.GetComponent<HealthManager>().startAnim();//disable health going down?
 			playerOneBullet.SetActive(false);
 			playerOneArrow.SetActive(false);
 
 			playerTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-			playerTwo.GetComponent<HealthManager>().enabled = false;
-			playerTwo.GetComponent<HealthManager>().startAnim();
-			playerTwo.GetComponent<PlayerMovement>().speed = 5;
+			playerTwo.GetComponent<HealthManager>().cancelAnim();
 			playerTwo.GetComponent<PlayerMovement>().enabled = true;
-			playerTwo.GetComponent <HealthManager>().enabled = true;
 			playerTwoFist.SetActive(true);
 			playerTwoArrow.SetActive(true);
 
@@ -42,22 +41,29 @@ public class CameraScript : MonoBehaviour{
 			//switch from player two
 			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 			playerOne.GetComponent<PlayerMovement>().enabled = true;
-			playerOne.GetComponent<HealthManager>().startAnim();
+			playerOne.GetComponent<HealthManager>().cancelAnim();
 			playerOneBullet.SetActive(true);
 			playerOneArrow.SetActive(true);
 
 			playerTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-			playerTwo.GetComponent<HealthManager>().enabled = true;
-			playerTwo.GetComponent<HealthManager>().cancelAnim();
-			playerTwo.GetComponent<PlayerMovement>().speed = 0;
+			playerTwo.GetComponent<HealthManager>().startAnim();
 			playerTwo.GetComponent<PlayerMovement>().enabled = false;
-			playerTwo.GetComponent <HealthManager>().enabled = false;
 			playerTwoFist.SetActive (false);
 			playerTwoArrow.SetActive(false);
 
             isPlayerOne = true;
 		}
 
-		OnPlayerSwitched(isPlayerOne);
+		if (isPlayerOne)
+		{
+            OnPlayerSwitched(0);
+
+        }
+        else
+		{
+            OnPlayerSwitched(1);
+
+        }
+
 	}
 }

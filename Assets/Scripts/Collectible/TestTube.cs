@@ -22,7 +22,7 @@ public class TestTube : MonoBehaviour
         }
     }
 
-    float fadeOutTime = 2f;
+    float fadeOutTime = 5f;
     IEnumerator FadeAfterSeconds()
     {
         yield return new WaitForSeconds(fadeOutTime);

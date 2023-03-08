@@ -6,11 +6,12 @@ using TMPro;
 using Unity.VisualScripting;
 
 public class HealthManager : MonoBehaviour{
+
+
+
+    [SerializeField] HeartAnimationManager myHeartHalf;
     public float health = 100;//player current health percent
-	public float animationSize;//number of sprite in animation
-	[SerializeField]private Sprite[] animationSprites;
-	[SerializeField]private Image healthImg;
-	[SerializeField]private float lifeLength;//how many seconds does player have before they die
+
 	public bool isPlayerOne;//true if is attached to first player
 	int i=0;
 	[SerializeField]private GameObject deathScreen;
@@ -30,11 +31,7 @@ public class HealthManager : MonoBehaviour{
     }
 
 	public void reduceHealth(){
-		health -= 100/animationSize;//reduce health based on number of sprites on health bar
-		//print((int)(lifeLength/animationSize));
-		//set ui for player health
-		healthImg.sprite = animationSprites[i];
-		i++;
+		health -= 1;
 		
 	}
 	
@@ -51,12 +48,28 @@ public class HealthManager : MonoBehaviour{
 
 		
 	}
+
+	bool isDecaying;
 	public void startAnim(){
-		//keep running the function every x secnods depending on how long you want the health to last
-		InvokeRepeating("reduceHealth", lifeLength/animationSize, lifeLength/animationSize);
+
+		isDecaying = true;
+		//converted to coroutine so that we do not use anything about animation.
+		StartCoroutine("reduceHealth");
 	}
 	public void cancelAnim(){
-		CancelInvoke("reduceHealth");
+		isDecaying = false;
+		StopCoroutine("ReduceHealth");
+	}
+
+	IEnumerator ReduceHealth()
+	{
+		while (isDecaying == true)
+		{
+			reduceHealth();
+            yield return new WaitForSeconds(1f);
+
+        }
+		
 	}
 
 	public void TakeDamage(int damage)
@@ -68,14 +81,6 @@ public class HealthManager : MonoBehaviour{
 			Death();
 		}
 
-		int damageInInt = Mathf.RoundToInt(damage* animationSize / 100);
-
-		i += damageInInt ;
-		if(i >= animationSprites.Length)
-		{
-			i = animationSprites.Length -1;
-		}
-        healthImg.sprite = animationSprites[i];
     }
     public void addHealth(int healthToAdd)
     {
@@ -88,13 +93,6 @@ public class HealthManager : MonoBehaviour{
         }
 
 
-        int healthToAddInInt = Mathf.RoundToInt(healthToAdd * animationSize / 100);
-		i -= healthToAddInInt;
-        if (i < 0)
-        {
-			i = 0;
-        }
-        healthImg.sprite = animationSprites[i];
     }
     public void Death(){
 

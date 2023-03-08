@@ -29,8 +29,9 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void ResetEnemyAfterDeath(bool enemyResetState) //will be determined by enemy spawner.
     {
-        myAnimator.SetBool("resetEnemy", enemyResetState); //now the sprite will appear again.
-      
+        myAnimator.SetBool("resetEnemy", enemyResetState);
+        myAnimator.SetBool("isDead", false);//now the sprite will appear again.
+
     }
     public void Attack()
     {

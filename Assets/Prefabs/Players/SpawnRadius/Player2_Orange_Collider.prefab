@@ -69,28 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acff81ff56af19b4d93008ea5e7a6c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  animationSize: 17
-  animationSprites:
-  - {fileID: -736304633, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -515354374, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -2046284740, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1660872116, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 624511635, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 679289074, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1526857614, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -256721722, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 794401736, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1810795564, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -140862482, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1517617805, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1652816454, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1617027208, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1923888582, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1843703588, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 379415563, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  healthImg: {fileID: 0}
-  lifeLength: 60
+  myHeartHalf: {fileID: 0}
+  health: 100000
   isPlayerOne: 0
   deathScreen: {fileID: 0}
   timer: {fileID: 0}
@@ -155,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 1246560488112801342}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1246560487567015820}
@@ -396,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 4998395043375187952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.010000002, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1246560487567015820}
@@ -492,8 +472,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122210453764638439}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.19, y: 0.1, z: 0.42}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1246560487567015820}

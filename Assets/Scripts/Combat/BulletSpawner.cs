@@ -30,6 +30,7 @@ public class BulletSpawner : MonoBehaviour
             StartCoroutine("BulletCoolDown");
             GameObject myBullet = Instantiate(bulletPrefab, transform, false);//spawn heart
             myBullet.transform.SetParent(transform.parent.parent);//move it to root
+            myBullet.transform.position = transform.position;
             myBullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
             myBullet.GetComponent<Bullet>().SetDirection(new Vector3(0, myBullet.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
 
@@ -40,12 +41,6 @@ public class BulletSpawner : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         canShoot = true;
     }
-    void SetThrowHeart(bool b)
-    {
-        canShoot = b;
-        Debug.Log("Hearts can be thrown");
-    }
-
     private void FixedUpdate()
     {
         Vector3 mousePos = Input.mousePosition;

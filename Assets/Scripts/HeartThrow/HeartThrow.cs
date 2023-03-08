@@ -38,6 +38,7 @@ public class HeartThrow : MonoBehaviour
             canThrowHeart = false;
             GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
             myHeart.transform.SetParent(transform.parent.parent);//move it to root
+            myHeart.transform.position = transform.position;
             myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
             myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
           
@@ -47,7 +48,6 @@ public class HeartThrow : MonoBehaviour
     void SetThrowHeart(bool b)
     {
         canThrowHeart = b;
-      //  Debug.Log("Hearts can be thrown");
     }
 
 	private void FixedUpdate(){
