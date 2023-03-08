@@ -58,13 +58,13 @@ public class PlayerAnimator : MonoBehaviour
     {
         CameraScript.OnPlayerSwitched -= OnPlayerSwitched;
     }
-    void OnPlayerSwitched(bool isPlayerOne)
+    void OnPlayerSwitched(int isPlayerOne)
     {
       
         if(currentDino == Player.player1)
         {
-
-            if (isPlayerOne)
+            //if i am player 1.
+            if (isPlayerOne == 0)
             {
                 isActivePlayer = true;
             }
@@ -85,7 +85,7 @@ public class PlayerAnimator : MonoBehaviour
         {
 
 
-            if (!isPlayerOne)
+            if (isPlayerOne == 1)//1 means player 2.
             {
                 isActivePlayer = true;
             }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df2abd314bbc3a0469bc902cc10c9d74
+guid: 26a2b027a3777ce48a863b88750e2742
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,17 +101,41 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Heart_Blue_0
+      name: UI_Heart_Orange_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 167
-        width: 10
-        height: 19
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d98bf9b4e5dee4e438dd54238d764bb2
-      internalID: 1896049728
+      spriteID: 371faeda5fa1a77489a1b340573cb1dd
+      internalID: -383960497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_1
+      name: UI_Heart_Orange_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 167
-        width: 10
-        height: 19
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d79dc9cb03454564390d7fe6dc608e99
-      internalID: 1147493571
+      spriteID: 5778df8c4efc70c41a8650d5ee3a7d4f
+      internalID: -1192617698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_2
+      name: UI_Heart_Orange_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 167
-        width: 10
-        height: 19
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea8af5c774804fc46bd58e7700837eb7
-      internalID: 60416495
+      spriteID: 2447dbea64ea756478d71ebc45395d88
+      internalID: -1475488453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_3
+      name: UI_Heart_Orange_3
       rect:
         serializedVersion: 2
-        x: 112
-        y: 167
-        width: 10
-        height: 19
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8810830996c3bfd4bbaead19ffef2112
-      internalID: 1709901249
+      spriteID: 50eec4f85102a984d98f1e56220a23bd
+      internalID: -672862425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_4
+      name: UI_Heart_Orange_4
       rect:
         serializedVersion: 2
-        x: 144
-        y: 167
-        width: 10
-        height: 19
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e63388a95e193843983c00af85c9423
-      internalID: 1538775642
+      spriteID: f31cf860f8b216945a0a6d7e1099b4d3
+      internalID: 456635668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_5
+      name: UI_Heart_Orange_5
       rect:
         serializedVersion: 2
-        x: 176
-        y: 167
-        width: 10
-        height: 19
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a62497127b6d9ea489acba46fb82c855
-      internalID: -1134901494
+      spriteID: ecce8d30ab0405849903625db61a61f5
+      internalID: -1368481302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_6
+      name: UI_Heart_Orange_6
       rect:
         serializedVersion: 2
-        x: 16
-        y: 135
-        width: 10
-        height: 19
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,20 +269,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 765df0cc3963ec5478334e57e21fc0e0
-      internalID: 262611437
+      spriteID: 4f8c60dba59376d4cb5d86c6ba421c3f
+      internalID: -1149340551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_7
+      name: UI_Heart_Orange_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 135
-        width: 10
-        height: 19
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,20 +290,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bbfb1b11169ff545ad6dcb35882eda7
-      internalID: -110841494
+      spriteID: 50cb69918402c1846837b044a786d63e
+      internalID: 511170733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_8
+      name: UI_Heart_Orange_8
       rect:
         serializedVersion: 2
-        x: 80
-        y: 135
-        width: 10
-        height: 19
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,20 +311,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799c27fd840a3bf4f9fc33e5541e589e
-      internalID: 423800189
+      spriteID: 3ab06a257d9f52f428d94d7fdd7c272c
+      internalID: -1764411913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_9
+      name: UI_Heart_Orange_9
       rect:
         serializedVersion: 2
-        x: 112
-        y: 135
-        width: 10
-        height: 19
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,20 +332,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67a555ff69d749c42a30cdf730005572
-      internalID: -609122335
+      spriteID: 10e16eb5a372443448b2f5153e9dd4b4
+      internalID: -2124246176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_10
+      name: UI_Heart_Orange_10
       rect:
         serializedVersion: 2
-        x: 144
-        y: 135
-        width: 10
-        height: 19
+        x: 128
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,20 +353,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c098e7b11a41a41428a796c193c5b8c1
-      internalID: 808014054
+      spriteID: 9e64c803298ea554589aebd54776d1bf
+      internalID: 139600882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_11
+      name: UI_Heart_Orange_11
       rect:
         serializedVersion: 2
-        x: 176
-        y: 135
-        width: 10
-        height: 19
+        x: 160
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,20 +374,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4211b98bfe256824aacceb9abddf8b7e
-      internalID: -964569462
+      spriteID: 12c6bac1749f9bd42bfe6c676cab4334
+      internalID: -1264094890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_12
+      name: UI_Heart_Orange_12
       rect:
         serializedVersion: 2
-        x: 16
-        y: 103
-        width: 10
-        height: 19
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,20 +395,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81bf4f5bba7db314896c0815a2667233
-      internalID: -649896439
+      spriteID: cb561906b313c6145b9099c1a1578f78
+      internalID: -1311051396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_13
+      name: UI_Heart_Orange_13
       rect:
         serializedVersion: 2
-        x: 48
-        y: 103
-        width: 10
-        height: 19
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,20 +416,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de35c87ef2b0aa74cae199949c2754b0
-      internalID: -1562017261
+      spriteID: 113058b3a4aa0fb4895b4ed50dd33d6b
+      internalID: -1102481465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_14
+      name: UI_Heart_Orange_14
       rect:
         serializedVersion: 2
-        x: 80
-        y: 103
-        width: 10
-        height: 19
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -413,20 +437,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4636a882f802a7f4b80c2b632ce0f987
-      internalID: -190479354
+      spriteID: 4ce6b795876c04441bc9e7281f269296
+      internalID: 404232888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_15
+      name: UI_Heart_Orange_15
       rect:
         serializedVersion: 2
-        x: 112
-        y: 103
-        width: 10
-        height: 19
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -434,20 +458,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4668c73594b9dfd489e55d0c4c173afa
-      internalID: 971627625
+      spriteID: ef296b6edb1f74043b89449db32e59ed
+      internalID: 692477831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_16
+      name: UI_Heart_Orange_16
       rect:
         serializedVersion: 2
-        x: 144
-        y: 103
-        width: 10
-        height: 19
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,20 +479,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db8ee6c6473acd44bae6155fc403f50a
-      internalID: 1848608886
+      spriteID: c8e15a9cd983af44184ac36008123650
+      internalID: 2038461852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_17
+      name: UI_Heart_Orange_17
       rect:
         serializedVersion: 2
-        x: 176
-        y: 103
-        width: 11
-        height: 19
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -476,20 +500,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0d9229a2b1f67c4da59af0503ae783c
-      internalID: -94476678
+      spriteID: 9c01217e456269c40a92bb4ee65754f4
+      internalID: -736304633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_18
+      name: UI_Heart_Orange_18
       rect:
         serializedVersion: 2
-        x: 16
-        y: 71
-        width: 11
-        height: 20
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -497,20 +521,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d07d27f582572942b2ff6a536d557d2
-      internalID: 1857690916
+      spriteID: 4e341fbec997e3f428ddbf5d81e75715
+      internalID: -515354374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_19
+      name: UI_Heart_Orange_19
       rect:
         serializedVersion: 2
-        x: 48
-        y: 71
-        width: 11
-        height: 20
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -518,20 +542,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6860dc3b9fd5fe438de9fd057e7a83b
-      internalID: -1597484594
+      spriteID: edc0f96e9af094843b676f2ecef9f034
+      internalID: -2046284740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_20
+      name: UI_Heart_Orange_20
       rect:
         serializedVersion: 2
-        x: 80
-        y: 71
-        width: 11
-        height: 20
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -539,20 +563,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f31e47a636eb343439cc032e5d5537b5
-      internalID: -1876230286
+      spriteID: 8675d632d22f3404babcf3cf63125d26
+      internalID: 1660872116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_21
+      name: UI_Heart_Orange_21
       rect:
         serializedVersion: 2
-        x: 112
-        y: 71
-        width: 11
-        height: 20
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -560,20 +584,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3416f4805cfb6964cae7db74aa3dbd9c
-      internalID: 680495284
+      spriteID: f2419ab1d14899447a55c416e52b489f
+      internalID: 624511635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_22
+      name: UI_Heart_Orange_22
       rect:
         serializedVersion: 2
-        x: 144
-        y: 71
-        width: 11
-        height: 20
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -581,20 +605,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65a2e74b78a2ba14e8697d16f1f34324
-      internalID: 452463376
+      spriteID: f50b277962d4bc943b624d85825747fa
+      internalID: 679289074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_23
+      name: UI_Heart_Orange_23
       rect:
         serializedVersion: 2
-        x: 176
-        y: 71
-        width: 11
-        height: 20
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -602,20 +626,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af92659f14c8ed946a680a2a7c6b43bc
-      internalID: 1593858042
+      spriteID: da3a3d491f029494fbd3e2895b4e486f
+      internalID: 1526857614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_24
+      name: UI_Heart_Orange_24
       rect:
         serializedVersion: 2
-        x: 16
-        y: 39
-        width: 11
-        height: 20
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -623,20 +647,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8db7327a89767b4496f37c6ead8e8a4
-      internalID: 835322850
+      spriteID: a9442b77f5576c742b13b799911fa556
+      internalID: -256721722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_25
+      name: UI_Heart_Orange_25
       rect:
         serializedVersion: 2
-        x: 48
-        y: 39
-        width: 11
-        height: 20
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -644,20 +668,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71f2625e418831e4787dea1dba5ea931
-      internalID: 343042447
+      spriteID: 6037c3666caa8744696df2cfea601b04
+      internalID: 794401736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_26
+      name: UI_Heart_Orange_26
       rect:
         serializedVersion: 2
-        x: 80
-        y: 39
-        width: 11
-        height: 20
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -665,20 +689,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8a14b534d1384845bbae5916f371497
-      internalID: -347201291
+      spriteID: 9dbe67eb41690344f9bf2331e8fe4f19
+      internalID: -1810795564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_27
+      name: UI_Heart_Orange_27
       rect:
         serializedVersion: 2
-        x: 112
-        y: 39
-        width: 11
-        height: 20
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -686,20 +710,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c72c5c19abe46d4d8c97f405d2a4158
-      internalID: 327609748
+      spriteID: 111a6b49b0dc08343bc6995e765cb965
+      internalID: -140862482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_28
+      name: UI_Heart_Orange_28
       rect:
         serializedVersion: 2
-        x: 144
-        y: 39
-        width: 11
-        height: 20
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -707,20 +731,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aafc6753ccc61e4c89c77c98ad2a7f4
-      internalID: 1008822806
+      spriteID: 6de9ed88b2052064bbcb1716f449af14
+      internalID: 1517617805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_29
+      name: UI_Heart_Orange_29
       rect:
         serializedVersion: 2
-        x: 176
-        y: 39
-        width: 11
-        height: 20
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -728,20 +752,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e54868e529a71f4081d661a3c08a821
-      internalID: -1313410610
+      spriteID: 5adb8c5cde2f249418a47851fb820bfd
+      internalID: 1652816454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_30
+      name: UI_Heart_Orange_30
       rect:
         serializedVersion: 2
-        x: 16
-        y: 7
-        width: 11
-        height: 20
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -749,20 +773,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15b277d346bffe240965979fe678b578
-      internalID: -1452896033
+      spriteID: 3187a04f0fc80a94a90e88535c96cc0d
+      internalID: 1617027208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_31
+      name: UI_Heart_Orange_31
       rect:
         serializedVersion: 2
-        x: 48
-        y: 7
-        width: 11
-        height: 20
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -770,20 +794,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05db12e5305158d4ea60d9c999025d74
-      internalID: 192450332
+      spriteID: dbccb41be2e4d8441b6c828c88347f0c
+      internalID: -1923888582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_32
+      name: UI_Heart_Orange_32
       rect:
         serializedVersion: 2
-        x: 80
-        y: 7
-        width: 11
-        height: 20
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -791,20 +815,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77021eef1f92d414e992fe09a6f2b1fc
-      internalID: -2061668650
+      spriteID: 14b830406465d27419a8fd0aa58ee8e2
+      internalID: -1843703588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Heart_Blue_33
+      name: UI_Heart_Orange_33
       rect:
         serializedVersion: 2
-        x: 112
-        y: 7
-        width: 11
-        height: 20
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -812,8 +836,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2acf0a43573f2c1449a5e65cf44dab2e
-      internalID: -101760028
+      spriteID: a6441642a74f7b544b5decc9711566ef
+      internalID: 379415563
       vertices: []
       indices: 
       edges: []
@@ -829,40 +853,40 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI_Heart_Blue_0: 1896049728
-      UI_Heart_Blue_1: 1147493571
-      UI_Heart_Blue_10: 808014054
-      UI_Heart_Blue_11: -964569462
-      UI_Heart_Blue_12: -649896439
-      UI_Heart_Blue_13: -1562017261
-      UI_Heart_Blue_14: -190479354
-      UI_Heart_Blue_15: 971627625
-      UI_Heart_Blue_16: 1848608886
-      UI_Heart_Blue_17: -94476678
-      UI_Heart_Blue_18: 1857690916
-      UI_Heart_Blue_19: -1597484594
-      UI_Heart_Blue_2: 60416495
-      UI_Heart_Blue_20: -1876230286
-      UI_Heart_Blue_21: 680495284
-      UI_Heart_Blue_22: 452463376
-      UI_Heart_Blue_23: 1593858042
-      UI_Heart_Blue_24: 835322850
-      UI_Heart_Blue_25: 343042447
-      UI_Heart_Blue_26: -347201291
-      UI_Heart_Blue_27: 327609748
-      UI_Heart_Blue_28: 1008822806
-      UI_Heart_Blue_29: -1313410610
-      UI_Heart_Blue_3: 1709901249
-      UI_Heart_Blue_30: -1452896033
-      UI_Heart_Blue_31: 192450332
-      UI_Heart_Blue_32: -2061668650
-      UI_Heart_Blue_33: -101760028
-      UI_Heart_Blue_4: 1538775642
-      UI_Heart_Blue_5: -1134901494
-      UI_Heart_Blue_6: 262611437
-      UI_Heart_Blue_7: -110841494
-      UI_Heart_Blue_8: 423800189
-      UI_Heart_Blue_9: -609122335
+      UI_Heart_Orange_0: -383960497
+      UI_Heart_Orange_1: -1192617698
+      UI_Heart_Orange_10: 139600882
+      UI_Heart_Orange_11: -1264094890
+      UI_Heart_Orange_12: -1311051396
+      UI_Heart_Orange_13: -1102481465
+      UI_Heart_Orange_14: 404232888
+      UI_Heart_Orange_15: 692477831
+      UI_Heart_Orange_16: 2038461852
+      UI_Heart_Orange_17: -736304633
+      UI_Heart_Orange_18: -515354374
+      UI_Heart_Orange_19: -2046284740
+      UI_Heart_Orange_2: -1475488453
+      UI_Heart_Orange_20: 1660872116
+      UI_Heart_Orange_21: 624511635
+      UI_Heart_Orange_22: 679289074
+      UI_Heart_Orange_23: 1526857614
+      UI_Heart_Orange_24: -256721722
+      UI_Heart_Orange_25: 794401736
+      UI_Heart_Orange_26: -1810795564
+      UI_Heart_Orange_27: -140862482
+      UI_Heart_Orange_28: 1517617805
+      UI_Heart_Orange_29: 1652816454
+      UI_Heart_Orange_3: -672862425
+      UI_Heart_Orange_30: 1617027208
+      UI_Heart_Orange_31: -1923888582
+      UI_Heart_Orange_32: -1843703588
+      UI_Heart_Orange_33: 379415563
+      UI_Heart_Orange_4: 456635668
+      UI_Heart_Orange_5: -1368481302
+      UI_Heart_Orange_6: -1149340551
+      UI_Heart_Orange_7: 511170733
+      UI_Heart_Orange_8: -1764411913
+      UI_Heart_Orange_9: -2124246176
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

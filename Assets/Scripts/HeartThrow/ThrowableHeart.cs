@@ -27,7 +27,7 @@ public class ThrowableHeart : MonoBehaviour
 
     public void SetDirection(Vector3 direction)
     {
-        directionToTravel = direction;
+        directionToTravel = direction.normalized * 0.5f; //it's going to be too faster even if the magnitude is 1?
     }
 
     // Update is called once per frame
