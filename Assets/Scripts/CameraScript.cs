@@ -18,14 +18,20 @@ public class CameraScript : MonoBehaviour{
 	[SerializeField] private GameObject playerOneBullet;
 	[SerializeField] private GameObject playerTwoFist;
 
-	public void switchPlayer() {
+	private void Start()
+	{
+		//at the start of the game, player two should be dying because he is not active.
+       
+
+    }
+    public void switchPlayer() {
 		if(isPlayerOne){
 			//switch from player one
 			//activate player two
 			//player one starts health decay.
 			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;//player can't move
 			playerOne.GetComponent<PlayerMovement>().enabled = false;//disable character controller
-			playerOne.GetComponent<HealthManager>().startAnim();//disable health going down?
+			playerOne.GetComponent<HealthManager>().startAnim();
 			playerOneBullet.SetActive(false);
 			playerOneArrow.SetActive(false);
 
@@ -38,7 +44,9 @@ public class CameraScript : MonoBehaviour{
             isPlayerOne = false;
 		}
 		else{
-			//switch from player two
+			//switch from player two to player one
+			//player two begins decay
+			//player one stops decay.
 			playerOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 			playerOne.GetComponent<PlayerMovement>().enabled = true;
 			playerOne.GetComponent<HealthManager>().cancelAnim();

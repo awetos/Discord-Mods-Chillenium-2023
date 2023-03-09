@@ -29,11 +29,11 @@ public class HealthReferences : MonoBehaviour
          OnUpdateHealText(healingAmount);
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
         {
-            player2health.addHealth(healingAmount);
+            player1health.AddHealth(healingAmount);
         }
         else
         {
-            player1health.addHealth(healingAmount);
+            player2health.AddHealth(healingAmount);
         }
     }
 }
