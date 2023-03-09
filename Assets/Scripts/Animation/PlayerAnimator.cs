@@ -108,7 +108,8 @@ public class PlayerAnimator : MonoBehaviour
     {
 		if (Input.GetMouseButtonDown(0) && isActivePlayer)
         {
-			MyDinoAnimator.SetBool("Attack", true);
+			MyDinoAnimator.Play("Attack");
+            
             Debug.Log("attacking");
 			StartCoroutine(AttackDelay());
         }
@@ -117,7 +118,7 @@ public class PlayerAnimator : MonoBehaviour
             Debug.Log("dino has died");
             MyDinoAnimator.SetBool("isDead", true);
             //MyDinoAnimator.StopPlayback();
-            //MyDinoAnimator.Play("Death");
+            MyDinoAnimator.Play("Death");
 
         }
         else

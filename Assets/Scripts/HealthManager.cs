@@ -10,9 +10,11 @@ public class HealthManager : MonoBehaviour{
 
 
     [SerializeField] HeartAnimationManager myHeartHalf;
-    public float health = 100;//player current health percent
+    public int MAX_HEALTH;
+    int health;
 
-	public bool isPlayerOne;//true if is attached to first player
+
+    public bool isPlayerOne;//true if is attached to first player
 	int i=0;
 	[SerializeField]private GameObject deathScreen;
 	[SerializeField]private Timer timer;
@@ -25,13 +27,25 @@ public class HealthManager : MonoBehaviour{
 	public bool isDead;
 
 	void Start() {
-		leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
-		startAnim();
+		if (MAX_HEALTH == 0)
+		{
+            MAX_HEALTH = 100;
+		}
+        health = MAX_HEALTH;
+
+
+        leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
+
+		if(isPlayerOne == false)
+		{
+			startAnim();
+		}
+
         isDead = false;
     }
 
 	public void reduceHealth(){
-		health -= 1;
+		TakeDamage(1);
 		
 	}
 	
@@ -45,7 +59,6 @@ public class HealthManager : MonoBehaviour{
 			//DEATH
 		}
 
-
 		
 	}
 
@@ -53,8 +66,10 @@ public class HealthManager : MonoBehaviour{
 	public void startAnim(){
 
 		isDecaying = true;
-		//converted to coroutine so that we do not use anything about animation.
-		StartCoroutine("reduceHealth");
+        //in case it was already started on start, you don't want to call it twice when switching for the first time.
+        StopCoroutine("ReduceHealth"); 
+
+        StartCoroutine("ReduceHealth");
 	}
 	public void cancelAnim(){
 		isDecaying = false;
@@ -67,11 +82,10 @@ public class HealthManager : MonoBehaviour{
 		{
 			reduceHealth();
             yield return new WaitForSeconds(1f);
-
         }
 		
 	}
-
+	public float percent;
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
@@ -81,17 +95,20 @@ public class HealthManager : MonoBehaviour{
 			Death();
 		}
 
+		 percent = ((float)health) / ((float)MAX_HEALTH);
+        myHeartHalf.UpdateCurrentSpriteFromPercent(percent);
     }
-    public void addHealth(int healthToAdd)
+    public void AddHealth(int healthToAdd)
     {
 		health += healthToAdd;
 
 
-        if (health > 100)
+        if (health > MAX_HEALTH)
         {
-			health = 100;
+			health = MAX_HEALTH;
         }
-
+        percent = ((float)health) / ((float)MAX_HEALTH);
+        myHeartHalf.UpdateCurrentSpriteFromPercent(percent);
 
     }
     public void Death(){

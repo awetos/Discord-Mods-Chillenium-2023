@@ -11,6 +11,11 @@ public class HeartAnimationManager : MonoBehaviour
 
 
     int currentSprite;
+
+    int totalSize;
+    bool heartIsActive;
+
+
     [SerializeField] Image myImage;
     [SerializeField] int myHeartID;
 
@@ -25,6 +30,9 @@ public class HeartAnimationManager : MonoBehaviour
 
     private void Start()
     {
+        totalSize = activeSprites.Length; 
+        currentSprite = 0;
+        Debug.Log("total size is..." + totalSize);
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne == true)
         {
             if(myHeartID == 0)
@@ -40,6 +48,27 @@ public class HeartAnimationManager : MonoBehaviour
 
     }
 
+    public void UpdateCurrentSpriteFromPercent(float percent) //called when health manager changes.
+    {
+        currentSprite = totalSize - Mathf.FloorToInt(percent * totalSize);
+        if (currentSprite >= totalSize)
+        {
+            currentSprite = totalSize - 1;
+        }
+        UpdateSprite();
+    }
+
+    void UpdateSprite()
+    {
+        if (heartIsActive)
+        {
+            UpdateActive();
+        }
+        else
+        {
+            UpdateDecay();
+        }
+    }
 
     void OnPlayerSwitched(int playerID)
     {
@@ -56,12 +85,24 @@ public class HeartAnimationManager : MonoBehaviour
    
     void SwitchToActive()
     {
-        myImage.sprite = activeSprites[0];
+        UpdateActive();
+        heartIsActive = true;
     }
     void SwitchToDecay()
     {
-        myImage.sprite = boneySprites[0];
+        UpdateDecay();
+        heartIsActive = false;
     }
 
+    void UpdateActive()
+    {
+        myImage.sprite = activeSprites[currentSprite];
 
+    }
+
+    void UpdateDecay()
+    {
+        myImage.sprite = boneySprites[currentSprite];
+
+    }
 }
