@@ -29,15 +29,15 @@ public class HeartsShowDamage : MonoBehaviour
         rightText.text = "";
     }
 
-    void TakeDamage(int damage)
+    void TakeDamage(int damage, int playerID)
     {
-        if (Camera.main.GetComponent<CameraScript>().isPlayerOne == true)
+        if (playerID == 1)
         {
             leftText.text = damage.ToString();
             leftText.color = damageColor;
             StartCoroutine("ReturnLeftToNull");
         }
-        else
+        else //player  id = 0, meaning player1
         {
             rightText.text = damage.ToString();
             rightText.color = damageColor;

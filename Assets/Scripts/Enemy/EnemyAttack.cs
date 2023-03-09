@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public delegate void attackPlayer(int damage);
+    public delegate void attackPlayer(int damage, int playerID);
     public static event attackPlayer OnAttackPlayer;
 
     [SerializeField] NavMeshAgent myAgent;
@@ -55,12 +55,32 @@ public class EnemyAttack : MonoBehaviour
         walkingSpeed = myAgent.speed;
         acceleration = myAgent.acceleration;
     }
+
+    int playerID;
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.tag == "Player")
         {
+            if(collision.gameObject.GetComponent<HealthManager>().isPlayerOne == true)
+            {
+                playerID = 0;
+            }
+            else
+            {
+                playerID = 1;
+            }
+           
             isAttacking = true;
             StartCoroutine("Attacking");
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            isAttacking = true;
+
         }
     }
 
@@ -69,8 +89,7 @@ public class EnemyAttack : MonoBehaviour
         
         while (isAttacking == true)
         {
-            Camera.main.GetComponent<HealthReferences>().TakeDamage(damageAmount);
-            OnAttackPlayer(damageAmount);
+            OnAttackPlayer(damageAmount, playerID);
 
 
             myAnimationController.Attack();

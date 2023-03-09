@@ -115,7 +115,6 @@ public class PlayerAnimator : MonoBehaviour
         }
         if (MyDinosHealth.isDead == true)
         {
-            Debug.Log("dino has died");
             MyDinoAnimator.SetBool("isDead", true);
             //MyDinoAnimator.StopPlayback();
             MyDinoAnimator.Play("Death");

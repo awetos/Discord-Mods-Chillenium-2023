@@ -10,6 +10,15 @@ public class HealthReferences : MonoBehaviour
     [SerializeField]
     HealthManager player2health;
 
+    private void OnEnable()
+    {
+        EnemyAttack.OnAttackPlayer += TakeDamageFromEnemy;
+    }
+
+    private void OnDisable()
+    {
+        EnemyAttack.OnAttackPlayer -= TakeDamageFromEnemy;
+    }
     public void TakeDamage(int damage)
     {
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne)
@@ -22,6 +31,17 @@ public class HealthReferences : MonoBehaviour
         }
     }
 
+    public void TakeDamageFromEnemy(int damage, int playerID)
+    {
+        if(playerID == 0)
+        {
+            player1health.TakeDamage(damage);
+        }
+        else
+        {
+            player2health.TakeDamage(damage);
+        }
+    }
     public delegate void UpdateHealText(int healingAmount);
     public static event UpdateHealText OnUpdateHealText;
     public void AddHealth(int healingAmount)
