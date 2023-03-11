@@ -35,8 +35,12 @@ public class EnemyAnimationController : MonoBehaviour
     }
     public void Attack()
     {
-        myAnimator.SetBool("isAttacking", true);
-        StartCoroutine("ResetAttack");
+        if (isDead == false)
+        {
+
+            myAnimator.SetBool("isAttacking", true);
+            StartCoroutine("ResetAttack");
+        }
     }
 
     public bool GetIsPlayingDeathAnimation()

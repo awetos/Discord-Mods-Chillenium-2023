@@ -61,15 +61,9 @@ public class EnemyAttack : MonoBehaviour
     {
         if(collision.collider.tag == "Player")
         {
-            if(collision.gameObject.GetComponent<HealthManager>().isPlayerOne == true)
-            {
-                playerID = 0;
-            }
-            else
-            {
-                playerID = 1;
-            }
-           
+
+            playerID = collision.gameObject.GetComponent<HealthManager>().PlayerID;
+            Debug.Log("attacking player: " + playerID);
             isAttacking = true;
             StartCoroutine("Attacking");
         }

@@ -8028,8 +8028,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 1
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 5045560366240639960}
+  player2: {fileID: 6165088273259185787}
 --- !u!114 &1310824947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9684,7 +9684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHeartHalf: {fileID: 329621225}
   MAX_HEALTH: 34
-  PlayerID: 0
+  PlayerID: 1
   deathScreen: {fileID: 320092467}
   isDead: 0
   percent: 0
@@ -10373,7 +10373,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &6165088273259185785
 GameObject:

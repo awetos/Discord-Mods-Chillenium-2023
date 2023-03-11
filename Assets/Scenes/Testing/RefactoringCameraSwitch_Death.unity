@@ -1334,10 +1334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ea2c28677b62c4dac86592492c16c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 535541316}
-  leaderboardTxt: {fileID: 457977774}
-  gameover: {fileID: 320092465}
-  deathScreen: {fileID: 879743571}
 --- !u!1 &325446008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1569,7 @@ GameObject:
   - component: {fileID: 457977775}
   - component: {fileID: 457977774}
   m_Layer: 5
-  m_Name: Leader
+  m_Name: Best Time (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1709,7 +1705,7 @@ GameObject:
   - component: {fileID: 535541314}
   - component: {fileID: 535541316}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: Current Time (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8028,8 +8024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 1
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 5045560366240639960}
+  player2: {fileID: 6165088273259185787}
 --- !u!114 &1310824947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9684,8 +9680,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHeartHalf: {fileID: 329621225}
   MAX_HEALTH: 34
-  PlayerID: 0
-  deathScreen: {fileID: 320092467}
+  isPlayerOne: 0
+  deathScreen: {fileID: 879743571}
+  timer: {fileID: 535541316}
+  leaderboardTxt: {fileID: 457977774}
+  gameover: {fileID: 320092465}
+  aimer: {fileID: 471015088444999227}
+  fister: {fileID: 354324179}
   isDead: 0
   percent: 0
 --- !u!82 &2436689346121987217
@@ -10141,8 +10142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHeartHalf: {fileID: 67760508}
   MAX_HEALTH: 34
-  PlayerID: 0
-  deathScreen: {fileID: 320092467}
+  isPlayerOne: 1
+  deathScreen: {fileID: 879743571}
+  timer: {fileID: 535541316}
+  leaderboardTxt: {fileID: 457977774}
+  gameover: {fileID: 320092465}
+  aimer: {fileID: 471015088444999227}
+  fister: {fileID: 354324179}
   isDead: 0
   percent: 0
 --- !u!114 &5045560366240639960

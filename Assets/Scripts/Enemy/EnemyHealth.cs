@@ -70,8 +70,7 @@ public class EnemyHealth : MonoBehaviour
     void DisableEnemy()
     {
         myCollider.enabled = false;
-
-            myController.Die(); 
+        myController.Die(); 
         
     }
 

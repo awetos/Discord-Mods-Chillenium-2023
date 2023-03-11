@@ -56,6 +56,7 @@ public class ThrowableHeart : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerMovement>().enabled == false)
             {
                 Camera.main.GetComponent<CameraScript>().switchPlayer();
+                Destroy(this.gameObject);
             }
         }
         else if (other.CompareTag("Enemy"))
