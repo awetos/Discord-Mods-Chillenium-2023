@@ -31,12 +31,17 @@ public class EnemyAnimationController : MonoBehaviour
     {
         myAnimator.SetBool("resetEnemy", enemyResetState);
         myAnimator.SetBool("isDead", false);//now the sprite will appear again.
+        isDead = false;
 
     }
     public void Attack()
     {
-        myAnimator.SetBool("isAttacking", true);
-        StartCoroutine("ResetAttack");
+        if (isDead == false)
+        {
+
+            myAnimator.SetBool("isAttacking", true);
+            StartCoroutine("ResetAttack");
+        }
     }
 
     public bool GetIsPlayingDeathAnimation()
@@ -105,11 +110,15 @@ public class EnemyAnimationController : MonoBehaviour
         {
             // Get the NavMeshAgent component attached to the object
            
-            Vector3 velocity = agent.velocity;
+            //Vector3 velocity = agent.velocity;
 
-            Vector3 forward = transform.forward;
+           // Vector3 forward = transform.forward;
 
-            cross = Vector3.Cross(velocity, forward);
+            Vector3 origin = agent.transform.position;
+            Vector3 destination = agent.destination;
+
+            cross = destination - origin;
+            //cross = Vector3.Cross(velocity, forward);
 
             if (cross.x > 0.3 || cross.x < -0.3)
             {

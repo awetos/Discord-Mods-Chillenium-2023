@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   
+    public delegate void BulletContact(Vector3 position);
+    public static event BulletContact OnBulletContact;
 
     // Start is called before the first frame update
     private Vector3 directionToTravel;
@@ -56,7 +57,10 @@ public class Bullet : MonoBehaviour
             {
 				ass.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
-                GameObject.FindObjectOfType<NumbersCanvas>().CreateAttackText(other.transform.position, 100);
+
+
+
+                OnBulletContact(transform.position);
             }
            
 
