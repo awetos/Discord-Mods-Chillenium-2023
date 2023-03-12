@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
+using static PlayerAnimator;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class PlayerAnimator : MonoBehaviour
         }
 
     public Player currentDino;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +57,45 @@ public class PlayerAnimator : MonoBehaviour
     private void OnEnable()
     {
         CameraScript.OnPlayerSwitched += OnPlayerSwitched;
+        EnemyAttack.OnAttackPlayer += AnimateHurt;
     }
     private void OnDisable()
     {
         CameraScript.OnPlayerSwitched -= OnPlayerSwitched;
+        EnemyAttack.OnAttackPlayer -= AnimateHurt;
     }
+
+    bool isHurt;
+    [SerializeField] Material mat_hurt_color;
+    [SerializeField] Material default_sprite_material;
+
+    void AnimateHurt(int damageAmount, int playerID)
+    {
+        Debug.Log("I am hurt: " + (int) currentDino);
+        if((int)currentDino == playerID)
+        {
+            Debug.Log("starting coroutine...");
+            isHurt = true;
+            StartCoroutine("HurtCountdown");
+
+          
+        }
+    }
+
+    IEnumerator HurtCountdown()
+    {
+        spriteRenderer.material = mat_hurt_color;
+        //show hurt for 5 frames.
+        for (int i = 0; i < 5; i++)
+        {
+
+            yield return new WaitForEndOfFrame();
+        }
+        spriteRenderer.material = default_sprite_material;
+        isHurt = false;
+        yield return new WaitForEndOfFrame();
+    }
+
     void OnPlayerSwitched(int isPlayerOne)
     {
       

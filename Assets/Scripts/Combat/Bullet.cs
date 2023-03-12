@@ -57,7 +57,6 @@ public class Bullet : MonoBehaviour
             {
 				ass.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
-                GameObject.FindObjectOfType<NumbersCanvas>().CreateAttackText(other.transform.position, 100);
 
 
 

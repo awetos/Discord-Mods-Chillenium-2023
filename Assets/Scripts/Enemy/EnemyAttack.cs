@@ -69,15 +69,6 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
-            isAttacking = true;
-
-        }
-    }
-
     IEnumerator Attacking()
     {
         
@@ -85,7 +76,7 @@ public class EnemyAttack : MonoBehaviour
         {
             OnAttackPlayer(damageAmount, playerID);
 
-
+            Debug.Log("is attacking");
             myAnimationController.Attack();
             myAgent.speed = 0;
             myAgent.acceleration = 0;
@@ -98,7 +89,11 @@ public class EnemyAttack : MonoBehaviour
         myAgent.acceleration = acceleration;
         myAgent.speed = walkingSpeed;
     }
-
+    public void StopAttacking()
+    {
+        isAttacking = false;
+        Debug.Log("stop attackin");
+    }
 
     private void OnCollisionExit()
     {

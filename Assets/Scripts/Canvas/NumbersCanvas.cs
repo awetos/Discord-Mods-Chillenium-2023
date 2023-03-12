@@ -18,10 +18,12 @@ public class NumbersCanvas : MonoBehaviour
     private void OnEnable()
     {
         EnemyHealth.OnEnemyTakeDamage += CreateAttackText;
+        HealthManager.OnTakeDamage += CreateTakeDamage;
     }
     private void OnDisable()
     {
         EnemyHealth.OnEnemyTakeDamage -= CreateAttackText;
+        HealthManager.OnTakeDamage -= CreateTakeDamage;
     }
     // Start is called before the first frame update
     void Start()
@@ -97,7 +99,12 @@ public class NumbersCanvas : MonoBehaviour
     public void CreateAttackText(Vector3 _location, int damage)
     {
        GameObject go =  Instantiate(AttackTextPrefab, this.transform);
-        go.GetComponent<AttackText>().SetLocation(Get2DPosition(_location));
+
+
+        Vector3 offsetLoc = new Vector3(_location.x, _location.y, _location.z + 1f);
+
+
+        go.GetComponent<AttackText>().SetLocation(Get2DPosition(offsetLoc));
         go.GetComponent<AttackText>().SetText(damage.ToString());
     }
 
@@ -105,7 +112,11 @@ public class NumbersCanvas : MonoBehaviour
     public void CreateCoinText(Transform _location, int coinsdropped)
     {
         GameObject go = Instantiate(CoinTextPrefab, this.transform);
-        go.GetComponent<CoinsText>().SetLocation(Get2DPosition(_location.position));
+
+        Vector3 offsetLoc = new Vector3(_location.position.x, _location.position.y, _location.position.z + 1f);
+
+
+        go.GetComponent<CoinsText>().SetLocation(Get2DPosition(offsetLoc));
         string coins = "+ " + coinsdropped.ToString() + " health";
         go.GetComponent<CoinsText>().SetText(coins);
     }

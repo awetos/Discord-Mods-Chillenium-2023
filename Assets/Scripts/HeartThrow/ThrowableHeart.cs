@@ -56,8 +56,10 @@ public class ThrowableHeart : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerMovement>().enabled == false)
             {
                 Camera.main.GetComponent<CameraScript>().switchPlayer();
+                OnEnableThrowingHeart(true);
                 Destroy(this.gameObject);
             }
+            return;
         }
         else if (other.CompareTag("Enemy"))
         {
@@ -65,6 +67,16 @@ public class ThrowableHeart : MonoBehaviour
 
             Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
             Destroy(this.gameObject);
+        }
+        else
+        {
+            if (other.CompareTag("NavMeshObstacle"))
+            {
+               
+                //hit a navmesh obstacle.
+                Debug.Log("encountered obstacle.");
+                directionToTravel = directionToTravel * -1;
+            }
         }
     }
 

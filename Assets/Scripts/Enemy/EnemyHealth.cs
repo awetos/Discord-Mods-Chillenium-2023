@@ -70,6 +70,7 @@ public class EnemyHealth : MonoBehaviour
     void DisableEnemy()
     {
         myCollider.enabled = false;
+        attackscript.StopAttacking();
         myController.Die(); 
         
     }

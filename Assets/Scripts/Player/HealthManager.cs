@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using static UnityEditor.FilePathAttribute;
 
 public class HealthManager : MonoBehaviour{
 	public delegate void deathdelegate(int PlayerID);
 	public static event deathdelegate OnPlayerDeath;
+
+    public delegate void takeDamage( Transform _location, int damagedealt);
+    public static event takeDamage OnTakeDamage;
+
 
     [SerializeField] HeartAnimationManager myHeartHalf;
     public int MAX_HEALTH;
@@ -39,10 +44,19 @@ public class HealthManager : MonoBehaviour{
         isDead = false;
     }
 
+	//does not call the attack text.
 	public void reduceHealth(){
-		TakeDamage(1);
-		
-	}
+        health -= 1;
+
+        if (health <= 0)
+        {
+            Death();
+        }
+
+        percent = ((float)health) / ((float)MAX_HEALTH);
+        myHeartHalf.UpdateCurrentSpriteFromPercent(percent);
+
+    }
 	
 	//space reduces player health for testing purposes
 	void Update() {
@@ -85,6 +99,7 @@ public class HealthManager : MonoBehaviour{
 	{
 		health -= damage;
 
+		OnTakeDamage( transform, damage);
 		if(health <= 0)
 		{
 			Death();
