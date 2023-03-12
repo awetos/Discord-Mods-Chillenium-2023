@@ -7,7 +7,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public delegate void EnemyDied(int enemyID);
     public static event EnemyDied OnEnemyDeath;
-    public int health = 100;
+    public int MAX_HEALTH;
+    public int health;
 
     public int enemyID;
 
@@ -32,16 +33,29 @@ public class EnemyHealth : MonoBehaviour
             myCollider = GetComponent<Collider>();
         }
        
+        if(MAX_HEALTH == 0)
+        {
+            MAX_HEALTH = 100;
+        }
+        health = MAX_HEALTH;
     }
-
+    [Header("Damage Settings")]
+    [SerializeField] HealthBar healthBar;
     public void TakeDamage(int damage)
     {
+        if(health == MAX_HEALTH)
+        {
+            healthBar.MakeBarAppear();
+        }
         health -= damage;
         OnEnemyTakeDamage(this.transform.position, damage);
         if(health <= 0)
         {
+            isHurt = true;
+            StartCoroutine("PushBack");
+            StartCoroutine("resetHurt");
 
-            if(this.gameObject.activeInHierarchy == false)
+            if (this.gameObject.activeInHierarchy == false)
             {
 
             }
@@ -49,20 +63,26 @@ public class EnemyHealth : MonoBehaviour
             {
                 DisableEnemy();
                 deathLocation = transform.position;
-               // StartCoroutine("DelayedSetActive");
             }
-
-
 
             DropCollectible();
 
             lockMovement = true;
 
-            //StartCoroutine("ResetHoldBool");
-
             OnEnemyDeath(enemyID);
 
             StartCoroutine("DoNotMove");
+        }
+        else
+        {
+            float percent = (float)health / (float)MAX_HEALTH;
+
+            healthBar.DecreaseHealth(percent);
+            myController.Hurt();
+
+            isHurt = true;
+            StartCoroutine("PushBack");
+            StartCoroutine("resetHurt");
         }
     }
 
@@ -70,25 +90,73 @@ public class EnemyHealth : MonoBehaviour
     void DisableEnemy()
     {
         myCollider.enabled = false;
+        healthBar.Disappear();
+
+
         attackscript.StopAttacking();
-        myController.Die(); 
-        
+        myController.Die();
+      
     }
 
     //called by enemy spawner.
     public void ResetEnemy()
     {
+        StopAllCoroutines();
+        isHurt = false;
         myCollider.enabled = true;
         myController.ResetEnemyAfterDeath(true);
         lockMovement = false;
-        health = 100;
+        health = MAX_HEALTH;
+
+
+        healthBar.ResetHealthBar();
     }
 
-    public bool lockMovement;
-    IEnumerator ResetHoldBool()
+     bool lockMovement;
+
+     bool isHurt;
+    IEnumerator PushBack()
     {
-        yield return new WaitForSeconds(1.25f);
-        lockMovement = false;
+        Vector3 previousDirection = myEnemyAgent.velocity * -1.5f;
+
+        for (int i = 0; i < FramesToMoveBack; i++)
+        {
+            myEnemyAgent.velocity = previousDirection;
+            if (isHurt == false)
+            {
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+
+        }
+
+
+
+        while(isHurt == true)
+        {
+            myEnemyAgent.velocity = previousDirection * 0.3f; //slow down
+            if (isHurt == false)
+            {
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+    public int FramesToMoveBack = 20;
+    public int FramesToHurtTotal = 80;
+
+    IEnumerator resetHurt()
+    {
+        isHurt = true;
+
+        for(int i = 0; i < FramesToHurtTotal; i++)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        isHurt = false;
     }
 
     IEnumerator DoNotMove()
@@ -102,12 +170,7 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForEndOfFrame();
         //ResetEnemy();
     }
-    IEnumerator DelayedSetActive()
-    {
-        yield return new WaitForSeconds(0.5f);
 
-        transform.gameObject.SetActive(false);
-    }
     
     void DropCollectible()
     {

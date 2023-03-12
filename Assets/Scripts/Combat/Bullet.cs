@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
         //OriginalPosition = transform.position;
         //currentX = OriginalPosition.x;
         //currentZ = OriginalPosition.z;
-
         StartCoroutine("BulletCountdown");
     }
 
@@ -48,6 +47,8 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    [SerializeField] SpriteRenderer m_sprite;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -55,14 +56,17 @@ public class Bullet : MonoBehaviour
             Debug.Log("I've hit an enemy!");
             if (other.gameObject.GetComponent<EnemyHealth>()!= null)
             {
+                StopAllCoroutines();//stop the countdown to make sure you grab their component and take damage.
 				ass.Play();
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
 
-
+                m_sprite.enabled = false;
 
                 OnBulletContact(transform.position);
+               
+
             }
-           
+
 
         }
     }

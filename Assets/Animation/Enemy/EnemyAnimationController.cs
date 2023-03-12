@@ -23,9 +23,62 @@ public class EnemyAnimationController : MonoBehaviour
         myAnimator.SetBool("isDead", true);
         myAnimator.SetBool("resetEnemy", false);
         myAnimator.Play("Enemy_Die");
+        StopAllCoroutines();
         StartCoroutine("PlayDeathAnimationInFull");
     }
 
+   bool isHurt;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Material default_material;
+    [SerializeField] Material hurt_material;
+    public void Hurt()
+    {
+        spriteRenderer.material = default_material;
+        isHurt = true;
+        StartCoroutine("HurtBool");
+        StartCoroutine("FlashWhenHurt");
+    }
+    IEnumerator HurtBool()
+    {
+        yield return new WaitForSeconds(1f);
+        isHurt = false;
+    }
+    IEnumerator FlashWhenHurt()
+    {
+        while(isHurt == true)
+        {
+
+            for (int i = 0; i < 15; i++)
+            {
+                spriteRenderer.material = hurt_material;
+
+                if(isHurt == false)
+                {
+                    break;
+                }
+                yield return new WaitForEndOfFrame();
+
+            }
+            for (int i = 0; i < 15; i++)
+            {
+                spriteRenderer.material = default_material;
+                if (isHurt == false)
+                {
+                    break;
+                }
+                yield return new WaitForEndOfFrame();
+
+            }
+            if (isHurt == false)
+            {
+                break;
+            }
+        }
+
+
+        yield return new WaitForEndOfFrame();
+        spriteRenderer.material = default_material;
+    }
 
     public void ResetEnemyAfterDeath(bool enemyResetState) //will be determined by enemy spawner.
     {

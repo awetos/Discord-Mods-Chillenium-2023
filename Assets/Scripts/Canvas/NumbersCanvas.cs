@@ -101,7 +101,7 @@ public class NumbersCanvas : MonoBehaviour
        GameObject go =  Instantiate(AttackTextPrefab, this.transform);
 
 
-        Vector3 offsetLoc = new Vector3(_location.x, _location.y, _location.z + 1f);
+        Vector3 offsetLoc = new Vector3(_location.x, _location.y, _location.z + 0.2f);
 
 
         go.GetComponent<AttackText>().SetLocation(Get2DPosition(offsetLoc));
@@ -113,7 +113,7 @@ public class NumbersCanvas : MonoBehaviour
     {
         GameObject go = Instantiate(CoinTextPrefab, this.transform);
 
-        Vector3 offsetLoc = new Vector3(_location.position.x, _location.position.y, _location.position.z + 1f);
+        Vector3 offsetLoc = new Vector3(_location.position.x, _location.position.y, _location.position.z + 0.2f);
 
 
         go.GetComponent<CoinsText>().SetLocation(Get2DPosition(offsetLoc));
