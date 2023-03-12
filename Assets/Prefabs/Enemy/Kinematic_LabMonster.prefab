@@ -263,6 +263,9 @@ MonoBehaviour:
   mySprite: {fileID: 5285030179359827726}
   myEnemy: {fileID: 1775035626338813324}
   agent: {fileID: 189848241022683578}
+  spriteRenderer: {fileID: 5285030179359827726}
+  default_material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  hurt_material: {fileID: 2100000, guid: 3077a1ea56989784dbf95dd582f8a3b9, type: 2}
   cross: {x: 0, y: 0, z: 0}
 --- !u!1 &6051124927523265116
 GameObject:

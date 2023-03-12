@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public delegate void EnemyDied(int enemyID);
     public static event EnemyDied OnEnemyDeath;
-    public int health = 100;
+    public int health;
 
     public int enemyID;
 
@@ -32,6 +32,10 @@ public class EnemyHealth : MonoBehaviour
             myCollider = GetComponent<Collider>();
         }
        
+        if(health == 0)
+        {
+            health = 100;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -49,20 +53,19 @@ public class EnemyHealth : MonoBehaviour
             {
                 DisableEnemy();
                 deathLocation = transform.position;
-               // StartCoroutine("DelayedSetActive");
             }
-
-
 
             DropCollectible();
 
             lockMovement = true;
 
-            //StartCoroutine("ResetHoldBool");
-
             OnEnemyDeath(enemyID);
 
             StartCoroutine("DoNotMove");
+        }
+        else
+        {
+            myController.Hurt();
         }
     }
 
