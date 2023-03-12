@@ -142,53 +142,79 @@ public class PlayerAnimator : MonoBehaviour
         }
         
     }
+
+    bool isAttacking = false;
     private void Update()
     {
-		if (Input.GetMouseButtonDown(0) && isActivePlayer)
-        {
-			MyDinoAnimator.Play("Attack");
-            
-            Debug.Log("attacking");
-			StartCoroutine(AttackDelay());
-        }
         if (MyDinosHealth.isDead == true)
         {
             MyDinoAnimator.SetBool("isDead", true);
-            //MyDinoAnimator.StopPlayback();
             MyDinoAnimator.Play("Death");
 
         }
         else
         {
-           
 
-            if (isActivePlayer == false)
+
+
+            if (Input.GetMouseButtonDown(0) && isActivePlayer)
             {
-                MyDinoAnimator.SetBool("idling", true);
-            }
-            else
-            {
-                GetMouseLocation();
-                if (isFacingLeft == true)
+               
+                
+                if (isAttacking == true)
                 {
-                    spriteRenderer.flipX = true;
+                    //if you are already attacking do nothing.
                 }
                 else
                 {
-                    spriteRenderer.flipX = false;
+                    isAttacking = true;
+                    MyDinoAnimator.SetBool("Attack", true);
+                    MyDinoAnimator.Play("Attack");
+
                 }
+               
             }
 
-            SetMovement();
+            else
+            {
+
+
+                if (isActivePlayer == false)
+                {
+                    MyDinoAnimator.SetBool("idling", true);
+                }
+                else
+                {
+                    GetMouseLocation();
+                    if (isFacingLeft == true)
+                    {
+                        spriteRenderer.flipX = true;
+                    }
+                    else
+                    {
+                        spriteRenderer.flipX = false;
+                    }
+                }
+
+                SetMovement();
+            }
+
         }
+
        
        
     }
+
+    //called from the animation clip itself. Very cool!
+    public void ResetAttackFromClip()
+    {
+        Debug.Log("reset attack was called from the end of the animation clip.");
+        MyDinoAnimator.SetBool("Attack", false);
+        isAttacking = false;
+    }
 	IEnumerator AttackDelay(){
         yield return new WaitForEndOfFrame();
-        while (MyDinoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        yield return new WaitForEndOfFrame();
-		MyDinoAnimator.SetBool("Attack", false);
+
 
 	}
     void FixedUpdate()

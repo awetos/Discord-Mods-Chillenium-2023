@@ -1768,6 +1768,9 @@ MonoBehaviour:
   mySprite: {fileID: 552970030}
   myEnemy: {fileID: 1027414137}
   agent: {fileID: 1027414139}
+  spriteRenderer: {fileID: 0}
+  default_material: {fileID: 0}
+  hurt_material: {fileID: 0}
   cross: {x: 0, y: 0, z: 0}
 --- !u!212 &552970030
 SpriteRenderer:
@@ -7448,6 +7451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d468b2457c9b340ac31feae58d8757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_HEALTH: 0
   health: 100
   enemyID: 0
   testtubePrefab: {fileID: 8274664339201074248, guid: c5d9f6ecaede61741bcca586d6e30429, type: 3}
@@ -7455,7 +7459,9 @@ MonoBehaviour:
   myCollider: {fileID: 1027414142}
   myController: {fileID: 552970029}
   myEnemyAgent: {fileID: 1027414139}
-  lockMovement: 0
+  healthBar: {fileID: 0}
+  FramesToMoveBack: 20
+  FramesToHurtTotal: 80
 --- !u!114 &1027414141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9373,7 +9379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &166609251318005989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10212,6 +10218,18 @@ PrefabInstance:
     - target: {fileID: 1775035626338813324, guid: 6fcd5b44b8b8053419f6a4e908864820, type: 3}
       propertyPath: m_Name
       value: Kinematic_LabMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222650847391161528, guid: 6fcd5b44b8b8053419f6a4e908864820, type: 3}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222650847391161528, guid: 6fcd5b44b8b8053419f6a4e908864820, type: 3}
+      propertyPath: MAX_HEALTH
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222650847391161528, guid: 6fcd5b44b8b8053419f6a4e908864820, type: 3}
+      propertyPath: FramesToHurt
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5852796863566664336, guid: 6fcd5b44b8b8053419f6a4e908864820, type: 3}
       propertyPath: player1Position

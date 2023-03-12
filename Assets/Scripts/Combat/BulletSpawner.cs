@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletSpawner : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class BulletSpawner : MonoBehaviour
 
     bool canShoot = true;
 
-
     private void Shoot()
     {
         if (canShoot)
@@ -32,6 +32,10 @@ public class BulletSpawner : MonoBehaviour
             myBullet.transform.SetParent(transform.parent.parent);//move it to root
             myBullet.transform.position = transform.position;
             myBullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
+
+
+
+
             myBullet.GetComponent<Bullet>().SetDirection(new Vector3(0, myBullet.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
 
         }

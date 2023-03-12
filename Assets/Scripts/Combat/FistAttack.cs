@@ -67,6 +67,17 @@ public class FistAttack : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            if (currentEnemy == null)
+            {
+                currentEnemy = other.gameObject;
+            }
+        }
+    }
+
     public int damageAmount;
     private void OnTriggerExit(Collider other)
     {

@@ -92,7 +92,6 @@ public class EnemyAttack : MonoBehaviour
     public void StopAttacking()
     {
         isAttacking = false;
-        Debug.Log("stop attackin");
     }
 
     private void OnCollisionExit()
