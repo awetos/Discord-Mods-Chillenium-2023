@@ -23,6 +23,11 @@ public class PlayerProfile : MonoBehaviour
     {
         HealthManager.OnPlayerDeath -= OnDeath;
     }
+
+    public Vector3 GetPosition()
+    {
+        return m_rigidbody.position;
+    }
     public void SetPlayerInactive()
     {
         m_rigidbody.constraints = RigidbodyConstraints.FreezeAll;

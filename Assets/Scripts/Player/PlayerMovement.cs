@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour{
 	
 	void FixedUpdate() {
 
+		//try cinemachine.
 		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position, cameraSmoothness)+cameraOffset;//smoothly follow player
 
 		float hor = Input.GetAxisRaw("Horizontal");//get left right movement input
