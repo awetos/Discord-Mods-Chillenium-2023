@@ -49,7 +49,7 @@ public class HeartThrow : MonoBehaviour
     {
         canThrowHeart = b;
     }
-
+    [SerializeField] Camera myCam;
 	private void FixedUpdate(){
         Vector3 mousePos = Input.mousePosition;
 

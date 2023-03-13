@@ -6,13 +6,10 @@ public class PlayerMovement : MonoBehaviour{
     public float speed;//player move speed
 	[SerializeField] Vector3 cameraOffset;//camera movement offset from player position
 	[SerializeField] float cameraSmoothness;//camera movement smoothness
-	[SerializeField] private CameraScript camScript;
 	public bool canMove;
 	
 	void FixedUpdate() {
 
-		//try cinemachine.
-		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position, cameraSmoothness)+cameraOffset;//smoothly follow player
 
 		float hor = Input.GetAxisRaw("Horizontal");//get left right movement input
 		float ver = Input.GetAxisRaw("Vertical");//get up down movement input

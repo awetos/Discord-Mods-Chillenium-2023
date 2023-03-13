@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
                 other.gameObject.GetComponent<EnemyHealth>().TakeDamage(100);
 
                 m_sprite.enabled = false;
-
+                StartCoroutine("BulletCountdown");
                 OnBulletContact(transform.position);
                
 

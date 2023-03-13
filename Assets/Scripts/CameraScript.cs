@@ -17,15 +17,10 @@ public class CameraScript : MonoBehaviour{
     [SerializeField] private PlayerProfile player1;
     [SerializeField] private PlayerProfile player2;
 
-	private void Start()
-	{
-        //at the start of the game, player two should be dying because he is not active.
-        
-
-    }
 
     public float distance;
     [SerializeField] CinemachineTargetGroup ctg;
+    [SerializeField] float MAX_WEIGHT = 50f;
     private void Update()
     {
         CalculateDistance();
@@ -38,46 +33,113 @@ public class CameraScript : MonoBehaviour{
     {
         distance = Vector3.Distance(player1.transform.position, player2.transform.position);
 
-        /*
-        if(distance / 2f > 2)
+        if(distance > DISTANCE_CONSTANT) //if oyu are getting too far, start prioritizing seeing the other one!
         {
-            Camera.main.orthographicSize = distance / 2f;
+            StopCoroutine("SlowlyZoomIn");
+            StartCoroutine("SlowlyPanCamera");
         }
         else
         {
-            Camera.main.orthographicSize = 2f;
+            Debug.Log("considering zoom in");
+            StopCoroutine("SlowlyPanCamera");
+            if(PlayerSwitchInProgress == false)
+            {
+                Debug.Log(" zoom in initiated.");
+                StartCoroutine("SlowlyZoomIn");
+
+            }
+           
         }
-        */
-              if(distance > DISTANCE_CONSTANT) //if oyu are getting too far, start prioritizing seeing the other one!
+       
+      
+    }
+    //add weight to the active player target.
+    IEnumerator SlowlyZoomIn()
+    {
+        while(distance < DISTANCE_CONSTANT && PlayerSwitchInProgress == false)
         {
+
+
             if (isPlayerOne)
             {
-               
-                ctg.m_Targets[1].weight = distance;
-                Camera.main.orthographicSize = 3f;
+                ctg.m_Targets[1].weight -= 0.1f;
+                if (ctg.m_Targets[1].weight < 1)
+                {
+                    ctg.m_Targets[1].weight = 1f;
+                }
+
+
+                ctg.m_Targets[0].weight += 0.1f;
+                if(ctg.m_Targets[0].weight > MAX_WEIGHT)
+                {
+                    ctg.m_Targets[0].weight = MAX_WEIGHT;
+                }
             }
             else
             {
-               
-                ctg.m_Targets[0].weight = distance;
-                Camera.main.orthographicSize = 3f;
+                ctg.m_Targets[0].weight -= 0.1f;
+                
+                if(ctg.m_Targets[0].weight < 1)
+                {
+                    ctg.m_Targets[0].weight = 1f;
+                }
+
+                ctg.m_Targets[0].weight -= 0.1f;
+
+
+                if (ctg.m_Targets[1].weight > MAX_WEIGHT)
+                {
+                    ctg.m_Targets[1].weight = MAX_WEIGHT;
+                }
             }
+
+
+            Camera.main.orthographicSize = DISTANCE_MULTIPLIER_CAMERA * distance;
+            if (Camera.main.orthographicSize < 2)
+            {
+                Camera.main.orthographicSize = 2;
+            }
+            yield return new WaitForSeconds(0.2f);
         }
-        else
+    }
+    [SerializeField]bool PlayerSwitchInProgress;
+    [SerializeField] float DISTANCE_MULTIPLIER_CAMERA = 0.8f;
+    //add weight to the further target.
+    IEnumerator SlowlyPanCamera()
+    {
+        while (distance > DISTANCE_CONSTANT)
         {
+            //add 0.1 to the weight
             if (isPlayerOne)
             {
-                ctg.m_Targets[0].weight = 5;
-                ctg.m_Targets[1].weight = 0;
+                ctg.m_Targets[1].weight += 0.1f; //slowly add to player 2
+                if (ctg.m_Targets[1].weight > MAX_WEIGHT)
+                {
+                    ctg.m_Targets[1].weight = MAX_WEIGHT;
+                }
+               
+
             }
             else
             {
-                ctg.m_Targets[1].weight = 5;
-                ctg.m_Targets[0].weight = 0;
+                ctg.m_Targets[0].weight += 0.1f; //slowly add to player 1
+                if(ctg.m_Targets[0].weight > MAX_WEIGHT)
+                {
+                    ctg.m_Targets[0].weight = MAX_WEIGHT;
+                }
+
+
             }
+          
+
+            Camera.main.orthographicSize = DISTANCE_MULTIPLIER_CAMERA * distance;
+            if(Camera.main.orthographicSize > 4)
+            {
+                Camera.main.orthographicSize = 4;
+            }
+            yield return new WaitForSeconds(0.2f);
         }
-      
-      
+        yield return new WaitForEndOfFrame();
     }
     public void switchPlayer() {
 		
@@ -103,24 +165,42 @@ public class CameraScript : MonoBehaviour{
 
         }
 
+        StopAllCoroutines();
+        PlayerSwitchInProgress = true;
+        StartCoroutine("QuicklyZoomIn");
 
-	}
+
+
+    }
     [SerializeField] Vector3 cameraOffset;//camera movement offset from player position
     [SerializeField] float cameraSmoothness;//camera movement smoothness
-    void FixedUpdate()
-    {
-        Vector3 position;
-        if(isPlayerOne)
-        {
-             position = player1.GetPosition();
-        }
-        else
-        {
-            position = player2.GetPosition();
-        }
-        //try cinemachine.
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, position, cameraSmoothness) + cameraOffset;//smoothly follow player
+   
 
-       
+    IEnumerator QuicklyZoomIn()
+    {
+        //make the weight of the active player five times that of the other.
+        for (int i = 0; i < 20; i++)
+        {
+            if (isPlayerOne)
+            {
+                ctg.m_Targets[0].weight += 1f;
+                ctg.m_Targets[1].weight = 1f;
+
+            }
+            else
+            {
+
+                ctg.m_Targets[0].weight = 1f;
+                ctg.m_Targets[1].weight += 1f; ;
+
+            }
+            yield return new WaitForEndOfFrame();
+            Debug.Log("i"+i);
+        }
+      
+        PlayerSwitchInProgress = false;
+        yield return new WaitForEndOfFrame();
+
+
     }
 }
