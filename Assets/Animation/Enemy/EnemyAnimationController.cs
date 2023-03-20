@@ -84,6 +84,8 @@ public class EnemyAnimationController : MonoBehaviour
     {
         myAnimator.SetBool("resetEnemy", enemyResetState);
         myAnimator.SetBool("isDead", false);//now the sprite will appear again.
+        spriteRenderer.material = default_material;
+        isHurt = false;
         isDead = false;
 
     }

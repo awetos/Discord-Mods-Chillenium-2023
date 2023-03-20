@@ -99,11 +99,11 @@ public class CameraScript : MonoBehaviour{
             {
                 Camera.main.orthographicSize = 2;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForEndOfFrame();
         }
     }
     [SerializeField]bool PlayerSwitchInProgress;
-    [SerializeField] float DISTANCE_MULTIPLIER_CAMERA = 0.8f;
+    [SerializeField] float DISTANCE_MULTIPLIER_CAMERA = 0.7f;
     //add weight to the further target.
     IEnumerator SlowlyPanCamera()
     {
@@ -137,7 +137,7 @@ public class CameraScript : MonoBehaviour{
             {
                 Camera.main.orthographicSize = 4;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForEndOfFrame();
         }
         yield return new WaitForEndOfFrame();
     }

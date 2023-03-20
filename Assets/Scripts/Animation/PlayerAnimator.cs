@@ -71,7 +71,6 @@ public class PlayerAnimator : MonoBehaviour
 
     void AnimateHurt(int damageAmount, int playerID)
     {
-        Debug.Log("I am hurt: " + (int) currentDino);
         if((int)currentDino == playerID)
         {
             Debug.Log("starting coroutine...");
