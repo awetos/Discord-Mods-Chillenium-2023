@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.Networking;
 using static PlayerAnimator;
@@ -18,14 +19,18 @@ public class PlayerAnimator : MonoBehaviour
     public enum Player{
         player1,
         player2
-        }
+    }
 
     public Player currentDino;
+	
+	Playercontrols controls;
 
-    
 
-    // Start is called before the first frame update
-    void Start()
+	private void Awake() {
+		controls = new Playercontrols();
+	}
+	// Start is called before the first frame update
+	void Start()
     {
         isFacingLeft = false;
 
@@ -58,11 +63,13 @@ public class PlayerAnimator : MonoBehaviour
     {
         CameraScript.OnPlayerSwitched += OnPlayerSwitched;
         EnemyAttack.OnAttackPlayer += AnimateHurt;
+		controls.Player.Enable();
     }
     private void OnDisable()
     {
         CameraScript.OnPlayerSwitched -= OnPlayerSwitched;
         EnemyAttack.OnAttackPlayer -= AnimateHurt;
+		controls.Player.Disable();
     }
 
     bool isHurt;
@@ -148,7 +155,6 @@ public class PlayerAnimator : MonoBehaviour
         if (MyDinosHealth.isDead == true)
         {
             MyDinoAnimator.SetBool("isDead", true);
-            MyDinoAnimator.Play("Death");
 
         }
         else
@@ -156,20 +162,14 @@ public class PlayerAnimator : MonoBehaviour
 
 
 
-            if (Input.GetMouseButtonDown(0) && isActivePlayer)
+            if (controls.Player.Attack.IsPressed() && isActivePlayer)
             {
                
                 
-                if (isAttacking == true)
-                {
-                    //if you are already attacking do nothing.
-                }
-                else
+                if (!isAttacking)
                 {
                     isAttacking = true;
                     MyDinoAnimator.SetBool("Attack", true);
-                    MyDinoAnimator.Play("Attack");
-
                 }
                
             }
@@ -177,7 +177,9 @@ public class PlayerAnimator : MonoBehaviour
             else
             {
 
-
+				
+				MyDinoAnimator.SetBool("Attack", false);
+				isAttacking = MyDinoAnimator.GetBool("Attack");
                 if (isActivePlayer == false)
                 {
                     MyDinoAnimator.SetBool("idling", true);
@@ -207,7 +209,7 @@ public class PlayerAnimator : MonoBehaviour
     //called from the animation clip itself. Very cool!
     public void ResetAttackFromClip()
     {
-        Debug.Log("reset attack was called from the end of the animation clip.");
+        //Debug.Log("reset attack was called from the end of the animation clip.");
         MyDinoAnimator.SetBool("Attack", false);
         isAttacking = false;
     }
@@ -221,23 +223,23 @@ public class PlayerAnimator : MonoBehaviour
       
 
     }
-
+	
     void SetMovement()
     {
         if (isActivePlayer)
-        {
-            float hor = Input.GetAxisRaw("Horizontal");//get left right movement input
-            float ver = Input.GetAxisRaw("Vertical");//get up down movement input
+		{
+			Vector2 movement;
+			movement = controls.Player.Movement.ReadValue<Vector2>();
+			
 
-            if (hor != 0 || ver != 0)//has  input
+            if (movement.x != 0 || movement.y != 0)//has  input
             {
                 MyDinoAnimator.SetBool("idling", false);
 
-                if (ver != 0)
-                {
-
+                if (movement.y != 0)
+				{
                     MyDinoAnimator.SetBool("prioritizeVertical", true);
-                    if (ver > 0)
+                    if (movement.y > 0)
                     {
                         MyDinoAnimator.SetBool("goingUp", false);
                     }

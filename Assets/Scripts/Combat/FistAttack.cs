@@ -2,23 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class FistAttack : MonoBehaviour
 {
+	
+	public float cooldown;
+	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
+	public Color defColor;
+	public Color attackColor;
+	Playercontrols controls;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    private void Start() {
+		Gamepad.current.SetMotorSpeeds(0, 0);
+	}
+	private void Awake() {
+        controls = new Playercontrols();
+		controls.Player.Attack.performed += ctx => ThrowAPunch();
+	}
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ThrowAPunch();
-        }
-
     }
 
     private void FixedUpdate()
@@ -88,6 +93,8 @@ public class FistAttack : MonoBehaviour
     }
     void ThrowAPunch()
     {
+		print("attacking?");
+		StartCoroutine(Attack());
         if(currentEnemy != null)
         {
 
@@ -100,5 +107,26 @@ public class FistAttack : MonoBehaviour
            
         }
         //if any enemies are within radius, hurt them.
+    }
+	IEnumerator Attack(){
+		
+		
+		dsgamepad.SetLightBarColor(attackColor);
+        float timer = 0f;
+		float currentFreq;
+        
+        while (timer < cooldown)
+        {
+            timer += Time.deltaTime;
+            float t = timer / cooldown;
+            currentFreq = Mathf.Lerp(1, 0, t);
+			Gamepad.current.SetMotorSpeeds(currentFreq, currentFreq);
+            yield return null;
+		}
+        
+		dsgamepad.SetLightBarColor(defColor);
+        currentFreq = 0;
+        
+        // do something with the animatedValue, such as setting it to a variable or component
     }
 }

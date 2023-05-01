@@ -33,6 +33,7 @@ public class PlayerProfile : MonoBehaviour
         m_rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         m_playermovement.enabled = false;
         m_healthManager.startAnim();
+		m_heartarrow.GetComponent<HeartThrow>().canThrowHeart = false;
         m_heartarrow.SetActive(false);
         m_attack.SetActive(false);
     }
@@ -43,6 +44,7 @@ public class PlayerProfile : MonoBehaviour
         m_playermovement.enabled = true;
         m_healthManager.cancelAnim();
         m_heartarrow.SetActive(true);
+		m_heartarrow.GetComponent<HeartThrow>().canThrowHeart = true;
         m_attack.SetActive(true);
     }
 

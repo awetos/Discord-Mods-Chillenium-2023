@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class HeartThrow : MonoBehaviour
 	{
@@ -10,37 +13,69 @@ public class HeartThrow : MonoBehaviour
 	[SerializeField]Vector3 cursorOffset;
     public float deg;
 	[SerializeField]private GameObject cursor;
+	public float cooldown;
+	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
+	public Color defColor;
+	public Color shootColor;
 
+	Playercontrols controls;
 	void Update() {
-		//using update for this to avoid it running multiple time with every click
-		if (Input.GetMouseButtonDown(1) && Time.timeScale >0){
-            ThrowHeart();
-        }
+	}
+	private void Start() {
+		Gamepad.current.SetMotorSpeeds(0, 0);
+		controls.Player.Shoot.performed += ctx => ThrowHeart();
 	}
 
-    private void OnEnable()
+	private void Awake() {
+		controls = new Playercontrols();
+	}
+
+	private void OnEnable()
     {
-        ThrowableHeart.OnEnableThrowingHeart += SetThrowHeart;
+		controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        ThrowableHeart.OnEnableThrowingHeart -= SetThrowHeart;
+		controls.Player.Disable();
     }
 
-    bool canThrowHeart = true;
+    public bool canThrowHeart = true;
 
-    
+    IEnumerator HeartThrowTimed(GameObject go){
+		
+		
+		dsgamepad.SetLightBarColor(shootColor);
+		canThrowHeart = false;
+        float timer = 0f;
+		float currentFreq;
+        
+        while (timer < cooldown)
+        {
+            timer += Time.deltaTime;
+            float t = timer / cooldown;
+            currentFreq = Mathf.Lerp(.5f, 0, t);
+			Gamepad.current.SetMotorSpeeds(currentFreq, currentFreq);
+            yield return null;
+		}
+        
+		dsgamepad.SetLightBarColor(defColor);
+		Destroy(go);
+		canThrowHeart = true;
+        currentFreq = 0;
+        
+        // do something with the animatedValue, such as setting it to a variable or component
+    }
     private void ThrowHeart()
     {
-        if (canThrowHeart)
+        if (canThrowHeart && Time.timeScale > 0)
         {
-            canThrowHeart = false;
             GameObject myHeart = Instantiate(throwableHeartPrefab, transform, false);//spawn heart
             myHeart.transform.SetParent(transform.parent.parent);//move it to root
             myHeart.transform.position = transform.position;
             myHeart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
             myHeart.GetComponent<ThrowableHeart>().SetDirection(new Vector3(0, myHeart.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
+			StartCoroutine(HeartThrowTimed(myHeart));
           
         }
     }
@@ -64,13 +99,23 @@ public class HeartThrow : MonoBehaviour
         {
             worldPos = hit.point;
         }
-
-         direction = worldPos - transform.position;
-
+		
+		
+		Vector2 aim = controls.Player.Aim.ReadValue<Vector2>();
+		//if(transform.parent.gameObject.GetComponent<PlayerInput>().currentControlScheme.ToLower() == "controllers"){
+			direction = new Vector3(aim.x, 0, aim.y);
+			cursor.transform.SetParent(transform);
+			cursor.transform.position = transform.parent.position+direction+cursorOffset;
+		/*}
+		else{
+			direction = worldPos - transform.position;
+			cursor.transform.SetParent(null);
+			cursor.transform.position = worldPos+cursorOffset;
+		}*/
+		
 
         deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 		
-		cursor.transform.position = worldPos+cursorOffset;
 		cursor.transform.rotation = Quaternion.Euler(90, 0, -deg);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, deg, 0);
 

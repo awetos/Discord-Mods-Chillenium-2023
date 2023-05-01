@@ -2,6 +2,8 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour{
 
@@ -9,7 +11,9 @@ public class CameraScript : MonoBehaviour{
 	public delegate void SwitchPlayer(int playerID);
 	public static event SwitchPlayer OnPlayerSwitched;
 
-
+	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
+	public Color player1Color;
+	public Color player2Color;
 	public bool isPlayerOne;
 
 
@@ -28,8 +32,11 @@ public class CameraScript : MonoBehaviour{
     //at above this distance, start looking at both dinosaurs
     [SerializeField] float DISTANCE_CONSTANT = 5;
 
+	private void Awake() {
+		dsgamepad.SetLightBarColor(player1Color);
+	}
 
-    void CalculateDistance()
+	void CalculateDistance()
     {
         distance = Vector3.Distance(player1.transform.position, player2.transform.position);
 
@@ -40,11 +47,11 @@ public class CameraScript : MonoBehaviour{
         }
         else
         {
-            Debug.Log("considering zoom in");
+            //Debug.Log("considering zoom in");
             StopCoroutine("SlowlyPanCamera");
             if(PlayerSwitchInProgress == false)
             {
-                Debug.Log(" zoom in initiated.");
+                //Debug.Log(" zoom in initiated.");
                 StartCoroutine("SlowlyZoomIn");
 
             }
@@ -146,6 +153,7 @@ public class CameraScript : MonoBehaviour{
 		if (isPlayerOne)
 		{
             //switch to player 2
+			dsgamepad.SetLightBarColor(player2Color);
             player1.SetPlayerInactive();
             player2.SetPlayerActive();
 
@@ -156,6 +164,7 @@ public class CameraScript : MonoBehaviour{
         }
         else
 		{
+			dsgamepad.SetLightBarColor(player1Color);
 			player1.SetPlayerActive();
 			player2.SetPlayerInactive();
 
@@ -195,7 +204,7 @@ public class CameraScript : MonoBehaviour{
 
             }
             yield return new WaitForEndOfFrame();
-            Debug.Log("i"+i);
+            //Debug.Log("i"+i);
         }
       
         PlayerSwitchInProgress = false;

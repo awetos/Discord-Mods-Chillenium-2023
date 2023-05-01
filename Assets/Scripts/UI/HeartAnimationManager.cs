@@ -32,7 +32,7 @@ public class HeartAnimationManager : MonoBehaviour
     {
         totalSize = activeSprites.Length; 
         currentSprite = 0;
-        Debug.Log("total size is..." + totalSize);
+        //Debug.Log("total size is..." + totalSize);
         if (Camera.main.GetComponent<CameraScript>().isPlayerOne == true)
         {
             if(myHeartID == 0)

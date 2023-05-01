@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ThrowableHeart : MonoBehaviour
 {
-    public delegate void ThrowHeartSetter(bool canThrowHeart);
-    public static event ThrowHeartSetter OnEnableThrowingHeart;
 
     // Start is called before the first frame update
     private Vector3 directionToTravel;
@@ -22,7 +20,6 @@ public class ThrowableHeart : MonoBehaviour
         //currentX = OriginalPosition.x;
         //currentZ = OriginalPosition.z;
 
-        StartCoroutine("HeartThrowCountdown");
     }
 
     public void SetDirection(Vector3 direction)
@@ -40,14 +37,6 @@ public class ThrowableHeart : MonoBehaviour
 		transform.Translate(directionToTravel*speed);//move heart to forward
     }
 
-
-    IEnumerator HeartThrowCountdown()
-    {
-        yield return new WaitForSeconds(1.0f);
-        OnEnableThrowingHeart(true);
-        Destroy(this.gameObject);
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -56,14 +45,12 @@ public class ThrowableHeart : MonoBehaviour
             if (other.gameObject.GetComponent<PlayerMovement>().enabled == false)
             {
                 Camera.main.GetComponent<CameraScript>().switchPlayer();
-                OnEnableThrowingHeart(true);
                 Destroy(this.gameObject);
             }
             return;
         }
         else if (other.CompareTag("Enemy"))
         {
-            OnEnableThrowingHeart(true);
 
             Camera.main.GetComponent<HealthReferences>().TakeDamage(30);
             Destroy(this.gameObject);
