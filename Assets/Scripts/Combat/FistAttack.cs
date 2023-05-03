@@ -1,29 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
 
 public class FistAttack : MonoBehaviour
 {
 	
 	public float cooldown;
-	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
 	public Color defColor;
 	public Color attackColor;
-	Playercontrols controls;
+	[SerializeField] Controller controller;
     // Start is called before the first frame update
-    private void Start() {
-		Gamepad.current.SetMotorSpeeds(0, 0);
-	}
-	private void Awake() {
-        controls = new Playercontrols();
-		controls.Player.Attack.performed += ctx => ThrowAPunch();
-	}
     // Update is called once per frame
     void Update()
     {
+		if(controller.control.Attack.triggered) {
+			ThrowAPunch();
+		}
     }
 
     private void FixedUpdate()
@@ -35,7 +27,7 @@ public class FistAttack : MonoBehaviour
 
     private void CheckForEnemyUnderCursor()
     {
-        Vector3 mousePos = Input.mousePosition;
+        /*Vector3 mousePos = Input.mousePosition;
 
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -54,7 +46,10 @@ public class FistAttack : MonoBehaviour
             }
         }
 
-        direction = worldPos - transform.position;
+        direction = worldPos - transform.position;*/
+		
+		Vector2 aim = controller.control.Aim.ReadValue<Vector2>();
+		direction = new Vector3(aim.x, 0, aim.y);
     }
 
 
@@ -93,7 +88,6 @@ public class FistAttack : MonoBehaviour
     }
     void ThrowAPunch()
     {
-		print("attacking?");
 		StartCoroutine(Attack());
         if(currentEnemy != null)
         {
@@ -109,9 +103,7 @@ public class FistAttack : MonoBehaviour
         //if any enemies are within radius, hurt them.
     }
 	IEnumerator Attack(){
-		
-		
-		dsgamepad.SetLightBarColor(attackColor);
+		controller.DSGamepad.SetLightBarColor(attackColor);
         float timer = 0f;
 		float currentFreq;
         
@@ -124,9 +116,8 @@ public class FistAttack : MonoBehaviour
             yield return null;
 		}
         
-		dsgamepad.SetLightBarColor(defColor);
+		controller.DSGamepad.SetLightBarColor(defColor);
         currentFreq = 0;
-        
-        // do something with the animatedValue, such as setting it to a variable or component
+		Gamepad.current.SetMotorSpeeds(currentFreq, currentFreq);
     }
 }

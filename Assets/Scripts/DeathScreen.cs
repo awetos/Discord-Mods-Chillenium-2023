@@ -11,6 +11,7 @@ public class DeathScreen : MonoBehaviour
 
     [SerializeField] private AudioSource gameover;
     [SerializeField] private GameObject deathScreen;
+	[SerializeField] private GameObject numbersCanvas;
     private bool playedOnce = false;
 
     // Start is called before the first frame update
@@ -43,6 +44,7 @@ public class DeathScreen : MonoBehaviour
     IEnumerator ShowDeathScreenAfterTime()
     {
         yield return new WaitForSeconds(deathDelay);
+		numbersCanvas.SetActive(false);
         Camera.main.GetComponent<AudioSource>().Stop();
         if (!playedOnce)
         {

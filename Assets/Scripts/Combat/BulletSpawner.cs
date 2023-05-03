@@ -1,13 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
-using UnityEngine.UIElements;
 
 public class BulletSpawner : MonoBehaviour
 {
+
+	[SerializeField] Controller controller;
 
     public GameObject bulletPrefab;
     Vector3 direction;
@@ -15,25 +13,11 @@ public class BulletSpawner : MonoBehaviour
 	public float cooldown;
 	public Color defColor;
 	public Color attackColor;
-	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
 
-	Playercontrols controls;
-
-	private void Start() {
-		Gamepad.current.SetMotorSpeeds(0, 0);
-		controls.Player.Attack.performed += ctx => Shoot();
-	}
 	void Update(){
-	}
-	private void Awake() {
-        controls = new Playercontrols();
-	}
-	private void OnEnable() {
-		controls.Player.Enable();
-	}
-
-	private void OnDisable() {
-		controls.Player.Disable();
+		if(controller.control.Attack.triggered){
+			Shoot();
+		}
 	}
 
 	bool canShoot = true;
@@ -47,18 +31,13 @@ public class BulletSpawner : MonoBehaviour
             myBullet.transform.SetParent(transform.parent.parent);//move it to root
             myBullet.transform.position = transform.position;
             myBullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
-
-
-
-
             myBullet.GetComponent<Bullet>().SetDirection(new Vector3(0, myBullet.transform.position.y, 0));//set the direction to hearts' forward position to launch it forward
-
         }
     }
 	IEnumerator Attack(){
 		
 		
-		dsgamepad.SetLightBarColor(attackColor);
+		controller.DSGamepad.SetLightBarColor(attackColor);
 		canShoot = false;
         float timer = 0f;
 		float currentFreq;
@@ -72,15 +51,15 @@ public class BulletSpawner : MonoBehaviour
             yield return null;
 		}
         
-		dsgamepad.SetLightBarColor(defColor);
+		controller.DSGamepad.SetLightBarColor(defColor);
 		canShoot = true;
         currentFreq = 0;
-        
+        Gamepad.current.SetMotorSpeeds(currentFreq, currentFreq);
         // do something with the animatedValue, such as setting it to a variable or component
     }
     private void FixedUpdate()
     {
-        Vector3 mousePos = Input.mousePosition;
+        /*Vector3 mousePos = Input.mousePosition;
 
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -92,8 +71,8 @@ public class BulletSpawner : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             worldPos = hit.point;
-        }
-		Vector2 aim = controls.Player.Aim.ReadValue<Vector2>();
+        }*/
+		Vector2 aim = controller.control.Aim.ReadValue<Vector2>();
 		direction = new Vector3(aim.x, 0, aim.y);
         //direction = worldPos - transform.position;
 

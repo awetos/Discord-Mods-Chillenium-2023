@@ -1,51 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.DualShock;
 
-public class HeartThrow : MonoBehaviour
-	{
+public class HeartThrow : MonoBehaviour{
 
     public GameObject throwableHeartPrefab;
     Vector3 direction;
-	[SerializeField]Vector3 cursorOffset;
     public float deg;
-	[SerializeField]private GameObject cursor;
+	[SerializeField] GameObject cursor;
 	public float cooldown;
-	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
+	[SerializeField] Controller controller;
 	public Color defColor;
 	public Color shootColor;
-
-	Playercontrols controls;
-	void Update() {
-	}
 	private void Start() {
 		Gamepad.current.SetMotorSpeeds(0, 0);
-		controls.Player.Shoot.performed += ctx => ThrowHeart();
 	}
-
-	private void Awake() {
-		controls = new Playercontrols();
-	}
-
-	private void OnEnable()
-    {
-		controls.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-		controls.Player.Disable();
-    }
 
     public bool canThrowHeart = true;
 
     IEnumerator HeartThrowTimed(GameObject go){
 		
 		
-		dsgamepad.SetLightBarColor(shootColor);
+		controller.DSGamepad.SetLightBarColor(shootColor);
 		canThrowHeart = false;
         float timer = 0f;
 		float currentFreq;
@@ -59,12 +35,11 @@ public class HeartThrow : MonoBehaviour
             yield return null;
 		}
         
-		dsgamepad.SetLightBarColor(defColor);
+		controller.DSGamepad.SetLightBarColor(defColor);
 		Destroy(go);
 		canThrowHeart = true;
         currentFreq = 0;
-        
-        // do something with the animatedValue, such as setting it to a variable or component
+        Gamepad.current.SetMotorSpeeds(currentFreq, currentFreq);
     }
     private void ThrowHeart()
     {
@@ -84,9 +59,13 @@ public class HeartThrow : MonoBehaviour
     {
         canThrowHeart = b;
     }
-    [SerializeField] Camera myCam;
+    //[SerializeField] Camera myCam;
 	private void FixedUpdate(){
-        Vector3 mousePos = Input.mousePosition;
+
+		if(controller.control.Shoot.triggered)
+			ThrowHeart();
+
+        /*Vector3 mousePos = Input.mousePosition;
 
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -98,14 +77,14 @@ public class HeartThrow : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             worldPos = hit.point;
-        }
+        }*/
 		
 		
-		Vector2 aim = controls.Player.Aim.ReadValue<Vector2>();
+		Vector2 aim = controller.control.Aim.ReadValue<Vector2>();
 		//if(transform.parent.gameObject.GetComponent<PlayerInput>().currentControlScheme.ToLower() == "controllers"){
 			direction = new Vector3(aim.x, 0, aim.y);
 			cursor.transform.SetParent(transform);
-			cursor.transform.position = transform.parent.position+direction+cursorOffset;
+			cursor.transform.position = transform.parent.position+direction;
 		/*}
 		else{
 			direction = worldPos - transform.position;

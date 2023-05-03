@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowableHeart : MonoBehaviour
@@ -12,28 +10,14 @@ public class ThrowableHeart : MonoBehaviour
 
     HealthManager originalPlayerHealth;
 
-    //public float currentX;
-    //public float currentZ;
-    void Start()
-    {
-        //OriginalPosition = transform.position;
-        //currentX = OriginalPosition.x;
-        //currentZ = OriginalPosition.z;
-
-    }
-
     public void SetDirection(Vector3 direction)
     {
-        directionToTravel = direction.normalized * 0.5f; //it's going to be too faster even if the magnitude is 1?
+        directionToTravel = direction.normalized; //it's going to be too faster even if the magnitude is 1?
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-        //currentX += directionToTravel.x * speed;
-        //currentZ += directionToTravel.y * speed;
-
-        //transform.position = new Vector3(currentX,0, currentZ);
 		transform.Translate(directionToTravel*speed);//move heart to forward
     }
 

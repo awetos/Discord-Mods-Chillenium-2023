@@ -1,8 +1,6 @@
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour{
@@ -10,13 +8,9 @@ public class CameraScript : MonoBehaviour{
     //is received by the heart animator.
 	public delegate void SwitchPlayer(int playerID);
 	public static event SwitchPlayer OnPlayerSwitched;
-
-	DualShockGamepad dsgamepad = (DualShockGamepad)Gamepad.current;
-	public Color player1Color;
-	public Color player2Color;
 	public bool isPlayerOne;
 
-
+	[SerializeField] Controller controller;
 
     [SerializeField] private PlayerProfile player1;
     [SerializeField] private PlayerProfile player2;
@@ -25,16 +19,17 @@ public class CameraScript : MonoBehaviour{
     public float distance;
     [SerializeField] CinemachineTargetGroup ctg;
     [SerializeField] float MAX_WEIGHT = 50f;
-    private void Update()
+
+
+	private void Awake() {
+		controller.DSGamepad.SetLightBarColor(controller.player1Color);
+	}
+	private void Update()
     {
         CalculateDistance();
     }
     //at above this distance, start looking at both dinosaurs
     [SerializeField] float DISTANCE_CONSTANT = 5;
-
-	private void Awake() {
-		dsgamepad.SetLightBarColor(player1Color);
-	}
 
 	void CalculateDistance()
     {
@@ -149,11 +144,11 @@ public class CameraScript : MonoBehaviour{
         yield return new WaitForEndOfFrame();
     }
     public void switchPlayer() {
-		
+		Gamepad.current.SetMotorSpeeds(0, 0);
 		if (isPlayerOne)
 		{
             //switch to player 2
-			dsgamepad.SetLightBarColor(player2Color);
+			controller.DSGamepad.SetLightBarColor(controller.player2Color);
             player1.SetPlayerInactive();
             player2.SetPlayerActive();
 
@@ -164,7 +159,7 @@ public class CameraScript : MonoBehaviour{
         }
         else
 		{
-			dsgamepad.SetLightBarColor(player1Color);
+			controller.DSGamepad.SetLightBarColor(controller.player1Color);
 			player1.SetPlayerActive();
 			player2.SetPlayerInactive();
 

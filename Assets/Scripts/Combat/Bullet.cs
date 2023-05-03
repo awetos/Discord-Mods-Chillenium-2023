@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -14,29 +13,19 @@ public class Bullet : MonoBehaviour
 	[SerializeField]private AudioSource ass;
 
     HealthManager originalPlayerHealth;
-
-    //public float currentX;
-    //public float currentZ;
     void Start()
     {
-        //OriginalPosition = transform.position;
-        //currentX = OriginalPosition.x;
-        //currentZ = OriginalPosition.z;
         StartCoroutine("BulletCountdown");
     }
 
     public void SetDirection(Vector3 direction)
     {
-        directionToTravel = direction;
+        directionToTravel = direction.normalized;
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-        //currentX += directionToTravel.x * speed;
-        //currentZ += directionToTravel.y * speed;
-
-        //transform.position = new Vector3(currentX,0, currentZ);
         transform.Translate(directionToTravel * speed);//move heart to forward
     }
 

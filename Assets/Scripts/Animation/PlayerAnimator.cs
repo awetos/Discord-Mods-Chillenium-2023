@@ -1,10 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
-using UnityEngine.Networking;
-using static PlayerAnimator;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -14,6 +9,8 @@ public class PlayerAnimator : MonoBehaviour
     bool isFacingLeft;
     public SpriteRenderer spriteRenderer;
 
+	[SerializeField] Controller controller;
+
     public bool isActivePlayer;
 
     public enum Player{
@@ -22,13 +19,7 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     public Player currentDino;
-	
-	Playercontrols controls;
 
-
-	private void Awake() {
-		controls = new Playercontrols();
-	}
 	// Start is called before the first frame update
 	void Start()
     {
@@ -63,13 +54,11 @@ public class PlayerAnimator : MonoBehaviour
     {
         CameraScript.OnPlayerSwitched += OnPlayerSwitched;
         EnemyAttack.OnAttackPlayer += AnimateHurt;
-		controls.Player.Enable();
     }
     private void OnDisable()
     {
         CameraScript.OnPlayerSwitched -= OnPlayerSwitched;
         EnemyAttack.OnAttackPlayer -= AnimateHurt;
-		controls.Player.Disable();
     }
 
     bool isHurt;
@@ -162,10 +151,8 @@ public class PlayerAnimator : MonoBehaviour
 
 
 
-            if (controls.Player.Attack.IsPressed() && isActivePlayer)
+            if (controller.control.Attack.triggered && isActivePlayer)
             {
-               
-                
                 if (!isAttacking)
                 {
                     isAttacking = true;
@@ -218,18 +205,13 @@ public class PlayerAnimator : MonoBehaviour
 
 
 	}
-    void FixedUpdate()
-    {
-      
-
-    }
 	
     void SetMovement()
     {
         if (isActivePlayer)
 		{
 			Vector2 movement;
-			movement = controls.Player.Movement.ReadValue<Vector2>();
+			movement = controller.control.Movement.ReadValue<Vector2>();
 			
 
             if (movement.x != 0 || movement.y != 0)//has  input
@@ -268,7 +250,7 @@ public class PlayerAnimator : MonoBehaviour
     void GetMouseLocation()
     {
         
-        Vector3 mousePos = Input.mousePosition;
+        /*Vector3 mousePos = Input.mousePosition;
 
 
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -283,7 +265,9 @@ public class PlayerAnimator : MonoBehaviour
         }
 
         direction = worldPos - transform.position;
-
+		*/
+		Vector2 aim = controller.control.Aim.ReadValue<Vector2>();
+		direction = new Vector3(aim.x, 0, aim.y);
 
         deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         if (deg < 0)
