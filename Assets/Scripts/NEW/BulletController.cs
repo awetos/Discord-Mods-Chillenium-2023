@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartThrowController : MonoBehaviour{
-	private Vector3 directionToTravel;
+public class BulletController : MonoBehaviour{
+    private Vector3 directionToTravel;
     public float speed;
 
 	private void Start(){
@@ -17,9 +17,6 @@ public class HeartThrowController : MonoBehaviour{
     }
 
 	void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag == "Player"){
-			Camera.main.GetComponent<Switcher>().SwitchPlayer();
-			Destroy(gameObject);
-		}
+        
 	}
 }
