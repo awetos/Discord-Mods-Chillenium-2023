@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890266095583996215}
   - component: {fileID: 1890266095583996214}
+  - component: {fileID: 605441097100540480}
   - component: {fileID: 1890266095583996212}
   - component: {fileID: 1890266095583996210}
   - component: {fileID: 1890266095583996211}
@@ -63,6 +64,18 @@ MonoBehaviour:
   canShoot: 1
   canAttack: 1
   switcher: {fileID: 0}
+--- !u!114 &605441097100540480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890266095583996201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df4f80ac42b89c409e889a065dbf53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1890266095583996212
 Rigidbody:
   m_ObjectHideFlags: 0

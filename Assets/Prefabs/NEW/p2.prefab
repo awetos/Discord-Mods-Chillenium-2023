@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605511092652802612}
   - component: {fileID: 1605511092652802613}
+  - component: {fileID: 4817488154426199096}
   - component: {fileID: 1605511092652802615}
   - component: {fileID: 1605511092652802609}
   - component: {fileID: 1605511092652802608}
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605511092652802602}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0147bdacc9fc60c4cbf5377aed64dc2b, type: 3}
   m_Name: 
@@ -58,11 +59,23 @@ MonoBehaviour:
   deg: 0
   shootDelay: 0.5
   attackDelay: 0.1
-  canMove: 1
+  canMove: 0
   controllerMode: 0
-  canShoot: 1
-  canAttack: 1
+  canShoot: 0
+  canAttack: 0
   switcher: {fileID: 0}
+--- !u!114 &4817488154426199096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605511092652802602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df4f80ac42b89c409e889a065dbf53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1605511092652802615
 Rigidbody:
   m_ObjectHideFlags: 0

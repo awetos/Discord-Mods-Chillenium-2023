@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour{
 				animator.SetBool("running", true);
 			else
 				animator.SetBool("running", false);
+		}
 
 
 			//AIMING
@@ -101,8 +102,10 @@ public class PlayerController : MonoBehaviour{
 			if(controllerMode){
 				Vector2 aim = controller.Aim.ReadValue<Vector2>();
 				direction = new Vector3(aim.x, 0, aim.y);
-				cursor.transform.SetParent(transform);
-				cursor.transform.position = transform.position+direction;
+				if(canMove){
+					cursor.transform.SetParent(transform);
+					cursor.transform.position = transform.position+direction;
+				}
 			}
 			else{
 				Vector3 mousePos = Input.mousePosition;
@@ -112,12 +115,15 @@ public class PlayerController : MonoBehaviour{
 				if (Physics.Raycast(ray, out hit)){
 					worldPos = hit.point;
 				}
-				direction = worldPos - transform.position;
-				cursor.transform.SetParent(null);
-				cursor.transform.position = worldPos;
+				if(canMove){
+					direction = worldPos - transform.position;
+					cursor.transform.SetParent(null);
+					cursor.transform.position = worldPos;
+				}
 			}
-			deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-			cursor.transform.rotation = Quaternion.Euler(90, 0, -deg);
+			if(canMove){
+				deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+				cursor.transform.rotation = Quaternion.Euler(90, 0, -deg);
 		}
 	}
 
