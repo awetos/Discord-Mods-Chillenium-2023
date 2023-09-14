@@ -1,10 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
-//using static UnityEditor.FilePathAttribute;
 
 public class HealthManager : MonoBehaviour{
 	public delegate void deathdelegate(int PlayerID);
