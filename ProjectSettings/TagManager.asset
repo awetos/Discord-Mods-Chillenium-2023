@@ -8,6 +8,7 @@ TagManager:
   - obstacle
   - NoSpawnZone
   - NavMeshObstacle
+  - NonPlayer
   layers:
   - Default
   - TransparentFX

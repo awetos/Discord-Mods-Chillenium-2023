@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
@@ -28,16 +29,18 @@ public class PlayerController : MonoBehaviour{
     }
 
 	private void Update() {
-		//shoot heart
-		if(controller.Shoot.triggered){
-			if(canShoot){
-				StartCoroutine(ShootHeart());
+	if(gameObject.tag == "Player"){
+			//shoot heart
+			if(controller.Shoot.triggered){
+				if(canShoot){
+					StartCoroutine(ShootHeart());
+				}
 			}
-		}
-		//attack
-		if(controller.Attack.triggered){
-			if(canAttack){
-				StartCoroutine(Attack());
+			//attack
+			if(controller.Attack.triggered){
+				if(canAttack){
+					StartCoroutine(Attack());
+				}
 			}
 		}
 	}

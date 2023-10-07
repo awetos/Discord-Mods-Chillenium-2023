@@ -22,6 +22,10 @@ public class Switcher : MonoBehaviour{
 			playerTwo.GetComponent<PlayerController>().canMove = true;
 			playerTwo.GetComponent<PlayerController>().canShoot = true;
 			playerTwo.GetComponent<PlayerController>().canAttack = true;
+			playerOne.GetComponent<HealthController>().isDecaying = true;
+			playerTwo.GetComponent<HealthController>().isDecaying = false;
+			playerOne.tag = "NonPlayer";
+			playerTwo.tag = "Player";
 		}
 		else{
 			currentPlayer = player.player1;
@@ -35,6 +39,10 @@ public class Switcher : MonoBehaviour{
 			playerTwo.GetComponent<PlayerController>().canMove = false;
 			playerTwo.GetComponent<PlayerController>().canShoot = false;
 			playerTwo.GetComponent<PlayerController>().canAttack = false;
+			playerOne.GetComponent<HealthController>().isDecaying = false;
+			playerTwo.GetComponent<HealthController>().isDecaying = true;
+			playerOne.tag = "Player";
+			playerTwo.tag = "NonPlayer";
 		}
 	}
 }

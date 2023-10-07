@@ -17,7 +17,7 @@ public class HeartThrowController : MonoBehaviour{
     }
 
 	void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag == "Player"){
+        if(other.gameObject.tag == "NonPlayer"){
 			Camera.main.GetComponent<Switcher>().SwitchPlayer();
 			Destroy(gameObject);
 		}

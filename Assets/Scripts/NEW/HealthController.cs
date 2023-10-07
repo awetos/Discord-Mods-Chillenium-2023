@@ -7,15 +7,15 @@ public class HealthController : MonoBehaviour{
 	public int maxHealth;
 	public int health;
 	public int decayAmount;
-	public bool isDecaying = true;
+	public bool isDecaying = false;
 	public float percent;
 
 	void Start() {
 		if(switcher.currentPlayer == player){
-			isDecaying = true;
+			isDecaying = false;
 		}
 		else{
-			isDecaying = false;
+			isDecaying = true;
 		}
 	}
 	void Update(){
@@ -32,6 +32,7 @@ public class HealthController : MonoBehaviour{
 		}
 		percent = ((float)health) / ((float)maxHealth);
 		yield return new WaitForSeconds(1f);
-		isDecaying=true;
+		if(switcher.currentPlayer != player)
+			isDecaying=true;
     }
 }
