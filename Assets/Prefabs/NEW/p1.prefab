@@ -76,6 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4f80ac42b89c409e889a065dbf53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 0
+  switcher: {fileID: 0}
+  maxHealth: 100
+  health: 100
+  decayAmount: 1
+  isDecaying: 0
+  percent: 0
 --- !u!54 &1890266095583996212
 Rigidbody:
   m_ObjectHideFlags: 0

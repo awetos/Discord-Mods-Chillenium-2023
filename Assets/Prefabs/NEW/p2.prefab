@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 899727251141930581}
   m_Layer: 0
   m_Name: p2
-  m_TagString: Player
+  m_TagString: NonPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4f80ac42b89c409e889a065dbf53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 1
+  switcher: {fileID: 0}
+  maxHealth: 100
+  health: 100
+  decayAmount: 1
+  isDecaying: 0
+  percent: 0
 --- !u!54 &1605511092652802615
 Rigidbody:
   m_ObjectHideFlags: 0

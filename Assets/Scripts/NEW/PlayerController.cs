@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour{
 	[SerializeField]private GameObject cursor;//aiming cursor
 	[SerializeField]private GameObject heartPrefab;//throwable heart prefab
 	[SerializeField]private GameObject bulletPrefab;
-    public float speed;//player move 
+    public float speed;//player move
+	public float damage;
 	public float deg;//aim angle
 	public float shootDelay;//delay between each heart throw
 	public float attackDelay;//delay between each attack
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour{
 	private Animator animator;//player animator
 	private AudioSource ASS;//player sound source
 	[SerializeField]private Switcher switcher;
+	private GameObject[] enemies;
 
 	void Awake(){
 		ASS = GetComponent<AudioSource>();
@@ -39,19 +41,34 @@ public class PlayerController : MonoBehaviour{
 			//attack
 			if(controller.Attack.triggered){
 				if(canAttack){
+					animator.SetBool("attack", true);
 					StartCoroutine(Attack());
 				}
 			}
 		}
 	}
 
+	private void OnTriggerEnter(Collider other) {
+		if(other.gameObject.tag == "Enemy"){
+			other.gameObject.GetComponent<EnemyController>().isInRange = true;
+		}
+	}
+	private void OnTriggerExit(Collider other) {
+		if(other.gameObject.tag == "Enemy"){
+			other.gameObject.GetComponent<EnemyController>().isInRange = false;
+		}
+	}
+
 	IEnumerator Attack(){
 		canAttack = false;
-		animator.SetBool("attack", true);
-		yield return new WaitForSeconds(0.1f);
-		animator.SetBool("attack", false);
 		if(switcher.currentPlayer == Switcher.player.player1){
+			enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject enemy in enemies){
+				if(enemy.GetComponent<EnemyController>().isInRange)
+					enemy.GetComponent<EnemyController>().TakeDamage(damage);
+			}
 			yield return new WaitForSeconds(attackDelay);
+			animator.SetBool("attack", false);
 			canAttack = true;
 		}
 		else{
