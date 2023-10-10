@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BulletController : MonoBehaviour{
     private Vector3 directionToTravel;
@@ -18,9 +19,9 @@ public class BulletController : MonoBehaviour{
     }
 
 	void OnTriggerEnter(Collider other){
-        if(other.tag == "Enemy"){
+        if(other.tag == "Enemy" && other.GetComponent<NavMeshAgent>().enabled){
 			print("took an arrow to the knee");
-			other.GetComponent<EnemyController>().TakeDamage(damage);
+			StartCoroutine(other.GetComponent<EnemyController>().TakeDamage(damage));
 		}
 	}
 }

@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour{
 	private AudioSource ASS;//player sound source
 	[SerializeField]private Switcher switcher;
 	private GameObject[] enemies;
+	bool shake = false;
+	Vector3 origPos;
+	float time = .3f;
 
 	void Awake(){
 		ASS = GetComponent<AudioSource>();
@@ -41,6 +44,11 @@ public class PlayerController : MonoBehaviour{
 			//attack
 			if(controller.Attack.triggered){
 				if(canAttack){
+					if(switcher.currentPlayer == Switcher.player.player1){
+						shake = true;
+						origPos = Camera.main.transform.position;
+						time = .3f;
+					}
 					animator.SetBool("attack", true);
 					StartCoroutine(Attack());
 				}
@@ -65,7 +73,7 @@ public class PlayerController : MonoBehaviour{
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(GameObject enemy in enemies){
 				if(enemy.GetComponent<EnemyController>().isInRange)
-					enemy.GetComponent<EnemyController>().TakeDamage(damage);
+					StartCoroutine(enemy.GetComponent<EnemyController>().TakeDamage(damage));
 			}
 			yield return new WaitForSeconds(attackDelay);
 			animator.SetBool("attack", false);
@@ -77,6 +85,7 @@ public class PlayerController : MonoBehaviour{
 			bullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
 			bullet.GetComponent<BulletController>().SetDirection(-bullet.transform.forward);//set the direction to hearts' forward position to launch it forward
 			yield return new WaitForSeconds(attackDelay);
+			animator.SetBool("attack", false);
 			canAttack = true;
 		}
 	}
@@ -88,6 +97,7 @@ public class PlayerController : MonoBehaviour{
 				GFX.GetComponent<SpriteRenderer>().flipX = false;
 			else if(movement.x < 0)
 				GFX.GetComponent<SpriteRenderer>().flipX = true;
+
 			if(movement.y > 0.4f){
 				animator.SetBool("facing forward", false);
 				animator.SetBool("facing backward",true);
@@ -108,6 +118,20 @@ public class PlayerController : MonoBehaviour{
 				animator.SetBool("running", true);
 			else
 				animator.SetBool("running", false);
+
+			if(!shake)
+				Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position+new Vector3(0,5,0), 0.2f);
+			else{
+				if(time > 0){
+					Camera.main.transform.localPosition = origPos+Random.insideUnitSphere*0.2f;
+					time -= Time.deltaTime;
+				}
+				else{
+					time = 0; 
+					shake = false;
+				}
+			}
+			
 		}
 
 

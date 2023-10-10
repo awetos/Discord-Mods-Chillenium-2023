@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 3282465806735085352}
   - component: {fileID: 3282465806735085350}
   - component: {fileID: 3282465806735085353}
-  - component: {fileID: 3282465806735085351}
   - component: {fileID: 2516238259478861804}
   m_Layer: 5
   m_Name: blue heart
@@ -146,7 +145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -94476678, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  m_Sprite: {fileID: 1896049728, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -156,56 +155,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3282465806735085351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282465806735085355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e3d9c974a6fb0f478f91f4a9882b753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprites:
-  - {fileID: 1896049728, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1147493571, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 60416495, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1709901249, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1538775642, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1134901494, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 262611437, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -110841494, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 423800189, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -609122335, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 808014054, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -964569462, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -649896439, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1562017261, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -190479354, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 971627625, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1848608886, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  boneySprites:
-  - {fileID: -94476678, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1857690916, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1597484594, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1876230286, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 680495284, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 452463376, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1593858042, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 835322850, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 343042447, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -347201291, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 327609748, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 1008822806, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1313410610, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -1452896033, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: 192450332, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -2061668650, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  - {fileID: -101760028, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
-  myImage: {fileID: 3282465806735085353}
-  myHeartID: 0
 --- !u!114 &2516238259478861804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +180,6 @@ GameObject:
   - component: {fileID: 7322769141972521871}
   - component: {fileID: 7322769141972521857}
   - component: {fileID: 7322769141972521870}
-  - component: {fileID: 7322769141972521856}
   - component: {fileID: 2516238259344727025}
   m_Layer: 5
   m_Name: orange heart
@@ -288,7 +236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -736304633, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  m_Sprite: {fileID: -383960497, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -298,56 +246,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7322769141972521856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7322769141972521868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e3d9c974a6fb0f478f91f4a9882b753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeSprites:
-  - {fileID: -383960497, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1192617698, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1475488453, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -672862425, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 456635668, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1368481302, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1149340551, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 511170733, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1764411913, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -2124246176, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 139600882, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1264094890, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1311051396, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1102481465, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 404232888, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 692477831, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 2038461852, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  boneySprites:
-  - {fileID: -736304633, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -515354374, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -2046284740, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1660872116, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 624511635, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 679289074, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1526857614, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -256721722, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 794401736, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1810795564, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -140862482, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1517617805, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1652816454, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 1617027208, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1923888582, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: -1843703588, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  - {fileID: 379415563, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
-  myImage: {fileID: 7322769141972521870}
-  myHeartID: 1
 --- !u!114 &2516238259344727025
 MonoBehaviour:
   m_ObjectHideFlags: 0

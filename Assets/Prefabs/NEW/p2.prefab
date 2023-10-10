@@ -56,6 +56,7 @@ MonoBehaviour:
   heartPrefab: {fileID: 1210978922474718066, guid: c4ab6f9bf2b519a408075b222436783c, type: 3}
   bulletPrefab: {fileID: 1210978922474718066, guid: 2dc805c6652856a48a50e24674631302, type: 3}
   speed: 2
+  damage: 10
   deg: 0
   shootDelay: 0.5
   attackDelay: 0.1
@@ -78,11 +79,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   switcher: {fileID: 0}
+  healthUI: {fileID: 0}
+  healthUIImages:
+  - {fileID: 1896049728, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1147493571, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 60416495, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1709901249, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1538775642, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1134901494, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 262611437, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -110841494, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 423800189, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -609122335, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 808014054, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -964569462, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -649896439, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1562017261, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -190479354, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 971627625, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1848608886, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -94476678, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1857690916, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1597484594, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1876230286, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 680495284, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 452463376, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1593858042, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 835322850, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 343042447, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -347201291, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 327609748, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 1008822806, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1313410610, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -1452896033, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: 192450332, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -2061668650, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  - {fileID: -101760028, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
   maxHealth: 100
   health: 100
-  decayAmount: 1
+  decayAmount: 5
   isDecaying: 0
-  percent: 0
+  percent: 1
 --- !u!54 &1605511092652802615
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95,7 +132,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1

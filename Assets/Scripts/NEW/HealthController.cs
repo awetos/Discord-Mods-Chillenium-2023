@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour{
 	[SerializeField]private Switcher.player player;
 	[SerializeField]private Switcher switcher;
+	[SerializeField]private Image healthUI;
+	[SerializeField]private Sprite[] healthUIImages;
 	public float maxHealth;
 	public float health;
 	public float decayAmount;
@@ -25,11 +28,18 @@ public class HealthController : MonoBehaviour{
 		if (health <= 0){
 			StartCoroutine(Death());
 		}
+		percent = health / maxHealth;
+		healthUI.sprite = healthUIImages[(int)((1-percent)*(healthUIImages.Length-1))];
 	}
+
 	IEnumerator reduceHealth(){
-		health -= decayAmount;
+		if(health > decayAmount){
+			health -= decayAmount;
+		}
+		else{
+			health = 0;
+		}
 		isDecaying=false;
-		percent = ((float)health) / ((float)maxHealth);
 		yield return new WaitForSeconds(1f);
 		if(switcher.currentPlayer != player)
 			isDecaying=true;
@@ -38,6 +48,7 @@ public class HealthController : MonoBehaviour{
 	IEnumerator Death(){
 		isDecaying=false;
 		GetComponent<Animator>().SetBool("dead", true);
+		GetComponent<Rigidbody>().isKinematic = true;
 		gameObject.tag = "NonPlayer";
 		GetComponent<PlayerController>().enabled = false;
 		yield return new WaitForSeconds(2);

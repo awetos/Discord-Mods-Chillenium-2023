@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1890266095583996211}
   - component: {fileID: 1370948951}
   - component: {fileID: 1370948950}
+  - component: {fileID: 590916550}
   m_Layer: 0
   m_Name: p1
   m_TagString: Player
@@ -56,9 +57,10 @@ MonoBehaviour:
   heartPrefab: {fileID: 1210978922474718066, guid: c4ab6f9bf2b519a408075b222436783c, type: 3}
   bulletPrefab: {fileID: 1210978922474718066, guid: 2dc805c6652856a48a50e24674631302, type: 3}
   speed: 2
+  damage: 15
   deg: 0
   shootDelay: 0.5
-  attackDelay: 0.1
+  attackDelay: 0.3
   canMove: 1
   controllerMode: 0
   canShoot: 1
@@ -78,11 +80,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   switcher: {fileID: 0}
+  healthUI: {fileID: 0}
+  healthUIImages:
+  - {fileID: -383960497, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1192617698, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1475488453, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -672862425, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 456635668, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1368481302, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1149340551, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 511170733, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1764411913, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -2124246176, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 139600882, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1264094890, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1311051396, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1102481465, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 404232888, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 692477831, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 2038461852, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -736304633, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -515354374, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -2046284740, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 1660872116, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 624511635, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 679289074, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 1526857614, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -256721722, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 794401736, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1810795564, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -140862482, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 1517617805, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 1652816454, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 1617027208, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1923888582, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: -1843703588, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  - {fileID: 379415563, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
   maxHealth: 100
   health: 100
-  decayAmount: 1
+  decayAmount: 5
   isDecaying: 0
-  percent: 0
+  percent: 1
 --- !u!54 &1890266095583996212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -295,6 +333,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &590916550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890266095583996201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.66, y: 1, z: 1.58}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1890266096590007793
 GameObject:
   m_ObjectHideFlags: 0
