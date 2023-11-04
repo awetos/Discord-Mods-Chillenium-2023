@@ -9,6 +9,7 @@ TagManager:
   - NoSpawnZone
   - NavMeshObstacle
   - NonPlayer
+  - pickup
   layers:
   - Default
   - TransparentFX

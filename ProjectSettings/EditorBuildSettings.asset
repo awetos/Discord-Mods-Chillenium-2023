@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LVL-Menu.unity
-    guid: c25d8aecf8751e3499b46cfe983d4396
+    path: Assets/Scenes/Main Menu.unity
+    guid: ddacaccc7df46154dbc05df480c5fbed
   - enabled: 1
-    path: Assets/Scenes/LVL-Loading.unity
-    guid: 6c15b89b8d5ad6044a2dc0c28d13582e
+    path: Assets/Scenes/Loading.unity
+    guid: 0dff6e8d79baeb746bdcbc1b37a10dca
   - enabled: 1
-    path: Assets/Scenes/Testing/9_rewrite.unity
-    guid: 47aa1ab52b9c31148b9d2774c7fc7682
+    path: Assets/Scenes/Level 1.unity
+    guid: 832d2bed0e8b7014fa130c39d73f03ca
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 52e339e1ce0fed443855cd9294f935de, type: 2}
