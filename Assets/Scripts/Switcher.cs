@@ -13,10 +13,10 @@ public class Switcher : MonoBehaviour{
 		if(currentPlayer == player.player1){
 			currentPlayer = player.player2;
 			//disable player 1
-			playerOne.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			playerOne.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			playerOne.GetComponent<Animator>().SetBool("running", false);
-			playerOne.GetComponent<CapsuleCollider>().isTrigger = true;
-			playerOne.GetComponent<Rigidbody>().isKinematic = true;
+			playerOne.GetComponent<CapsuleCollider2D>().isTrigger = true;
+			playerOne.GetComponent<Rigidbody2D>().isKinematic = true;
 			playerOne.GetComponent<PlayerController>().canMove = false;
 			playerOne.GetComponent<PlayerController>().canAttack = false;
 			playerOne.GetComponent<PlayerController>().canShoot = false;
@@ -26,8 +26,8 @@ public class Switcher : MonoBehaviour{
 				playerOne.GetComponent<Animator>().SetBool("attack",false);
 				playerOne.GetComponent<Animator>().SetBool("running",false);
 			//enable player 2
-			playerTwo.GetComponent<CapsuleCollider>().isTrigger = false;
-			playerTwo.GetComponent<Rigidbody>().isKinematic = false;
+			playerTwo.GetComponent<CapsuleCollider2D>().isTrigger = false;
+			playerTwo.GetComponent<Rigidbody2D>().isKinematic = false;
 			playerTwo.GetComponent<PlayerController>().canMove = true;
 			playerTwo.GetComponent<PlayerController>().canShoot = true;
 			playerTwo.GetComponent<PlayerController>().canAttack = true;
@@ -37,10 +37,10 @@ public class Switcher : MonoBehaviour{
 		else{
 			currentPlayer = player.player1;
 			//disable player 2
-			playerTwo.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			playerTwo.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			playerTwo.GetComponent<Animator>().SetBool("running", false);
-			playerTwo.GetComponent<CapsuleCollider>().isTrigger = true;
-			playerTwo.GetComponent<Rigidbody>().isKinematic = true;
+			playerTwo.GetComponent<CapsuleCollider2D>().isTrigger = true;
+			playerTwo.GetComponent<Rigidbody2D>().isKinematic = true;
 			playerTwo.GetComponent<PlayerController>().canMove = false;
 			playerTwo.GetComponent<PlayerController>().canShoot = false;
 			playerTwo.GetComponent<PlayerController>().canAttack = false;
@@ -50,8 +50,8 @@ public class Switcher : MonoBehaviour{
 				playerTwo.GetComponent<Animator>().SetBool("attack",false);
 				playerTwo.GetComponent<Animator>().SetBool("running",false);
 			//enable player 1
-			playerOne.GetComponent<CapsuleCollider>().isTrigger = false;
-			playerOne.GetComponent<Rigidbody>().isKinematic = false;
+			playerOne.GetComponent<CapsuleCollider2D>().isTrigger = false;
+			playerOne.GetComponent<Rigidbody2D>().isKinematic = false;
 			playerOne.GetComponent<PlayerController>().canMove = true;
 			playerOne.GetComponent<PlayerController>().canAttack = true;
 			playerOne.GetComponent<PlayerController>().canShoot = true;

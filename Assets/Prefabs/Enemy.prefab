@@ -327,6 +327,7 @@ MonoBehaviour:
   player2Position: {fileID: 0}
   switcher: {fileID: 0}
   dropItem: {fileID: 8274664339201074248, guid: 66f87005069b93746b077f0f8a9e9ee9, type: 3}
+  dropRate: 0.5
   isInRange: 0
   maxHealth: 100
   health: 100

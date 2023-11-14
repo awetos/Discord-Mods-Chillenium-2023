@@ -1,32 +1,93 @@
+using Pathfinding;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour{
-    [SerializeField]Transform player1Position;
+
+	public Transform target;
+	public float speed;
+	public float nextWaypointDist;
+	Path path;
+	int currentWaypoint = 0;
+	bool reachedDest = false;
+	Seeker seeker;
+	Rigidbody2D rb;
+	public Transform enemyGFX;
+	public bool isInRange = false;
+	private bool isDead;
+	public bool isAttacking = false;
+	public float damage;
+	public float attackRate;
+
+    /*[SerializeField]Transform player1Position;
 	[SerializeField]Transform player2Position;
 	[SerializeField]private Switcher switcher;
 	[SerializeField]GameObject dropItem;
 	public float dropRate = 0.5f;
 
-	public bool isInRange = false;
-
 
 	public float maxHealth;
 	public float health;
-	public bool isAttacking = false;
-	public float damage;
-	public float attackRate;
-	private bool isDead;
 	private bool diedOnce = false;
 	Vector3 direction;
-	[SerializeField]private GameObject HealthBar;
+	[SerializeField]private GameObject HealthBar;*/
 	private void Start(){
-		health = maxHealth;
+		//navigation
+        seeker = GetComponent<Seeker>();
+		rb = GetComponent<Rigidbody2D>();
+		//end navifation
+
+		//health = maxHealth;
 	}
 	void Update(){
-		if(GetComponent<NavMeshAgent>().enabled){
+		//navigation
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+		seeker.StartPath(rb.position, target.position, OnPathComplete);
+        if(path == null)
+			return;
+
+		if(currentWaypoint >= path.vectorPath.Count){
+			reachedDest = true;
+			return;
+		}
+		else{
+			reachedDest = false;
+		}
+		Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+		Vector2 force = direction * speed * Time.deltaTime;
+
+		rb.AddForce(force);
+
+		float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+		if(distance < nextWaypointDist){
+			currentWaypoint++;
+		}
+		if(force.x >= 0.1f){
+			enemyGFX.GetComponent<SpriteRenderer>().flipX = true;
+		}
+		else if(force.x >= 0.1f){
+			enemyGFX.GetComponent<SpriteRenderer>().flipX = false;
+		}
+		//end navigation
+	}
+
+		//navigation
+		void UpdatePath(){
+			if(seeker.IsDone())
+				seeker.StartPath(rb.position, target.position, OnPathComplete);
+		}
+
+		void OnPathComplete(Path p){
+			if(!p.error){
+				path = p;
+				currentWaypoint = 0;
+			}
+		}
+		//end navigation
+
+		/*if(GetComponent<NavMeshAgent>().enabled){
 			if(switcher.currentPlayer == Switcher.player.player1){
 				direction = player1Position.position - transform.position;
 				GetComponent<NavMeshAgent>().destination = player1Position.position;
@@ -55,10 +116,13 @@ public class EnemyController : MonoBehaviour{
 				diedOnce = true;
 				Destroy(gameObject, 3);
 			}
-		}
+		}*/
+
+	public void TakeDamage(float dam){
+		//StartCoroutine(TakeDamageTimed(dam));
 	}
 
-	public IEnumerator TakeDamage(float dam){
+	/*public IEnumerator TakeDamageTimed(float dam){
 		HealthBar.SetActive(true);
 		isAttacking = true;
 		health -= dam;
@@ -85,6 +149,7 @@ public class EnemyController : MonoBehaviour{
 		}
 	}
 
+	*/
 	IEnumerator Attack(HealthController other){
 		print("attacking");
 		GetComponent<NavMeshAgent>().enabled = false;
@@ -104,5 +169,19 @@ public class EnemyController : MonoBehaviour{
 		isAttacking = false;
 		GetComponent<NavMeshAgent>().enabled = true;
 		GetComponent<Animator>().SetBool("attack", false);
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if(col.collider.tag == "Player" && !isDead){
+			print("collided");
+			isAttacking = true;
+			StartCoroutine(Attack(col.gameObject.GetComponent<HealthController>()));
+		}
+	}
+	void OnCollisionExit2D(Collision2D col){
+		if(col.collider.tag == "Player" && !isDead){
+			print("uncollided");
+			UnAttack();
+		}
 	}
 }

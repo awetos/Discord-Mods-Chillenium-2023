@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour{
 	[SerializeField]private GameObject heartPrefab;//throwable heart prefab
 	[SerializeField]private GameObject bulletPrefab;
     public float speed;//player move
+	public float heartSpeed;
 	public float damage;
 	public float deg;//aim angle
 	public float shootDelay;//delay between each heart throw
@@ -18,7 +19,6 @@ public class PlayerController : MonoBehaviour{
 	public bool controllerMode;//is using controller
 	public bool canShoot;//can shoot heart
 	public bool canAttack;
-	public Vector3 cursorOffset;
 	public Playercontrols.PlayerActions controller;//player input
 	private Animator animator;//player animator
 	[SerializeField]private Switcher switcher;
@@ -96,12 +96,12 @@ public class PlayerController : MonoBehaviour{
 
 	private void OnTriggerEnter(Collider other) {
 		if(other.gameObject.tag == "Enemy"){
-			other.gameObject.GetComponent<EnemyController>().isInRange = true;
+			//other.gameObject.GetComponent<EnemyController>().isInRange = true;
 		}
 	}
 	private void OnTriggerExit(Collider other) {
 		if(other.gameObject.tag == "Enemy"){
-			other.gameObject.GetComponent<EnemyController>().isInRange = false;
+			//other.gameObject.GetComponent<EnemyController>().isInRange = false;
 		}
 	}
 	private void OnCollisionEnter(Collision collision) {
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour{
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(GameObject enemy in enemies){
 				if(enemy.GetComponent<EnemyController>().isInRange)
-					StartCoroutine(enemy.GetComponent<EnemyController>().TakeDamage(damage));
+					enemy.GetComponent<EnemyController>().TakeDamage(damage);
 			}
 			yield return new WaitForSeconds(attackDelay);
 			animator.SetBool("attack", false);
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour{
 			canAttack = true;
 		}
 	}
-	void FixedUpdate() {
+	void FixedUpdate(){
 		if(canMove){
 			//MOVEMENT
 			Vector2 movement = controller.Movement.ReadValue<Vector2>();
@@ -154,16 +154,15 @@ public class PlayerController : MonoBehaviour{
 				animator.SetBool("facing forward", false);
 				animator.SetBool("facing backward",false);
 			}
-			Vector3 mov = new Vector3(movement.x, 0, movement.y) * speed;//set movement velocity and direction based on input
-			GetComponent<Rigidbody>().velocity = mov;
+			GetComponent<Rigidbody2D>().velocity = movement * speed;
 
-			if(mov.sqrMagnitude > 0)
+			if(movement.sqrMagnitude > 0)
 				animator.SetBool("running", true);
 			else
 				animator.SetBool("running", false);
 
 			if(!shake)
-				Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position+new Vector3(0,5,0), 0.2f);
+				Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position+new Vector3(0,0,-7), 0.2f);
 			else{
 				if(time > 0){
 					Camera.main.transform.localPosition = origPos+Random.insideUnitSphere*0.2f;
@@ -178,52 +177,45 @@ public class PlayerController : MonoBehaviour{
 		}
 
 
-			//AIMING
-			Vector3 direction = Vector3.zero;
-			if(controller.controllerused.triggered)
-				controllerMode = true;
-			if(controller.mouseused.triggered)
-				controllerMode=false;
+		//AIMING
+		Vector3 direction = Vector3.zero;
+		if(controller.controllerused.triggered)
+			controllerMode = true;
+		if(controller.mouseused.triggered)
+			controllerMode=false;
 
 
-			if(controllerMode){
-				Vector2 aim = controller.Aim.ReadValue<Vector2>();
-				direction = new Vector3(aim.x, 0, aim.y);
-				if(canMove){
-					cursor.transform.SetParent(transform);
-					cursor.transform.position = transform.position+direction;
-				}
-			}
-			else{
-				Vector3 mousePos = Input.mousePosition;
-				Ray ray = Camera.main.ScreenPointToRay(mousePos);
-				Vector3 worldPos = Vector3.zero;
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)){
-					worldPos = hit.point;
-				}
-				if(canMove){
-					direction = worldPos - transform.position;
-					cursor.transform.SetParent(null);
-					cursor.transform.position = worldPos+cursorOffset;
-				}
-			}
+		if(controllerMode){
+			Vector2 aim = controller.Aim.ReadValue<Vector2>();
+			direction = new Vector2(aim.x, aim.y);
 			if(canMove){
-				deg = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-				cursor.transform.rotation = Quaternion.Euler(90, 0, -deg);
+				cursor.transform.SetParent(transform);
+				cursor.transform.position = transform.position+direction;
+			}
 		}
+		else{
+			Vector3 mousePos = Input.mousePosition;
+			mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+			direction = new Vector2(
+				mousePos.x - transform.position.x,
+				mousePos.y - transform.position.y
+			);
+			cursor.transform.SetParent(null);
+			cursor.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+		}
+		deg = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+		cursor.transform.rotation = Quaternion.AngleAxis(deg-90, Vector3.forward);
 	}
 
 	//shoot heart with delay
 	IEnumerator ShootHeart(){
 		//ASS.clip = shootSound;
 		//ASS.Play();
-		GameObject heart = Instantiate(heartPrefab, transform.transform, false);//spawn bullet
+		GameObject heart = Instantiate(heartPrefab, transform.position, transform.rotation);//spawn bullet
 		canShoot = false;
-		heart.transform.SetParent(transform.parent);//move it to root
-		heart.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
-		heart.GetComponent<HeartThrowController>().SetDirection(-heart.transform.forward);//set the direction to hearts' forward position to launch it forward
-		//animator.SetBool("shoot", false);
+		heart.transform.SetParent(null);//move it to root
+		heart.transform.rotation = Quaternion.AngleAxis(deg-90, Vector3.forward);
+		heart.GetComponent<Rigidbody2D>().velocity = cursor.transform.up*heartSpeed;
 		yield return new WaitForSeconds(shootDelay);
 		canShoot=true;
     }
