@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour{
 	[SerializeField]private GameObject bulletPrefab;
     public float speed;//player move
 	public float heartSpeed;
+	public float bulletSpeed;
 	public float damage;
 	public float deg;//aim angle
 	public float shootDelay;//delay between each heart throw
@@ -110,28 +111,6 @@ public class PlayerController : MonoBehaviour{
 		}
 	}
 
-	IEnumerator Attack(){
-		canAttack = false;
-		if(switcher.currentPlayer == Switcher.player.player1){
-			enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(GameObject enemy in enemies){
-				if(enemy.GetComponent<EnemyController>().isInRange)
-					enemy.GetComponent<EnemyController>().TakeDamage(damage);
-			}
-			yield return new WaitForSeconds(attackDelay);
-			animator.SetBool("attack", false);
-			canAttack = true;
-		}
-		else{
-			GameObject bullet = Instantiate(bulletPrefab, transform.transform, false);//spawn bullet
-			bullet.transform.SetParent(transform.parent);//move it to root
-			bullet.transform.rotation = Quaternion.Euler(90, 0, -deg);//fix rotation of the heart to match where player is aiming
-			bullet.GetComponent<BulletController>().SetDirection(-bullet.transform.forward);//set the direction to hearts' forward position to launch it forward
-			yield return new WaitForSeconds(attackDelay);
-			animator.SetBool("attack", false);
-			canAttack = true;
-		}
-	}
 	void FixedUpdate(){
 		if(canMove){
 			//MOVEMENT
@@ -204,7 +183,31 @@ public class PlayerController : MonoBehaviour{
 			cursor.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
 		}
 		deg = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		cursor.transform.rotation = Quaternion.AngleAxis(deg-90, Vector3.forward);
+		if(canMove)
+			cursor.transform.rotation = Quaternion.AngleAxis(deg-90, Vector3.forward);
+	}
+	
+	IEnumerator Attack(){
+		canAttack = false;
+		if(switcher.currentPlayer == Switcher.player.player1){
+			enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject enemy in enemies){
+				if(enemy.GetComponent<EnemyController>().isInRange)
+					enemy.GetComponent<EnemyController>().TakeDamage(damage);
+			}
+			yield return new WaitForSeconds(attackDelay);
+			animator.SetBool("attack", false);
+			canAttack = true;
+		}
+		else{
+			GameObject bullet = Instantiate(bulletPrefab, transform.transform, false);//spawn bullet
+			bullet.transform.SetParent(transform.parent);//move it to root
+			bullet.transform.rotation = Quaternion.AngleAxis(deg-90, Vector3.forward);//fix rotation of the heart to match where player is aiming
+			bullet.GetComponent<Rigidbody2D>().velocity = cursor.transform.up*bulletSpeed;
+			yield return new WaitForSeconds(attackDelay);
+			animator.SetBool("attack", false);
+			canAttack = true;
+		}
 	}
 
 	//shoot heart with delay

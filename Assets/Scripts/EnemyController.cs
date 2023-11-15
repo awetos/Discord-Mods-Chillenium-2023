@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour{
 		//navigation
         seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
+		InvokeRepeating("UpdatePath", 0f, 0.5f);
 		//end navifation
 
 		//health = maxHealth;
