@@ -11,7 +11,7 @@ public class BulletController : MonoBehaviour{
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Enemy" && other.GetComponent<NavMeshAgent>().enabled){
+        if(other.tag == "Enemy" && other.GetComponent<EnemyController>().health > 0){
 			print("took an arrow to the knee");
 			other.GetComponent<EnemyController>().TakeDamage(damage);
 			Destroy(gameObject);

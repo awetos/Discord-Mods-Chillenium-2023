@@ -95,17 +95,17 @@ public class PlayerController : MonoBehaviour{
 		pauseMenu.SetActive(false);
 	}
 
-	private void OnTriggerEnter(Collider other) {
+	private void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.tag == "Enemy"){
-			//other.gameObject.GetComponent<EnemyController>().isInRange = true;
+			other.gameObject.GetComponent<EnemyController>().isInRange = true;
 		}
 	}
-	private void OnTriggerExit(Collider other) {
+	private void OnTriggerExit2D(Collider2D other) {
 		if(other.gameObject.tag == "Enemy"){
-			//other.gameObject.GetComponent<EnemyController>().isInRange = false;
+			other.gameObject.GetComponent<EnemyController>().isInRange = false;
 		}
 	}
-	private void OnCollisionEnter(Collision collision) {
+	private void OnCollisionEnter2D(Collision2D collision) {
 		if(collision.collider.tag == "pickup"){
 			ASS[0].Play();
 		}

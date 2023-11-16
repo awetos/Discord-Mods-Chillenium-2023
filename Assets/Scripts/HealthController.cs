@@ -48,7 +48,7 @@ public class HealthController : MonoBehaviour{
 	IEnumerator Death(){
 		isDecaying=false;
 		GetComponent<Animator>().SetBool("dead", true);
-		GetComponent<Rigidbody>().isKinematic = true;
+		GetComponent<Rigidbody2D>().isKinematic = true;
 		gameObject.tag = "NonPlayer";
 		GetComponent<PlayerController>().enabled = false;
 		yield return new WaitForSeconds(2);

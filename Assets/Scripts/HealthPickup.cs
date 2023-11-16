@@ -11,7 +11,7 @@ public class HealthPickup : MonoBehaviour{
 		Destroy(gameObject, secToDisapp);
 	}
 
-	private void OnCollisionEnter(Collision other){
+	private void OnCollisionEnter2D(Collision2D other){
         if (other.collider.tag=="Player"){
             if(other.collider.GetComponent<HealthController>().health < other.collider.GetComponent<HealthController>().maxHealth-healthToAdd)
 				other.collider.GetComponent<HealthController>().health += healthToAdd;
