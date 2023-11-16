@@ -7,6 +7,8 @@ public class HealthController : MonoBehaviour{
 	[SerializeField]private Switcher switcher;
 	[SerializeField]private Image healthUI;
 	[SerializeField]private Sprite[] healthUIImages;
+	[SerializeField]private AudioSource AS;
+	[SerializeField]private AudioClip deathSound;
 	public float maxHealth;
 	public float health;
 	public float decayAmount;
@@ -26,6 +28,7 @@ public class HealthController : MonoBehaviour{
 			StartCoroutine(reduceHealth());
 		}
 		if (health <= 0){
+			AS.Play();
 			StartCoroutine(Death());
 		}
 		percent = health / maxHealth;

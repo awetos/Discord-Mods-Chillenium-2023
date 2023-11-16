@@ -121,6 +121,8 @@ MonoBehaviour:
   - {fileID: 192450332, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
   - {fileID: -2061668650, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
   - {fileID: -101760028, guid: df2abd314bbc3a0469bc902cc10c9d74, type: 3}
+  AS: {fileID: 899727251141930580}
+  deathSound: {fileID: 8300000, guid: 9f6660bb3e1e81549911d688188494d9, type: 3}
   maxHealth: 100
   health: 100
   decayAmount: 5
@@ -358,8 +360,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0.04592848, y: 0.11986941}
+  m_Size: {x: 0.8674276, y: 0.8674276}
   m_Direction: 0
 --- !u!1 &1605511093794146034
 GameObject:

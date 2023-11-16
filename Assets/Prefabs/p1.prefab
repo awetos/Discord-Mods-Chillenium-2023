@@ -61,7 +61,7 @@ MonoBehaviour:
   speed: 2
   heartSpeed: 5
   bulletSpeed: 5
-  damage: 15
+  damage: 30
   deg: 0
   shootDelay: 0.5
   attackDelay: 0.3
@@ -122,6 +122,8 @@ MonoBehaviour:
   - {fileID: -1923888582, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
   - {fileID: -1843703588, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
   - {fileID: 379415563, guid: 26a2b027a3777ce48a863b88750e2742, type: 3}
+  AS: {fileID: 1370948951}
+  deathSound: {fileID: 8300000, guid: 9f6660bb3e1e81549911d688188494d9, type: 3}
   maxHealth: 100
   health: 100
   decayAmount: 5
@@ -385,8 +387,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0.04592848, y: 0.11986941}
+  m_Size: {x: 0.8674276, y: 0.8674276}
   m_Direction: 0
 --- !u!1 &1890266096590007793
 GameObject:

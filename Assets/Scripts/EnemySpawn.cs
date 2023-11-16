@@ -11,6 +11,8 @@ public class EnemySpawn : MonoBehaviour{
 	public int wave = 1;
 	int enemyTracker;
 	[SerializeField]TMP_Text waveTxt;
+	[SerializeField]AudioSource AS;
+	[SerializeField]AudioClip spawn;
 
     // Start is called before the first frame update
     void Start(){
@@ -40,5 +42,7 @@ public class EnemySpawn : MonoBehaviour{
 		GameObject spawnedEnemy = Instantiate(enemyTypes[0], spawnLocation, Quaternion.identity);
 		spawnedEnemy.transform.SetParent(transform);
 		spawnedEnemy.SetActive(true);
+		AS.clip = spawn;
+		AS.Play();
 	}
 }

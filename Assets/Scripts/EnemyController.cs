@@ -41,8 +41,8 @@ public class EnemyController : MonoBehaviour{
 		//health = maxHealth;
 	}
 	void Update(){
-		
-		target = GameObject.FindGameObjectWithTag("Player").transform;
+		if(GameObject.FindGameObjectsWithTag("Player").Length > 0)
+			target = GameObject.FindGameObjectWithTag("Player").transform;
 		//navigation
 		if(canMove){
 			if(path == null)
@@ -155,6 +155,6 @@ public class EnemyController : MonoBehaviour{
 	void UnAttack(){
 		isAttacking = false;
 		canMove = true;
-		GetComponent<Animator>().SetBool("attack", false);
+		enemyGFX.GetComponent<Animator>().SetBool("attack", false);
 	}
 }
