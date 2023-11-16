@@ -11,20 +11,17 @@ public class DeathScreen : MonoBehaviour
 
     [SerializeField] private AudioSource gameover;
     [SerializeField] private GameObject deathScreen;
-	[SerializeField] private GameObject numbersCanvas;
+	//[SerializeField] private GameObject numbersCanvas;
     private bool playedOnce = false;
+    float deathDelay = 2.5f;
 
     // Start is called before the first frame update
-    private void Start()
-    {
-
-
+    private void Start(){
+	timer.StartTimer();
         leaderboardTxt.text = "Best: " + PlayerPrefs.GetString("Time");
     }
-    public void ShowDeathScreen()
-    {
-
-
+    public void ShowDeathScreen(){
+		timer.StopTimer();
         //show death screen
         if (PlayerPrefs.GetFloat("HighTime") <= 0)
             PlayerPrefs.SetFloat("HighTime", 0);
@@ -40,14 +37,11 @@ public class DeathScreen : MonoBehaviour
         StartCoroutine("ShowDeathScreenAfterTime");
     }
 
-    float deathDelay = 2.5f;
-    IEnumerator ShowDeathScreenAfterTime()
-    {
+    IEnumerator ShowDeathScreenAfterTime(){
         yield return new WaitForSeconds(deathDelay);
-		numbersCanvas.SetActive(false);
+		//numbersCanvas.SetActive(false);
         Camera.main.GetComponent<AudioSource>().Stop();
-        if (!playedOnce)
-        {
+        if (!playedOnce){
             gameover.Play();
             print(gameover.clip + " " + gameover.isPlaying);
             playedOnce = true;
